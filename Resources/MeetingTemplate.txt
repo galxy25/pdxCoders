@@ -1,9 +1,10 @@
 Date:
 Time:
-Location
+Location:
+Duration:
 
-Requested Attendees
-Actual Attendees
+Requested Attendees:
+Actual Attendees:
 
 Agenda
 
