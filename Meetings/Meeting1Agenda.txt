@@ -1,0 +1,44 @@
+Meeting#1
+
+Date: TBA
+
+Time: TBA
+
+Location: TBA
+
+Duration: 60-90 mins
+
+Requested Attendees: All team members
+Actual Attendees:
+
+Agenda
+
+  Item 1 -Introductions (Time: 20 minutes )
+	Owner: Everyone
+	Outcome:
+
+	What is your name?
+	What do you hope to get out of the capstone project besides an A?
+	What are you areas of technical skill/proficiency? 
+
+  Item 2- Review Team Contract (Time: 45 minutes ) 
+	Owner: Levi
+	Outcome:
+
+  Item 3(optional)- Review (Time: 0-25 minutes)
+	Owner: Levi
+	Outcome:
+
+	Software Version Control Rules
+	Agile Practices
+	Pivotal Tracker
+	SourceTree
+	
+Action Items:
+
+Additional Discussion Items:
+
+
+
+
+
