@@ -1,0 +1,38 @@
+For a complete overview see: http://www.versionone.com/agile-101/agile-development-overview/
+
+Following is a list of Agile practices that our team should adhere to and understand.
+
+Open Communication:
+
+	The key to the success of any team based project, not just Agile ones, is high quality and continuous communication between all members of the team. When in doubt, ask. If you are unsure of what the current project goals and priorities are, ask. If you disagree with a discussion and technical choice, speak your mind. Of course, it is expected that all communication will be civil and respectful of both the individual and the team.
+
+Iterative Development:
+	
+	As opposed to developing a complete product in one phase from start to finish, we will break the project down into smaller subtasks and features. With each iteration of features, we will present the current product to the customer for feedback, so that when the product is finished, we have developed the product that our customer expects, and any changes to be made won't invalidate the work from previous iterations. A detailed explanation of the iteration and feature selection process can be found at:
+	http://www.versionone.com/agile-101/agile-development-iteration-planning/
+
+Test Driven Development:
+
+	First the developer writes an (initially failing) automated test case that defines a desired improvement or new function, then produces the minimum amount of code to pass that test, and finally refactors the new code to acceptable standards.
+
+Continous Integration:
+
+	Traditional software development methods don't dictate how frequently or regularly you integrate all of the source on a project. Programmers can work separately for hours, days, or even weeks on the same source without realizing how many conflicts (and perhaps bugs) they are generating. Agile teams, because they are producing robust code each iteration, typically find that they are slowed down by the long diff-resolution and debugging sessions that often occur at the end of long integration cycles. The more programmers are sharing the code, the more problematic this is. For these reasons, agile teams often therefore choose to use Continuous Integration.
+
+	Continuous Integration (CI) involves producing a clean build of the system several times per day, usually with a tool like CruiseControl, which uses Ant and various source-control systems. Agile teams typically configure CI to include automated compilation, unit test execution, and source control integration. Sometimes CI also includes automatically running automated acceptance tests such as those developed using FitNesse. In effect, CI means that the build is nearly always clean.
+Time Estimation:
+
+	Accurate estimation for work is highly valuable both to the customer and to your fellow teammates. When you first begin making estimations, they will be inaccurate. That's ok, the important thing is to note the difference between actual time spent and expected time, and use that as feedback to enhance the accuracy of future time estimations. We will be using the Agile point based estimation, where each point corresponds to the amount of work two developers can accomplish in one day. The point scale will be 1, 2, 3, 5, 8. If you estimate 8 or more points for a feature, that's a great hint that you should break that feature into smaller subtasks.
+
+Paired Programming:
+
+	Less applicable to our distributed student team, but the practice of two developers working together on a single feature or bug is highly encouraged. The benefits of paired programming are increased programmer productivity, fewer bugs per line, and sharing of domain knowledge and skills with other developers.
+
+Our code is:
+	DRY(Don't Repeat Yourself)/refactored
+		Instead of writing five functions for five different inputs,
+		we write one function that can handle the five different inputs.
+	Tested
+		Testing, particularly automated testing, increases developer productivity 		by providing assurance that the code performs as expected, so new features 		can be added without breaking existing functionality.
+	Shared
+		No silos of knowledge or codebase. While each of us has particular 			strengths and areas of knowledge, all team members should have a working 		understanding of all crucial aspects of the codebase. As the entire 			codebase is shared, each developer should take responsibility for the 			overall quality and style of the codebase.
