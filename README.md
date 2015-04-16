@@ -42,7 +42,8 @@ Branches:
 * staging-beta(testing)  
 * development(equal to staging-beta, not deployed)  
 *		features/  
-*		bugs/  
+*		bugs/
+*		chores/
 *		hotfixes/  
 *		releases/  
 
