@@ -8,6 +8,10 @@ Actual Attendees:
 
 Agenda
 
+Week in Preview & Review (20 minutes)
+	-Owner: Everyone
+	-Outcome: Everyone knows what everyone else accomplished last week and what they have planned for this week. Also, timeline will be updated as need be.
+
 Item 1 Description (Time)
 	-Owner
 	-Outcome
