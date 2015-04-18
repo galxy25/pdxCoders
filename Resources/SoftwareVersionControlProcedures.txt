@@ -7,9 +7,10 @@ master(production)
 	development(equal to staging-beta, not deployed)
 		features/
 		bugs/
+		chores/
 		hotfixes/
 		releases/
-
+		
 Pull from development(rebase okay)
 
 Create new branch, i.e.

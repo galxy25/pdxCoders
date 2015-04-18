@@ -1,4 +1,4 @@
-# pdxCoders
+#pdxCoders
 CS Capstone 2015
 Team-D
 
@@ -19,16 +19,21 @@ For software version control, and to encourage the use of communication around c
 
 Pivotal Tracker:
 
-For project management. Use to create, assign, and track progress of tasks for indivudual team members and the group as a whole.
+For project management. Use to create, assign, and track progress of tasks for individual team members and the group as a whole.
 
-Google Calander:
+Google Calender:
 
-For setting up meetings and coordingating project deadlines and timelines.
+For setting up meetings and coordinating project deadlines and time lines.
 
 SourceTree or Terminal:
 
 SourceTree is a **free** SVC program that works with Git, SVN, Mercuial, and provides a graphical interface for managing code repositories. The alternative to such a program is using git via the command line.
 
+Slack
+
+Can be found at pdxcoders.slack.com
+
+Used for team communiques and communication between team members.
 ##Source Control Workflow
 
 Branches:  
@@ -37,7 +42,8 @@ Branches:
 * staging-beta(testing)  
 * development(equal to staging-beta, not deployed)  
 *		features/  
-*		bugs/  
+*		bugs/
+*		chores/
 *		hotfixes/  
 *		releases/  
 
@@ -51,7 +57,7 @@ Make changes, then commit like so:
 			-Commit Message comments go here  
 			-“...“  
 			-“…"  
-Create pull request in github.  
+Create pull request in GitHub.  
 Must be code reviewed with at least one other team member before merging.  
 Merge your local branch with staging-beta, then merge staging-beta with  development.  
 **All merges to master(production) will be done by the team lead.** 
