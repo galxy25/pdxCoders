@@ -13,7 +13,12 @@ master(production)
 		
 Pull from development(rebase okay)
 
+$> git checkout development
+$> git pull
+
 Create new branch, i.e.
+
+$> git checkout -b 
 
 features/really_cool_thing_pivotalNumber
 
@@ -21,7 +26,15 @@ or
 
 bugs/save_the_day_pivotalNumber
 
-Make changes, then commit like so:
+Make changes, code, do amazing ninja like things.
+Add your changes
+$> git add path/to/file(s)/you/changed
+
+ then commit like so:
+
+git commit "[(Finishes|Fixes|Delivers) #TRACKER_STORY_ID] Brief Description"
+
+If in source tree, you can do this instead:
 
 [(Finishes|Fixes|Delivers) #TRACKER_STORY_ID] Brief Description
 -Commit Message comments go here
