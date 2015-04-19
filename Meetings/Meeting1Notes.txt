@@ -1,0 +1,84 @@
+Meeting#1
+
+Date: April, 18th, 2015
+
+Time: 2:00 PM - 3:30 PM
+
+Location: Fab 88-08 Conference Room
+
+Duration: 60-90 mins
+
+Requested Attendees: All team members
+Actual Attendees: Parker Berger, Levi Schoen, Laura DeWitt, Brandon Isom, Raven Allan, Joseph Stewart, Brady Sullivan 
+
+Agenda
+
+  Item 1 -Introductions (Time: 20 minutes )
+	Owner: Everyone
+	Outcome: All attendees made known their desired outcome from this course, and introduced themselves. To recap the important points
+
+	Levi Schoen
+		Looking to gain skills being a team leader, working with a large team to build a product from scratch to production.
+		Skilled in Ruby on Rails, cloud based deployments, and Javascript Front end frameworks(Angular)
+
+	Joseph Stewart
+		Looking to gain industry skills.
+		Skilled in Java and C++.
+
+	Brady Sullivan
+		Looking to gain skills in working with a group and managing a project.
+		Skilled in PHP, Linux, C++ and Java.
+
+	Laura DeWitt
+		Looking to gain a cool project for resume/portfolio.
+		Skilled in ASP.net , C#, MVC, SQL server.
+
+	Brandon Isom
+		Looking to gain a complete project that he can be proud of and share.
+		Skilled in C#, ASP.net.
+
+	Parker Berger
+		Looking to gain connections with businesses
+		Skilled in graphic design, C++ and Java.
+
+	Raven Allan
+		Looking to gain new skills in software engineering and languages.
+		Skilled in Backend, PHP
+
+	What is your name?
+	What do you hope to get out of the capstone project besides an A?
+	What are you areas of technical skill/proficiency? 
+
+  Item 2- Review Team Contract (Time: 45 minutes ) 
+	Owner: Levi
+	Outcome: Consensus reached on a team contract for the duration of the capstone course.
+
+  Item 3(optional)- Review (Time: 0-25 minutes)
+	Owner: Levi
+	Outcome:
+		Basic git flow explained. SourceTree software introduced.
+
+	Software Version Control Rules
+
+	Agile Practices
+
+	Pivotal Tracker
+
+	SourceTree
+	
+Action Items:
+
+	Item    			Owner    When
+
+Transcribe Minutes			Levi	Saturday
+Meeting Template for group scribe	Raven   Monday
+Sign team contract			Everyone Friday(24th)
+	
+Additional Discussion Items:
+
+	None.
+
+
+
+
+
