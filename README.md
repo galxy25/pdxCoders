@@ -29,7 +29,7 @@ SourceTree or Terminal:
 
 SourceTree is a **free** SVC program that works with Git, SVN, Mercuial, and provides a graphical interface for managing code repositories. The alternative to such a program is using git via the command line.
 
-Slack
+Slack:
 
 Can be found at pdxcoders.slack.com
 
