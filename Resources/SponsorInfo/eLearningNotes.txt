@@ -1,0 +1,37 @@
+Courtesy of William Hopper(Team B Lead)
+
+1: If we did the project, Teucher is the one who would be managing our week-to-week work and helping us out with technical questions and specs. and this is IMPORTANT: he's not crazy, he's super technical minded, is a dual CS, ECE major with a focus on CS. He's excited about the project and knows very well the limitations of his team and the challenges of the project. He seems like a really cool guy who is super accessible (on campus, down to meet any time) and well put together.
+
+2: Teucher know's sam's a little cookoo, thinks it's funny, but made the great point that figuring out how to build what other people need even when they dont know completely is an important skill and experience.
+
+3: Also, they totally have a very detailed idea of the project and a clear idea for how to generate  requirements, sam just isnt a technical guy at all and has no idea how to present those things
+
+4:  Sam's mentioning of duolingo wasnt trivial, they've actually reached out to a bunch of different organizations and companies and looked into integrating with their systems, Teuchers got a table of the pros/cons of each and what they found out in their research. Duolingo is EXACTLY what they're looking for, except they want it to be open source and have capability to interface with braile and learning impaired people, The problem with the people at Duolingo is they're not interested in this. Seeing as it doesnt exist, I think teucher's right that this is actually a pretty cool project, with important applications and work to be done.
+
+5: Teucher's got servers running that we could use for the project and said the have other options so hosting it locally is no big deal.
+
+6: They're 100% for open source.
+
+7: THE PROJECT: (We can do as much of this as we want, I think we should do it all :simple_smile:
+
+        -build a back end to manage users, projects, games, stats and user projects in a server on campus with authentication and an effective API for android, IOS and web
+
+       -gather requirements and design database/api/mobile/web needs for project (1-2 weeks)
+
+        -design/build a web app to use to manage users
+
+       -design/build a mobile app to interface with the database
+
+             -design an interface for said mobile app and braille games
+
+              -design/build open source translator for braille
+
+       -System to track and manage users' progress through their learning
+
+             -(optional) ability to scale up game difficulty easily – longer term goal
+
+8: Teucher taught the class on android and had teams of kids in class mage braille games last quarter so he's already got a few games we can test it out with on mobile devices
+
+9: They have a 5 year grant from the US Dept of Ed, the target is 10,000 users by then. The goal is to get a solid foundation for the server, the APIs and the web site so that others can build on our work in the future. If we throw in mobile development we've got a big stack with loads of software engineering and some other work to do!
+
+
