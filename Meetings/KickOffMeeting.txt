@@ -1,0 +1,37 @@
+Date: TBA
+Time: TBA
+Location: TBA
+Duration: 60 minutes
+
+Requested Attendees: All
+Actual Attendees:
+
+Agenda Meet & Greet With eLearning Sponsors
+
+Item 1 Introductions (15 minutes)
+	-Owner: Everyone
+		Name.
+		Stake in this project.
+		What you hope to gain from this project.
+	-Outcome
+Item 2 Communication Protocols (15 minutes)
+        -Owner: Evan
+		What medium of communication(email, video chat, text, calls, in person) works best for you?
+		What communication frequency level works best for you? 
+		How often will we meet with you?
+		Where will meetings be held?
+		Who are the points of contact on both sides?
+        -Outcome
+Item 3 Project Expectation (25 minutes)
+        -Owner: Brandon
+		What is the licensing agreement for this project?
+		What do the deliverables look like-source code/github/installed software on your servers?
+		If all of you win the lottery, is there a fall back person who can step in for you as the sponsor/client?
+        -Outcome
+Item 4 What happens next? (5 minutes)
+        -Owner: Levi
+        -Outcome
+
+Action Items:
+
+Additional Discussion Items:
