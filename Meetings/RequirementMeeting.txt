@@ -3,7 +3,7 @@ Time: 2:00 - 4:00 PM
 Location: CS Capstone Lab FAB 88-04
 Duration: 2 hours
 
-Requested Attendees: Brandon Isom, Levi Schoen, 
+Requested Attendees: Brandon Isom, Evan Schott, Levi Schoen, 
 			Samuel Sennott, Holly Lawson, Christof Teuscher
 Actual Attendees:
 
@@ -26,7 +26,7 @@ Item 2 Project Architecture (45 minutes)
 	Future Extesnsibility
 	Privacy & Security Requirements	
 
-        -Owner: Levi & Christof 
+        -Owner: Evan & Christof 
         -Outcome
 
 Item 3 User Story Generation (55 minutes)
