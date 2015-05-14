@@ -1,0 +1,30 @@
+Date: 5/14/2015
+Time: 2:00 - 4:00 PM
+Location: CS Capstone Room
+Duration: 2 hours
+
+Requested Attendees: Brandon Isom, Levi Schoen, 
+			Samuel Sennott, Holly Lawson, Christof Teuscher
+Actual Attendees:
+
+Agenda Project Requirements & User Story Generation
+
+Item 1 Open Source License Comparison/Discussion (20 minutes)
+
+	Discuss and come to a consensus on what licenses are
+	-Owner: Brandon Isom
+	-Outcome
+
+Item 2 Project Architecture (45 minutes)
+
+        -Owner
+        -Outcome
+
+Item 3 User Story Generation (55 minutes)
+
+        -Owner
+        -Outcome
+
+Action Items:
+
+Additional Discussion Items:
