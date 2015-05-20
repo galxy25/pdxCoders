@@ -1,0 +1,8 @@
+pairs:
+  # <initials>: <Firstname> <Lastname>[; <email-id>]
+	bs: Brady Sullivan; brady
+	ls: Levi Schoen; levi
+email:
+  prefix: team
+  domain: pdxcoders.com
+  no_solo_prefix: true
