@@ -5,6 +5,7 @@ html, body
     font-weight: normal;
     letter-spacing:1px;
     color: #fff;
+    text-shadow: 2px 2px #000;
     background: url("/images/back.jpg") no-repeat center center fixed;
     background-color: #000;
     -webkit-background-size: cover;
