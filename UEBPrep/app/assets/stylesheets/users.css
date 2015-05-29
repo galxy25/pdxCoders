@@ -3,48 +3,27 @@
   They will automatically be included in application.css.
 */
 
-
-p
-{
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 3em;
-    font-weight: normal;
-
-    color: #fff;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
-}
-
 .field
 {
-    font-size: 3em;
+    font-size: 2em;
     text-align: left;
-    test-color: #fff;
+    color: #fff;
 }
 
 .box
 {
     background-color: blue;
-    opacity: 0.4;
-    filter: alpha(opacity=40);
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.box p
-{
-    color: #fff;
-}
-
 .edit-pane
 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    text-shadow: none;
     position: relative;
     margin-left: 30%;
     margin-right: 30%;
