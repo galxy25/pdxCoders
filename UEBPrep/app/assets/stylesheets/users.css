@@ -33,3 +33,15 @@
     height: 70%;
     padding: 2%;
 }
+
+.actions
+{
+    padding-top: 5%;
+}
+.actions input
+{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2em;
+    font-weight: normal;
+    position: relative;
+}
