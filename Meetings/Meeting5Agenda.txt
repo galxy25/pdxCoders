@@ -1,0 +1,76 @@
+Date: Monday, May 25th 2015
+Time: 6:30-7:30
+Location: FAB 130
+Duration: 1 hour
+
+Requested Attendees: All
+Actual Attendees:
+
+Agenda
+
+Week in Preview  (20 minutes)
+	-Owner: Everyone
+	-Outcome: Everyone knows what everyone else accomplished last week.
+
+Item 1 Home Page Demo (10 minutes)
+	Preview the home page created by Parker Berger and Raven Allan.
+	Explain that each week we are delivering a new version of our product, not random code in a vacuum. 
+	Code delivered should be polished enough that each week it can be presented to the sponsors for feedback.
+	-Owner: Parker Berger
+	-Outcome
+
+Item 2 Sponsor Meeting Review (15 minutes)
+	Review any discussion items or action items from sponsor meeting. Solicit questions for future meetings.
+        -Owner: Brandon Isom
+        -Outcome
+
+Item 3 Sprint 2 User Creation & Authentication  (15 minutes)
+	Explain, discuss, and assign task relating to the stories of user creation and user login.
+
+	User Authentication
+		Raven, Laura, Evan
+		Modal on the home page that takes username and password
+		Redirects to user account page if valid credentials
+		Else alerts user credentials were invalid
+		Has "forgot my password" functionality. 
+	Sign up page
+		Raven, Laura, Evan
+		user_name-uniqueness
+		email-validation
+		password-meets criteria 
+		Design, code & build
+		Redirects to account upon successful completion
+		Angular 
+			Future
+				Image
+				OAuth Social Integrations 
+				Location based off of IP
+	User Account Page
+		Joseph		Brandon
+		-add route, and template html files & css
+		Should display username and password
+		Future
+			Playlists
+			Classes
+			Course
+			Lessons
+			Messages
+	
+	API
+		Brady
+		Create a user
+		Authenticate a user
+		Get user profile
+	What do cards look like, what is a card in our database
+		Parker
+		Mock-ups of the different card types
+		Sketch of what the database representation of a card is
+        -Owner: Levi Schoen
+        -Outcome
+
+Action Items:
+	Assign Slides to team members Owner: Levi Due: Tue May 26th
+	Formulate Project Documentation Criteria Owner: Levi Due: Fri May 29th
+Additional Discussion Items:
+	After login, should you be directed to account page?
+	Adding sponsors to pivotal tracker
