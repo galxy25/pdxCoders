@@ -30,7 +30,7 @@
 
 .edit-pane
 {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     color: black;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1em;
@@ -40,9 +40,9 @@
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 10%;
-    margin-bottom: 10%;
+    margin-bottom: 0%;
     width: 40%;
-    height: 70%;
+    height: 100%;
     padding: 2%;
 }
 
