@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -32,8 +33,10 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
+    binding.pry
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to edit_user_url
+      #redirect_to 'edit' #, notice: 'User was successfully updated.'
     else
       render :edit
     end
