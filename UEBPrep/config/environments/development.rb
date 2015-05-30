@@ -13,17 +13,17 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Do care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  # SMTP settings for gmail
-  config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :port                 => 587,
-      :user_name            => ENV['gmail_username'],
-      :password             => ENV['gmail_password'],
-      :authentication       => "plain",
-      :enable_starttls_auto => true
+  # SMTP settings for mailgun
+  ActionMailer::Base.smtp_settings = {
+      :port           => 587,
+      :address        => "smtp.mailgun.org",
+      :domain         => ENV['mailgun_domain'],
+      :user_name      => ENV['mailgun_username'],
+      :password       => ENV['mailgun_password'],
+      :authentication => :plain,
   }
 
   # Print deprecation notices to the Rails logger.

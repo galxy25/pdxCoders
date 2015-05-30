@@ -15,16 +15,15 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   config.action_mailer.delivery_method = :smtp
-  # SMTP settings for gmail
-  config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :port                 => 587,
-      :user_name            => ENV['gmail_username'],
-      :password             => ENV['gmail_password'],
-      :authentication       => "plain",
-      :enable_starttls_auto => true
+  # SMTP settings for mailgun
+  ActionMailer::Base.smtp_settings = {
+      :port           => 587,
+      :address        => "smtp.mailgun.org",
+      :domain         => ENV['mailgun_domain'],
+      :user_name      => ENV['mailgun_username'],
+      :password       => ENV['mailgun_password'],
+      :authentication => :plain,
   }
-
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.

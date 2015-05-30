@@ -4,6 +4,7 @@ source "https://rubygems.org"
  gem 'figaro'
  gem 'jquery-rails'
  gem 'turbolinks'
+ gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 
 group :development, :test do
   gem 'rspec-rails'
