@@ -7,6 +7,8 @@ source "https://rubygems.org"
  gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
  gem 'activejob_backport'
  gem 'delayed_job_active_record'
+ gem 'unicorn'
+ gem 'foreman'
 
 group :development, :test do
   gem 'rspec-rails'
