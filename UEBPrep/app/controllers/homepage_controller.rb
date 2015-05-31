@@ -3,8 +3,7 @@ class HomepageController < ApplicationController
   end
 
   def subscribe_email
-    # SendEmailJob.set(wait: 10.seconds).perform_later(params[:email_address])
-    HomepageSubscribe.subscribe_email(params[:email_address]).deliver
+    HomepageSubscribeEmailJob.set(wait: 10.seconds).perform_later(params[:email_address])
 
     respond_to do |format|
       format.html { redirect_to :root , notice: 'Your email has been sent' }
