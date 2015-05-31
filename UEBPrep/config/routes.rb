@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'homepage#index'
 
   get 'homepage/index'
+
+  post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
