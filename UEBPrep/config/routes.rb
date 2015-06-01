@@ -2,6 +2,25 @@ Rails.application.routes.draw do
   root 'homepage#index'
 
   get 'homepage/index'
+
+
+  # API Routes
+  namespace :api do
+      # Because nothing is ever perfect the first time...
+      scope '/v1' do
+          # Login as a user.
+          post '/login' => 'api#login'
+          # Logout as a user.
+          post '/logout' => 'api#logout'
+
+          # Within the scope of all users.
+          scope '/user' do
+              put '/' => 'user#create'
+              get '/:id' => 'user#get'
+          end
+      end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
