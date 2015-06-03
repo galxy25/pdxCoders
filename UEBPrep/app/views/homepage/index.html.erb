@@ -1,27 +1,37 @@
-<div id="content">
-  <!--<hr id="hrNav">-->
-  <img id="iNav" src="assets/homepage/logo2.png" style="width:120px;height:120px;" alt="">
-  <table id="main">
+<div id="homepage-content">
+  <hr id="homepage-hrHeader">
+  <div id="homepage-homeBtn"><img id="homepage-iHomeBtn" src="assets/homepage/iHomeBtn.png" style="width:0;height:0;" alt="image"></div>
+  <table id="homepage-mainTbl">
     <tr align="center">
       <td>
-        <h1>Unified English Braille Responsive eLearning Platform</h1>
-        <p><h2>We're currently in development. Subscribe below to receive update notifications</h2></p>
-        <div id="form-main">
-          <div id="form-div">
-            <form class="form" id="form1">
-              <p class="email">
-                <input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
-              </p>
-              <div class="submit">
-                <input type="submit" value="SEND" id="button-blue"/>
-                <div class="ease"></div>
-              </div>
-            </form>
+        <img id="homepage-iHeader" src="assets/iHeader.png" style="width:0;height:0;" alt="image">
+          <div id="homepage-mainContent">
+            <div id="homepage-joinTxt">join</div>
+            <hr id="homepage-hrMain">
+            <table>
+              <tr align="center">
+                <div id="homepage-infoTxt">UEBPrep is an interactive platform<br>designed for learning Unified English Braille.</div>
+                <div id="homepage-joinBtnTwitter"><img id="homepage-iTwitter" src="assets/homepage/iTwitter.png" style="height:90%;width:auto;" alt="image"></div>
+                <div id="homepage-joinBtnFacebook"><img id="homepage-iFacebook" src="assets/homepage/iFacebook.png" style="height:100%;width:auto;" alt="image"></div>
+                <div id="homepage-mainOrHr"><hr id="homepage-hrMainHalvedL"><div id="homepage-hrOrTxt">or</div><hr id="homepage-hrMainHalvedR"></div>
+                
+
+                <!-- CHANGE method="GET" to method="POST" once helper has been added for it !!! -->
+                <form action="signup" method="GET">
+                  <input type="email" id="homepageEmailInput" class="homepage-input" name="homepageEmailInput" placeholder="email" required>
+                  <br>
+                  <input type="password" id="homepagePWInput" class="homepage-input" name="homepagePWInput" placeholder="password" required>
+                  <br>
+                  <input type="submit" id="homepage-submitBtn" class="homepage-input" value="Get Started">
+                </form>
+
+
+              </tr>
+            </table>
           </div>
-        </div>
       </td>
     </tr>
   </table>
-  <div id="footer">&#8226; <div id="oAbout">About</div> &#8226; <a href="https://github.com/galxy25/pdxCoders" class="links" target="_blank">GitHub</a> &#8226; <div id="oTeam">Team</div> &#8226;</div>
-  <hr id="hrFooter">
+  <div id="homepage-footer">&#8226; <div id="homepage-oAbout">About</div> &#8226; <a href="https://github.com/galxy25/pdxCoders" class="homepage-links" target="_blank">GitHub</a> &#8226; <div id="homepage-oTeam">Team</div> &#8226;</div>
+  <hr id="homepage-hrFooter">
 </div>

@@ -1,263 +1,257 @@
 /*
+
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
+
+  CSS normally ordered in desc alphabetical order starting with
+  HTML body, divisions by id, divisions by class, tables, and
+  any other misc styling placed at the end - unless multiple
+  elements have shared styling, to avoid redundant/wasteful code,
+  in which case everything is grouped following the first element
+  of the grouped styling; i.e. classes may reside within the
+  "DIVISIONS/BLOCKS BY ID". These defs are indented for readability.
+  Take care when modifying them!
+
+  The CSS naming convention should include its ref page name prefix
+  e.g. <div id="homepage-Content"> instead of <div id="content">
+
+  Global CSS - e.g. html, body, header font tags (<h1> - <h6>), etc.
+  should be avoided if at all possible to avoid root conflicts
+
 */
+/*****************************************************************************
+                                HTML / BODY
+*****************************************************************************/
 html, body
 {
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 1em;
-    font-weight: normal;
-    letter-spacing:1px;
-    color: #fff;
-    text-shadow: 2px 2px #000;
-    background: url("/assets/homepage/back.jpg") no-repeat center center fixed;
-    background-color: #000;
+    font-family:             'Open Sans', Arial, sans-serif;
+    font-size:               0.9em;
+    color:                   #fff;
+    font-weight:             normal;
+    letter-spacing:          1px;
+    background:              url("/assets/homepage/iBackground.jpg") no-repeat center center fixed;
+    background-color:        #000;
     -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
+    -moz-background-size:    cover;
+    -o-background-size:      cover;
+    background-size:         cover;
+    margin:                  0;
+    padding:                 0;
+    border:                  0;
+    overflow:                hidden;
+}
+/*
+    this will need to be modified later to avoid conflicts with
+    the root CSS file @ '~/app/assets/stylesheets/application.css'
+*/
+
+
+/*****************************************************************************
+                            DIVISIONS/BLOCKS BY ID
+*****************************************************************************/
+#homepage-content
+{
+    width:      100%;
+    height:     100%;
+    position:   absolute;
+    z-index:    1;
+    top:        0;
+    left:       0;
 }
 
-h1
+#homepage-footer
 {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 3em;
+    font-size:   0.9em;
+    text-shadow: 2px 2px #000;
+    position:    fixed;
+    z-index:     3;
+    bottom:      2%;
+    left:        0;
+    width:       100%;
+    text-align:  center;
 }
 
-h2
+#homepage-hrFooter, #homepage-hrHeader
 {
-    font-size:1.4em;
+    width:            100%;
+    position:         fixed;
+    bottom:           0;
+    left:             0;
+    z-index:          2;
+    border:           0;
+    height:           1px;
+    background-image: -webkit-linear-gradient(left, hsla(0, 100%, 100%, 0.15), hsla(0, 100%, 100%, 0.40), hsla(0, 100%, 100%, 0.15));
+    background-image:    -moz-linear-gradient(left, hsla(0, 100%, 100%, 0.15), hsla(0, 100%, 100%, 0.40), hsla(0, 100%, 100%, 0.15));
+    background-image:     -ms-linear-gradient(left, hsla(0, 100%, 100%, 0.15), hsla(0, 100%, 100%, 0.40), hsla(0, 100%, 100%, 0.15));
+    background-image:      -o-linear-gradient(left, hsla(0, 100%, 100%, 0.15), hsla(0, 100%, 100%, 0.40), hsla(0, 100%, 100%, 0.15));
+}
+    #homepage-hrHeader { top: -4px; }
+
+#homepage-hrMain, #homepage-hrMainHalvedL, #homepage-hrMainHalvedR
+{
+    border:           0;
+    height:           1px;
+    background-image: -webkit-linear-gradient(left, hsla(0, 0%, 39%, 0.30), hsla(0, 0%, 39%, 0.50), hsla(0, 0%, 39%, 0.30));
+    background-image:    -moz-linear-gradient(left, hsla(0, 0%, 39%, 0.30), hsla(0, 0%, 39%, 0.50), hsla(0, 0%, 39%, 0.30));
+    background-image:     -ms-linear-gradient(left, hsla(0, 0%, 39%, 0.30), hsla(0, 0%, 39%, 0.50), hsla(0, 0%, 39%, 0.30));
+    background-image:      -o-linear-gradient(left, hsla(0, 0%, 39%, 0.30), hsla(0, 0%, 39%, 0.50), hsla(0, 0%, 39%, 0.30));
+}
+    #homepage-hrMain { width: 100%; }
+    #homepage-hrMainHalvedL, #homepage-hrMainHalvedR
+    {
+        width:      14%;
+        height:     2px;
+        margin-top: 3%;
+        position:   absolute;
+        display:    inline;
+    }
+    #homepage-hrMainHalvedL { left:  33%; }
+    #homepage-hrMainHalvedR { right: 33%; }
+
+#homepage-hrOrTxt
+{
+    font-family: 'Cedarville Cursive', cursive;
+    position:    relative;
+    top:         3px;
+    display:     inline;
 }
 
-#aboutO
+#homepage-homeBtn
 {
-    position: absolute;
-    z-index: 4;
-    top: 0;
-    left: 0;
-    background: hsla(0,0%,39%,0.98);
-    display: none;
+    background: transparent;
+    position:   absolute;
+    z-index:    4;
+    top:        4%;
+    left:       4%;
+    display:    none;
 }
 
-#content
+#homepage-infoTxt
 {
-    width:100%;
-    height:100%;
-    background: hsla(0, 0%, 0%, 0.3);
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
+    line-height: 160%;
+    margin:      3% 0 4%;
 }
 
-#footer
+#homepage-joinBtnFacebook, #homepage-joinBtnTwitter, .homepage-input
 {
-    font-size:0.9em;
-    position: fixed;
-    z-index: 3;
-    bottom: 2%;
-    left: 0;
-    width: 100%;
+    max-height:            300px;
+    max-width:             300px;
+    font-family:           'Open Sans', sans-serif;
+    font-size:             0.9em;
+    color:                 #006699;
+    text-align:            center;
+    padding:               10px;
+    outline:               none;
+    -moz-border-radius:    6px;
+    -webkit-border-radius: 6px;
+}
+    #homepage-joinBtnFacebook, #homepage-joinBtnTwitter
+    {
+        font-family: 'Cedarville Cursive', cursive;
+        font-size:   1.1em;
+        color:       #eee9e5;
+        line-height: 140%;
+        box-shadow:  0 2px 6px #636363;
+        cursor:      pointer;
+    }
+    #homepage-joinBtnFacebook
+    {
+        background:  #597ac7;
+        margin-top:  2%;
+    }
+    #homepage-joinBtnTwitter
+    {
+        background:  #4f9bd3;
+    }
+    .homepage-input
+    {
+        background:         transparent;
+        margin-top:         2%;
+        border:             1px solid #636363;
+        -webkit-transition: all 0.30s ease-in-out;
+           -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+             -o-transition: all 0.30s ease-in-out;
+    }
+    .homepage-input:focus
+    {
+        font-size:  1em;
+        color:      #000;
+        border:     1px solid #006699;
+        box-shadow: 0 0 5px #006699;
+    }
+
+#homepage-joinTxt
+{
+    font-family: 'Cedarville Cursive', cursive;
+    font-size:   1.2em;
+    color:       #454545;
+    position:    relative;
+    top:         2px;
+    opacity:     0.99;
+}
+
+#homepage-mainContent
+{
+    max-width:             800px;
+    max-height:            600px;
+    background:            hsla(27, 21%, 92%, 0.96);
+    font-size:             1.15em;
+    color:                 #454545;
+    margin:                2% 0 0;
+    position:              relative;
+    box-shadow:            0 4px 6px #000;
+    -moz-border-radius:    8px;
+    -webkit-border-radius: 8px;
+    overflow-x:            hidden;
+    overflow-y:            auto;
+}
+
+#homepage-mainOrHr { margin-top: 10px; }
+
+#homepage-oAbout, #homepage-oTeam
+{
+    display: inline;
+    cursor:  pointer;
+}
+    .homepage-links
+    {
+        color:           #ffffff;
+        cursor:          pointer;
+        text-decoration: none;
+    }
+    #homepage-oAbout:hover, #homepage-oTeam:hover, .homepage-links:hover { color: #ffaa00; }
+
+#homepage-submitBtn
+{
+    background: #808080;
+    color:      #eee9e5;
+    cursor:     pointer;
+}
+#homepage-submitBtn:hover
+{
+    background: #29b0b7;
+    color:      #eee9e5;
+}
+
+
+/*****************************************************************************
+                            DIVISIONS/BLOCKS BY CLASS
+*****************************************************************************/
+
+
+/*****************************************************************************
+                                    TABLES
+*****************************************************************************/
+table#homepage-mainTbl
+{
+    width:      100%;
+    height:     80%;
     text-align: center;
+    padding:    0;
+    margin:     0;
+    border:     0;
+    position:   relative;
+    display:    none;
 }
 
-#hrNav
-{
-    width: 100%;
-    position: fixed;
-    z-index: 2;
-    top: -8px;
-    border: 0;
-    height: 40px;
-    background: #f1f1f1;
-}
-
-#hrFooter
-{
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-    border: 0;
-    height: 1px;
-    background-image: -webkit-linear-gradient(left, hsla(0,100%,100%, 0.15), hsla(0,100%,100%, 0.40), hsla(0,100%,100%, 0.15));
-    background-image:    -moz-linear-gradient(left, hsla(0,100%,100%, 0.15), hsla(0,100%,100%, 0.40), hsla(0,100%,100%, 0.15));
-    background-image:     -ms-linear-gradient(left, hsla(0,100%,100%, 0.15), hsla(0,100%,100%, 0.40), hsla(0,100%,100%, 0.15));
-    background-image:      -o-linear-gradient(left, hsla(0,100%,100%, 0.15), hsla(0,100%,100%, 0.40), hsla(0,100%,100%, 0.15));
-}
-
-
-#iNav
-{
-    background:transparent;
-    position: absolute;
-    z-index: 3;
-    top: 4%;
-    left: 4%;
-}
-
-table#main
-{
-    width: 100%;
-    height: 70%;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    position: relative;
-}
-
-.links
-{
-    color:#ffffff;
-    cursor:pointer;
-    text-decoration:none;
-}
-
-#oAbout, #oTeam
-{
-    display:inline;
-    cursor:pointer;
-}
-
-.links:hover, #oAbout:hover, #oTeam:hover
-{
-    color:#ffaa00;
-}
-
-
-
-
-
-
-#form-main
-{
-    width:100%;
-    float:left;
-    padding-top:0px;
-}
-
-#form-div
-{
-    background-color:rgba(72,72,72,0.4);
-    padding-left:35px;
-    padding-right:35px;
-    padding-top:35px;
-    padding-bottom:50px;
-    width: 450px;
-    float: left;
-    left: 50%;
-    position: absolute;
-    margin-top:30px;
-    margin-left: -260px;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
-}
-
-.feedback-input
-{
-    color:#3c3c3c;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight:500;
-    font-size: 18px;
-    border-radius: 0;
-    line-height: 22px;
-    background-color: #fbfbfb;
-    padding: 13px 13px 13px 54px;
-    margin-bottom: 10px;
-    width:100%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 3px solid rgba(0,0,0,0);
-}
-
-.feedback-input:focus{
-    background: #fff;
-    box-shadow: 0;
-    border: 3px solid #3498db;
-    color: #3498db;
-    outline: none;
-    padding: 13px 13px 13px 54px;
-}
-
-.focused
-{
-    color:#30aed6;
-    border:#30aed6 solid 3px;
-}
-
-#email
-{
-    background-image: url("/assets/homepage/email.svg");
-    background-size: 30px 30px;
-    background-position: 11px 8px;
-    background-repeat: no-repeat;
-}
-
-#email:focus
-{
-    background-image: url("/assets/homepage/email.svg");
-    background-size: 30px 30px;
-    background-position: 11px 8px;
-    background-repeat: no-repeat;
-}
-
-input:hover, textarea:hover, input:focus, textarea:focus
-{
-    background-color:white;
-}
-
-#button-blue
-{
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    float:left;
-    width: 100%;
-    border: #fbfbfb solid 4px;
-    cursor:pointer;
-    background-color: #636363;
-    color:white;
-    font-size:24px;
-    padding-top:22px;
-    padding-bottom:22px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    margin-top:-4px;
-    font-weight:700;
-}
-
-#button-blue:hover
-{
-    background-color: rgba(0,0,0,0);
-    color: #ffffff;
-}
-
-.submit:hover
-{
-    color: #3498db;
-}
-
-.ease
-{
-    width: 0px;
-    height: 74px;
-    background-color: #fbfbfb;
-    -webkit-transition: .3s ease;
-    -moz-transition: .3s ease;
-    -o-transition: .3s ease;
-    -ms-transition: .3s ease;
-    transition: .3s ease;
-}
-
-.submit:hover .ease
-{
-    width:100%;
-    background-color:#3498db;
-}
