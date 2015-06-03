@@ -16,6 +16,9 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require File.expand_path("../../config/environment", __FILE__)
+# Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 require 'database_cleaner'
 
 RSpec.configure do |config|
