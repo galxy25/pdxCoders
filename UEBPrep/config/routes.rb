@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'homepage/index'
 
-
   # API Routes
   namespace :api do
       # Because nothing is ever perfect the first time...
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
           end
       end
   end
+
+  post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
