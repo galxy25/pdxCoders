@@ -6,19 +6,23 @@
       <td>
         <h1>Unified English Braille Responsive eLearning Platform</h1>
         <p><h2>We're currently in development. Subscribe below to receive update notifications</h2></p>
-        <div id="form-main">
-          <div id="form-div">
-            <form class="form" id="form1">
-              <p class="email">
-                <input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
-              </p>
-              <div class="submit">
-                <input type="submit" value="SEND" id="button-blue"/>
-                <div class="ease"></div>
-              </div>
-            </form>
-          </div>
-        </div>
+        <%= form_tag("homepage/subscribe_email", method: "post") do %>
+          <%= email_field_tag(:email_address) %>
+          <%= submit_tag("Subscribe") %>
+        <% end %>
+        <!--<div id="form-main">-->
+          <!--<div id="form-div">-->
+            <!--<form class="form" id="form1">-->
+              <!--<p class="email">-->
+                <!--<input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />-->
+              <!--</p>-->
+              <!--<div class="submit">-->
+                <!--<input type="submit" value="SEND" id="button-blue"/>-->
+                <!--<div class="ease"></div>-->
+              <!--</div>-->
+            <!--</form>-->
+          <!--</div>-->
+        <!--</div>-->
       </td>
     </tr>
   </table>

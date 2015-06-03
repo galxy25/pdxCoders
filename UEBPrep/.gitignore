@@ -19,3 +19,6 @@
 /config/application.yml
 
 /.idea
+
+# Vim .swp files.
+*.swp
