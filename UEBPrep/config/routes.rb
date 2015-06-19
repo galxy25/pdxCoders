@@ -13,10 +13,7 @@ Rails.application.routes.draw do
           post '/logout' => 'api#logout'
 
           # Within the scope of all users.
-          scope '/user' do
-              put '/' => 'user#create'
-              get '/:id' => 'user#get'
-          end
+           resources :users
       end
   end
 
