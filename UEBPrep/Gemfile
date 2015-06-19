@@ -9,6 +9,9 @@ source "https://rubygems.org"
  gem 'delayed_job_active_record'
  gem 'unicorn'
  gem 'foreman'
+ gem 'rabl'
+ gem 'oj'
+
 
 group :development, :test do
   gem 'rspec-rails'

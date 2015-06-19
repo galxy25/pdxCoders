@@ -116,12 +116,15 @@ GEM
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    oj (2.12.9)
     pg (0.18.2)
     pivotal_git_scripts (1.4.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rabl (0.11.6)
+      activesupport (>= 2.3.14)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -220,9 +223,11 @@ DEPENDENCIES
   guard-rspec
   jquery-rails
   mailgun-ruby (~> 1.0.2)
+  oj
   pg
   pivotal_git_scripts
   pry
+  rabl
   rails (= 4.1.11)
   rspec-rails
   selenium-webdriver

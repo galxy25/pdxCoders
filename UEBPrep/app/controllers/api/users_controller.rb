@@ -7,21 +7,10 @@ class Api::UsersController < ActionController::Base
 
   def index
     @users = User.all()
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @users, status: 204}
-    end
   end
 
   def show
-    binding.pry
-    @users = User.all()
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @users, status: 204}
-    end
+    @user = User.find(user_params[:id])
   end
 
   def create
@@ -30,6 +19,12 @@ class Api::UsersController < ActionController::Base
 
   def destroy
 
+  end
+
+  private
+
+  def user_params
+    params.permit(:id, :password, :email)
   end
 
 end
