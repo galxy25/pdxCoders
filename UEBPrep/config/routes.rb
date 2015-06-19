@@ -12,7 +12,6 @@ Rails.application.routes.draw do
           # Logout as a user.
           post '/logout' => 'api#logout'
 
-          # Within the scope of all users.
            resources :users
       end
   end
