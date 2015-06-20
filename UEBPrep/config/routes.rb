@@ -18,9 +18,8 @@ Rails.application.routes.draw do
   namespace :api do
       # Because nothing is ever perfect the first time...
       scope '/v1' do
-          get    'login'   => '#new'
-          post   'login'   => '#create'
-          delete 'logout'  => '#destroy'
+          post   'login'  => 'api#login'
+          delete 'logout' => 'api#logout'
 
           resources :users
       end
