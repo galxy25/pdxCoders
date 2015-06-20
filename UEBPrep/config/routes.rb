@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   get 'homepage/index'
 
   post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
+  get 'signup' => 'users#new'
 
-  resources :users,  only: [:index, :show]
+  resources :users,  only: [:index, :show, :create]
 
 
   # API Routes

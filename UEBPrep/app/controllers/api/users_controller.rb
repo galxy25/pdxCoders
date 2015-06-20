@@ -16,7 +16,13 @@ class Api::UsersController < ActionController::Base
   end
 
   def create
-      render json: { errors: 'Not implemented' }, status: 501
+    @user = User.new(:email => create_params[:email] , :password => create_params[:password])
+
+    if @user.save
+      render json: {:user => @user, status: 204}
+    else
+      render json: {:user => nil, status: 500}
+    end
   end
 
   def destroy
@@ -29,4 +35,7 @@ class Api::UsersController < ActionController::Base
     params.permit(:id, :password, :email)
   end
 
+  def create_params
+    params.require(:user).permit(:email, :password)
+  end
 end

@@ -33,6 +33,7 @@ RSpec.describe Api::UsersController, type: :controller do
 
         it "returns the user when given an existing user id" do
           expect(@results["user"]["email"]).to match user2.email
+          expect(@results["user"]["password"]).to match user2.password
         end
 
         it "raises an error when asked for non-existent user" do
@@ -41,6 +42,31 @@ RSpec.describe Api::UsersController, type: :controller do
           rescue => error
             expect(error.class).to be ActiveRecord::RecordNotFound
           end
+        end
+      end
+
+      describe "#create" do
+        before(:each) do
+          @num_users_previous = User.all.count
+        end
+        it "creates a new user when given valid user data" do
+          post :create, user: { email: "test@test.com",
+                                password: "password" }
+          results = JSON.parse(response.body)
+
+          expect(results["status"]).to be 204
+          expect(results["user"]["email"]).to match "test@test.com"
+          expect(results["user"]["password"]).to match "password"
+          expect(User.all.count).to equal(@num_users_previous + 1)
+        end
+
+        it "returns 500 when given invalid user data" do
+          post :create, user: { email: "testtest.com",
+                                password: "password" }
+          results = JSON.parse(response.body)
+
+          expect(results["status"]).to be 500
+          expect(User.all.count).to equal(@num_users_previous)
         end
       end
     end
