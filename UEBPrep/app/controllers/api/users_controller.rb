@@ -7,10 +7,12 @@ class Api::UsersController < ActionController::Base
 
   def index
     @users = User.all()
+    render json: { :users => @users  , status: 200 }
   end
 
   def show
     @user = User.find(user_params[:id])
+    render json: { :user => @user  , status: 200 }
   end
 
   def create
