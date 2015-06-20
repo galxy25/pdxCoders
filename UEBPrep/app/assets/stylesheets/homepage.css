@@ -261,3 +261,7 @@ input:hover, textarea:hover, input:focus, textarea:focus
     width:100%;
     background-color:#3498db;
 }
+.signup-btn{
+    background-color: #ffffff;
+    width: 5%;
+}
