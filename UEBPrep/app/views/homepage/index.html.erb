@@ -10,19 +10,12 @@
           <%= email_field_tag(:email_address) %>
           <%= submit_tag("Subscribe") %>
         <% end %>
-        <!--<div id="form-main">-->
-          <!--<div id="form-div">-->
-            <!--<form class="form" id="form1">-->
-              <!--<p class="email">-->
-                <!--<input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />-->
-              <!--</p>-->
-              <!--<div class="submit">-->
-                <!--<input type="submit" value="SEND" id="button-blue"/>-->
-                <!--<div class="ease"></div>-->
-              <!--</div>-->
-            <!--</form>-->
-          <!--</div>-->
-        <!--</div>-->
+        <div class="signup-btn">
+          <%= link_to "Signup", signup_path %>
+        </div>
+        <div class="signup-btn">
+          <%= link_to "Login", login_path %>
+        </div>
       </td>
     </tr>
   </table>

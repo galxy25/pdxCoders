@@ -1,27 +1,29 @@
 Rails.application.routes.draw do
-  root 'homepage#index'
+  get 'sessions/new'
 
+  root 'homepage#index'
   get 'homepage/index'
+
+  post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
+
+  get 'signup' => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
+  resources :users,  only: [:index, :show, :create]
+
 
   # API Routes
   namespace :api do
       # Because nothing is ever perfect the first time...
       scope '/v1' do
-          # Login as a user.
-          post '/login' => 'api#login'
-          # Logout as a user.
-          post '/logout' => 'api#logout'
+          post   'login'  => 'api#login'
+          delete 'logout' => 'api#logout'
 
-          # Within the scope of all users.
-          scope '/user' do
-              put '/' => 'user#create'
-              get '/:id' => 'user#get'
-          end
+          resources :users
       end
   end
-
-  post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
