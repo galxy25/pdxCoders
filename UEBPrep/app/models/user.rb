@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 7, maximum: 20 }
 
   acts_as_paranoid
+
+  extend FriendlyId
+  friendly_id :email, use: :slugged
+
 end

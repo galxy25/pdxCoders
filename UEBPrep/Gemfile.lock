@@ -71,6 +71,8 @@ GEM
     foreman (0.78.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     guard (2.12.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -222,6 +224,7 @@ DEPENDENCIES
   factory_girl_rails
   figaro
   foreman
+  friendly_id (~> 5.1.0)
   guard-rspec
   jquery-rails
   mailgun-ruby (~> 1.0.2)
