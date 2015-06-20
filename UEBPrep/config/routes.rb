@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   root 'homepage#index'
   get 'homepage/index'
 
   post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
+
   get 'signup' => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
 
   resources :users,  only: [:index, :show, :create]
 
@@ -12,12 +18,11 @@ Rails.application.routes.draw do
   namespace :api do
       # Because nothing is ever perfect the first time...
       scope '/v1' do
-          # Login as a user.
-          post '/login' => 'api#login'
-          # Logout as a user.
-          post '/logout' => 'api#logout'
+          get    'login'   => '#new'
+          post   'login'   => '#create'
+          delete 'logout'  => '#destroy'
 
-           resources :users
+          resources :users
       end
   end
   # The priority is based upon order of creation: first created -> highest priority.

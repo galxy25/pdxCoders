@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(:email => create_params[:email] , :password => create_params[:password])
 
     if @user.save
+      log_in @user
       render 'show'
     else
       render 'new'
