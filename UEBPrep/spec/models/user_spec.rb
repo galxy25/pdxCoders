@@ -19,4 +19,15 @@ RSpec.describe User, type: :model do
       expect{u.save}.to change{User.count}.by 0
     end
   end
+
+  describe "Destroy" do
+    it "should soft delete the user" do
+      user = FactoryGirl.create(:user)
+
+      user.destroy
+
+      expect { User.find(user.id) }.to raise_error ActiveRecord::RecordNotFound
+      expect { User.with_deleted.find(user.id) }.to_not raise_error
+    end
+  end
 end

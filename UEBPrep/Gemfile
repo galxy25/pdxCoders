@@ -1,5 +1,5 @@
-source "https://rubygems.org"
- gem "rails", '4.1.11'
+source 'https://rubygems.org'
+ gem 'rails', '4.1.11'
  gem 'pg'
  gem 'figaro'
  gem 'jquery-rails'
@@ -11,7 +11,7 @@ source "https://rubygems.org"
  gem 'foreman'
  gem 'rabl'
  gem 'oj'
-
+ gem 'paranoia', '~> 2.0'
 
 group :development, :test do
   gem 'rspec-rails'
