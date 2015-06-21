@@ -20,7 +20,6 @@ class Api::ApiController < ActionController::Base
   end
 
   def authenticate
-      # binding.pry
       @@user = User.where(api_key: api_base_params[:api_key])
 
       if @@user.count > 0
