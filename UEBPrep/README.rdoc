@@ -23,6 +23,4 @@ Things you may want to cover:
 
 * ...
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+[![Circle CI](https://circleci.com/gh/galxy25/pdxCoders/tree/staging-beta.svg?style=svg)](https://circleci.com/gh/galxy25/pdxCoders/tree/staging-beta)
