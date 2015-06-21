@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UEBPrep</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= render partial: 'layouts/metadata' %>
+
+  <%= favicon_link_tag 'favicon.ico' %>
+
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

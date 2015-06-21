@@ -1,0 +1,80 @@
+Date: 5/14/2015
+Time: 2:00 - 4:00 PM
+Location: CS Capstone Lab FAB 88-04
+Duration: 2 hours
+
+Requested Attendees: Brandon Isom, Evan Schott, Levi Schoen, 
+			Samuel Sennott, Holly Lawson, Christof Teuscher
+Actual Attendees: All
+
+Agenda Project Requirements & User Story Generation
+
+Item 1 Open Source License Comparison/Discussion (20 minutes)
+
+	Discuss and come to a consensus on what licenses are preferred for this project.
+
+	-Owner: Brandon Isom
+	-Outcome
+		Decided that MIT license would be best for this project, still waiting to hear back from their funding source regarding any restrictions.
+
+Item 2 Project Architecture (45 minutes)
+	Discuss and decide on the core functionality of the system to be built. For example, 
+	User Authentication
+		Use OAUTH primamrly
+		Email
+		password
+			Accounts contain
+				User Location
+				User image?
+	User Management 
+		Users are
+			Admins
+			Students
+			Instructors
+			Content Creators(could be merged into either admin or instructor role...)
+				A group of students can be associated with one teacher
+	Content Authoring
+		Both single card  creation and bulk content uploading.
+		Future exporting of cards/content desirable 
+	Lesson Creation 
+		Custom logic within the lesson-i.e. if a user gets one type of card wrong, show them more cards of the same type.
+	Number of concurrent users
+	Future Extesnsibility
+	Privacy & Security Requirements	
+
+        -Owner: Evan & Christof 
+        -Outcome
+		Added areas of project architecture:
+			Course Creation
+				With custom logic between lessons
+			Social Media Sharing
+			Content Management
+				Playlists
+					Orderable
+				One to many and one to one sharing 
+			Progress Tracker/Achievement&Reward system
+				Badges, thumbs up/likes by fellow users
+ 
+			Platform analytics
+				Time spent on each card, course/lesson progress, time spent in system
+Item 3 User Story Generation (55 minutes)
+	Create user stories and use cases of the systems, focusing on happy paths and edge cases
+See: http://www.agilemodeling.com/artifacts/userStory.htm
+        -Owner: Presented by Levi, then break into teams to write stories
+        -Outcome
+		Wrote many user stories on index cards which will soon be turned into Pivotal Tracker stories 
+
+Action Items:
+
+Additional Discussion Items:
+	Concerns about protecting location and contact information of children users.
+	What is the place of messaging/communication within the platform? Should it occur within the platform or in existing platforms(email, social media)
+	What types of media will the system have? 
+		Text for sure, probably images, and perhaps audio/video
+	What type of offline compatibility do we need to build?
+		 For a web app, we can start with zero, but with a robust API it will be easy for future iOS/Android apps to download content for offline viewing.
+	How does the future scale of this project affect our day one design? 
+		It needs to be designed to work seamlessly in a distributed system in the future. 500 users the first year, 10,000 by year 5.
+	Creation of games is more important to them than the adaptive learning aspect. 
+
+

@@ -1,0 +1,24 @@
+<div id="content">
+  <!--<hr id="hrNav">-->
+  <img id="iNav" src="assets/homepage/logo2.png" style="width:120px;height:120px;" alt="">
+  <table id="main">
+    <tr align="center">
+      <td>
+        <h1>Unified English Braille Responsive eLearning Platform</h1>
+        <p><h2>We're currently in development. Subscribe below to receive update notifications</h2></p>
+        <%= form_tag("homepage/subscribe_email", method: "post") do %>
+          <%= email_field_tag(:email_address) %>
+          <%= submit_tag("Subscribe") %>
+        <% end %>
+        <div class="signup-btn">
+          <%= link_to "Signup", signup_path %>
+        </div>
+        <div class="signup-btn">
+          <%= link_to "Login", login_path %>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div id="footer">&#8226; <div id="oAbout">About</div> &#8226; <a href="https://github.com/galxy25/pdxCoders" class="links" target="_blank">GitHub</a> &#8226; <div id="oTeam">Team</div> &#8226;</div>
+  <hr id="hrFooter">
+</div>

@@ -1,0 +1,16 @@
+# .pairs - configuration for 'git pair'
+pairs:
+  # <initials>: <Firstname> <Lastname>[; <email-id>]
+  pb: Parker Berger; Parker
+  ra: Raven Allan; Raven
+  bi: Brandon Isom; Brandon
+  bs: Brady Sullivan; Brady
+  es: Evan Schott; Evan
+  ld: Laura DeWitt; Laura
+  ls: Levi Schoen; levi
+  js: Joseph Steward; Joseph
+
+email:
+  prefix: team
+  domain: pdxcoders.com
+  no_solo_prefix: true

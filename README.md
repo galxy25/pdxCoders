@@ -5,11 +5,19 @@ Team-D
 Raven Allan  
 Parker Berger  
 Laura DeWitt  
-Brandon Isom  
+Brandon Isom(Sponsor Point of Contact)  
 Brady Sullivan  
-Evan Schott  
+Evan Schott(Sponsor Point of Contact)  
 Joseph Stewart  
-Levi Schoen  
+Levi Schoen(Team Lead)  
+
+##Project 
+eLearning Platform
+
+Christof Teuscher teuscher@pdx.edu
+Samuel Sennott sennott@pdx.edu
+Holly Lawson hlawson@pdx.edu
+
 
 ##Tools we are using:
 
