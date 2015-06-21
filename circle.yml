@@ -26,3 +26,6 @@ deployment:
     branch: /features.*/
     commands:
       - echo "Hey There"
+      - git checkout staging-beta
+      - git merge features/automate_deployment
+      - git push
