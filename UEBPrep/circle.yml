@@ -1,0 +1,15 @@
+test:
+  override:
+    - bundle exec rspec
+dependencies:
+  post:
+    - echo 'yes'
+#To access, after the container has installed dependencies, run
+# ssh -p PORT ubuntu@IP_ADDRESS -L 5900:localhost:5900
+#And then use a VNC client such as Chicken
+#    - sudo apt-get install -y x11vnc
+#    - x11vnc -forever -nopw:
+#        background: true
+  cache_directories:
+    - 'vendor/bundle'
+
