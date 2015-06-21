@@ -1,11 +1,6 @@
 general:
   build_dir: UEBPrep
-test:
-  override:
-    - bundle exec rspec
 dependencies:
-  post:
-    - echo 'yes'
 #To access, after the container has installed dependencies, run
 # ssh -p PORT ubuntu@IP_ADDRESS -L 5900:localhost:5900
 #And then use a VNC client such as Chicken
