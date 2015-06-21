@@ -10,3 +10,16 @@ dependencies:
   cache_directories:
     - 'vendor/bundle'
 
+deployment:
+  production:
+    branch: master
+    owner: pdxcoders
+    commands:
+      - echo "Commmands for deploying to production server go here."
+
+  staging-beta:
+    branch: staging-beta
+    owner: pdxcoders
+    commands:
+      - git checkout development
+      - git merge staging-beta
