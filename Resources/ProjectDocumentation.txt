@@ -1,0 +1,59 @@
+UEB Prep Project Documentation
+
+Documentation Standards
+
+From the user perspective:
+
+Features that are accessible to the user need a non-technical description of how they function, and what their use is, what are the different ways a feature can be used, what are options, restrictions, and requirements for the use of this feature.
+
+From the developer perspective:
+
+Appropriately  commented code
+Descriptive unit tests-the tests describe what the expected functionality of controllers/models is
+Documented of  assumptions taken, and alerting of possible edge cases(even if you expect them not to occur)
+
+
+User Documentation 
+
+The homepage is the first page the user sees, both new users, and continuing users.
+There are links on the homepage for signup, sign-in, and subscribing to the email news letter.
+
+The signup page consist of a form for email and password, if a signup is successful-they provided a unique(to our list of users) email, and a valid password, they will be directed to their new account homepage. Else they will be directed back to the signup form. 
+
+The login page consists of a form for user email and password, if they provide matching credentials for an existing user, they will be directed to that user's account home page. Else they will be redirected back to the login page.
+
+
+Developer Documentation
+  Users 
+
+A user consists of a unique email address, valid password, and api_key(for api access both on behalf of and for the user). 
+
+  Cards
+
+  Lessons
+
+  Courses
+
+  Authentication
+	Currently no application-level authentication system exists for the app, though plans are for the api to use api_key based security, and for the user facing pages to be controlled through use of the devise gems.
+
+  Mailgun
+   The application is configured to send mail through use of a free Mailgun account, limited to 1000 emails per month.
+
+  Roles
+
+
+API Documentation
+
+
+
+Production Server Documentation
+	Port access
+	Ruby version
+	Server version
+
+
+Continous Integration Service
+
+We are using the service CircleCI for our continous integration environment. Every commit pushed to the repo triggers a build of that branch with the new commit changes, involving the app being configured, and then automated builds being run. The result of the build is posted to slack, with a passing status if all tests passed, failed otherwise. When pull requests are merged into staging-beta, if the build passes, an automated merge between staging-beta and development occurs. CircleCI provides detailed per build reports, regarding which tests failed or passed, or allowing you to ssh to debug a particular build. More information on CircleCI can be found at http://www.circle.com In the future each master build, if all tests pass, will automatically deploy new code to the production server. 
+
