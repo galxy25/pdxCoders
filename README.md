@@ -1,72 +1,68 @@
-#pdxCoders
-CS Capstone 2015
-Team-D
-
-Raven Allan  
-Parker Berger  
-Laura DeWitt  
-Brandon Isom(Sponsor Point of Contact)  
-Brady Sullivan  
-Evan Schott(Sponsor Point of Contact)  
-Joseph Stewart  
-Levi Schoen(Team Lead)  
-
-##Project 
-eLearning Platform
-
-Christof Teuscher teuscher@pdx.edu
-Samuel Sennott sennott@pdx.edu
-Holly Lawson hlawson@pdx.edu
+#pdxCoders/UEBPrep
+##Build Status
+[![Circle CI](https://circleci.com/gh/galxy25/pdxCoders/tree/staging-beta.svg?style=svg)]
 
 
-##Tools we are using:
+##Developer Environment Setup
+*Prerequisites* 
 
-Github:
+* Vagrant Software
+* VirtualBox Software 
+* GitHub account && access to project repo
+* Copy of uebprep.box
+* Copy of application.yml (environment variables and secret keys)
 
-For software version control, and to encourage the use of communication around code changes and merges.
+*Steps(nix computers)*
 
-Pivotal Tracker:
+Clone the repository 
+$> git clone https://github.com/galxy25/pdxCoders.git
+Move to the application code  directory 
+$> cd pdxCoders/UEBPREP
+Copy over the application.yml file
+$> mv /path/to/appliction.yml ./config
+Create a virtual machine environment 
+$> vagrant box add ueb /path/to/uebprep.box --force
+Initialize your virtual machine 
+$> vagrant up
+Ssh to the running machine
+$> vagrant ssh
+$> cd /vagrant
+Install gems for the project
+$> bundle install
+Set up your database
+$> bundle exec rake db:drop db:create db:migrate
+Add initial data for db
+$> bundle exec rake db:seed
 
-For project management. Use to create, assign, and track progress of tasks for individual team members and the group as a whole.
+For window developers, much of the steps are the same, see: [Windows Vagrant Setup](http://www.sitepoint.com/getting-started-vagrant-windows/)
 
-Google Calender:
+##Running the application
 
-For setting up meetings and coordinating project deadlines and time lines.
+Start both the app and delayed job threads 
+$> bundle exec foreman s -f Procfile-dev
 
-SourceTree or Terminal:
+##Testing
+Run one of two commands to run the complete test suite for   the app
 
-SourceTree is a **free** SVC program that works with Git, SVN, Mercuial, and provides a graphical interface for managing code repositories. The alternative to such a program is using git via the command line.
+$> bundle exec rspec
+--or---
+$> bundle exec rake test
 
-Slack:
+##Source Control Process: Feature Branch Workflow
+* Production branch ---> master
+* Branch for development work ---> development
+* Branch for testing environment server ---> staging-beta
+* Branch prefixes: chores|features|bugs|spikes|releases|hotfixes
 
-Can be found at pdxcoders.slack.com
+Typical developer flow:
 
-Used for team communiques and communication between team members.
-##Source Control Workflow
+$> git checkout development
+$> git pull
+$> git checkout -b features/story_name_1234
+Where 1234 == Story ID in Pivotal Tracker
 
-Branches:  
+After you finish work on your branch, create a pull request, leave commits, and after at least one other person has signed off with a 'LGTM'(Looks Good To Me) you may merge it into staging beta, which will then push the changes  to development if all the tests pass. 
 
-* master(production)  
-* staging-beta(testing)  
-* development(equal to staging-beta, not deployed)  
-*		features/  
-*		bugs/
-*		chores/
-*		hotfixes/  
-*		releases/  
+[Feature Branch Workflow In Depth Explanation](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
 
-Pull from development(rebase okay)  
-Create new branch, i.e.  
-	features/really_cool_thing_pivotalNumber  
-	bugs/save_the_day_pivotalNumber  
-
-Make changes, then commit like so:  
-[(Finishes|Fixes|Delivers) #TRACKER_STORY_ID] Brief Description  
-			-Commit Message comments go here  
-			-“...“  
-			-“…"  
-Create pull request in GitHub.  
-Must be code reviewed with at least one other team member before merging.  
-Merge your local branch with staging-beta, then merge staging-beta with  development.  
-**All merges to master(production) will be done by the team lead.** 
-
+Merges to production/master will be handled by the team lead. 
