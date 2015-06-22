@@ -6,11 +6,8 @@ class Api::ApiController < ActionController::Base
   respond_to :json
 
   def login
-      if authenticate
-        render json: { :user => @@user , status: 202 }
-      else
-        render json: {errors: 'No user with that api key was found' , status: 401}
-      end
+      authenticate
+      render json: { :user => @@user , status: 202 }
   end
 
   private
@@ -26,7 +23,7 @@ class Api::ApiController < ActionController::Base
         @@user = @@user.first
         return true
       else
-        return false
+        render json: {errors: 'No user with that api key was found' , status: 403}
       end
   end
 
