@@ -44,13 +44,102 @@ A user consists of a unique email address, valid password, and api_key(for api a
 
 
 API Documentation
+  This application using a RESTful JSON api key based authentication api. It supports scoped CRUD operations on users, cards, and analytics pertaining to the user as well as content specific analytics.
 
+  Root route
+    http://uebprep.org/api/v1/
+
+  Authentication
+	All api calls except the create call(must likely to be removed in production) must pass along a valid per user api key.
+
+  Users
+     POST api/vl/login
+	This is a route for verifying you have a valid api key. 
+	Params: {
+	  "api_key" : "your_api_key_please"
+	}
+	Success Response {
+	  "user" : {
+		"email" : "..." ,
+		"password" : "..." ,
+		"api_key: : "..."
+		},
+	   "status" : "202"
+	} 
+	Error Response {
+		"errors" : "No user with that api key was found",
+		"status" : "403"
+	}
+     GET api/v1/users
+	READ::INDEX
+	This is a route for seeing a list of all users. In production it will become an index scoped to all the users you have view access to. 
+	Params: {
+	  "api_key" : "your_api_key_please"
+	}
+	Success Response {
+	  "users" : [
+		"user1" : {
+			"email" : "..." ,
+			"password" : "..." ,
+			"api_key: : "..."
+			} ,
+		"moreUsers" : ...
+		],
+	   "status" : "200"
+	} 
+	Error Response {
+		"errors" : "No user with that api key was found",
+		"status" : "403"
+	}
+
+     GET api/v1/users/:id'
+	READ::SHOW
+	This is a route to get details about one particular user
+	Params: {
+	  "api_key" : "your_api_key_please"
+	  "id" : "user_id
+	}
+	Success Response {
+	  "user" : {
+		"email" : "..." ,
+		"password" : "..." ,
+		"api_key: : "..."
+		},
+	   "status" : "200"
+	} 
+	Error Response {
+		"errors" : "No user for that id was found",
+		"status" :"404"
+	}
+
+     POST api/v1/users
+	CREATE
+	This is a route to create a new user in the system
+	Params: {
+	  "user" : {
+		"email" : "customer@example.com" ,
+		"password" : "password" 
+	}
+	Success Response {
+	  "user" : {
+		"email" : "..." ,
+		"password" : "..." ,
+		"api_key: : "..."
+		},
+	   "status" : "204"
+	} 
+	Error Response {
+		"errors" : "Unable to create a user with the given credentials",
+		"status" : "500"
+	}
 
 
 Production Server Documentation
 	Port access
 	Ruby version
 	Server version
+	Load balancing
+	Domain and ssl credentials
 
 
 Continous Integration Service

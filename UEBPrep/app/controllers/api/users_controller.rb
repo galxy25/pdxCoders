@@ -27,7 +27,7 @@ class Api::UsersController < Api::ApiController
     if @user.save
       render json: {:user => @user, status: 204}
     else
-      render json: {:user => nil, status: 500}
+      render json: {:errors => "Unable to create a user with the given credentials", status: 500}
     end
   end
 
