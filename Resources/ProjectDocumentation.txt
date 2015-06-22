@@ -1,0 +1,148 @@
+UEB Prep Project Documentation
+
+Documentation Standards
+
+From the user perspective:
+
+Features that are accessible to the user need a non-technical description of how they function, and what their use is, what are the different ways a feature can be used, what are options, restrictions, and requirements for the use of this feature.
+
+From the developer perspective:
+
+Appropriately  commented code
+Descriptive unit tests-the tests describe what the expected functionality of controllers/models is
+Documented of  assumptions taken, and alerting of possible edge cases(even if you expect them not to occur)
+
+
+User Documentation 
+
+The homepage is the first page the user sees, both new users, and continuing users.
+There are links on the homepage for signup, sign-in, and subscribing to the email news letter.
+
+The signup page consist of a form for email and password, if a signup is successful-they provided a unique(to our list of users) email, and a valid password, they will be directed to their new account homepage. Else they will be directed back to the signup form. 
+
+The login page consists of a form for user email and password, if they provide matching credentials for an existing user, they will be directed to that user's account home page. Else they will be redirected back to the login page.
+
+
+Developer Documentation
+  Users 
+
+A user consists of a unique email address, valid password, and api_key(for api access both on behalf of and for the user). 
+
+  Cards
+
+  Lessons
+
+  Courses
+
+  Authentication
+	Currently no application-level authentication system exists for the app, though plans are for the api to use api_key based security, and for the user facing pages to be controlled through use of the devise gems.
+
+  Mailgun
+   The application is configured to send mail through use of a free Mailgun account, limited to 1000 emails per month.
+
+  Roles
+
+
+API Documentation
+  This application using a RESTful JSON api key based authentication api. It supports scoped CRUD operations on users, cards, and analytics pertaining to the user as well as content specific analytics.
+
+  Root route
+    http://uebprep.org/api/v1/
+
+  Authentication
+	All api calls except the create call(must likely to be removed in production) must pass along a valid per user api key.
+
+  Users
+     POST api/vl/login
+	This is a route for verifying you have a valid api key. 
+	Params: {
+	  "api_key" : "your_api_key_please"
+	}
+	Success Response {
+	  "user" : {
+		"email" : "..." ,
+		"password" : "..." ,
+		"api_key: : "..."
+		},
+	   "status" : "202"
+	} 
+	Error Response {
+		"errors" : "No user with that api key was found",
+		"status" : "403"
+	}
+     GET api/v1/users
+	READ::INDEX
+	This is a route for seeing a list of all users. In production it will become an index scoped to all the users you have view access to. 
+	Params: {
+	  "api_key" : "your_api_key_please"
+	}
+	Success Response {
+	  "users" : [
+		"user1" : {
+			"email" : "..." ,
+			"password" : "..." ,
+			"api_key: : "..."
+			} ,
+		"moreUsers" : ...
+		],
+	   "status" : "200"
+	} 
+	Error Response {
+		"errors" : "No user with that api key was found",
+		"status" : "403"
+	}
+
+     GET api/v1/users/:id'
+	READ::SHOW
+	This is a route to get details about one particular user
+	Params: {
+	  "api_key" : "your_api_key_please"
+	  "id" : "user_id
+	}
+	Success Response {
+	  "user" : {
+		"email" : "..." ,
+		"password" : "..." ,
+		"api_key: : "..."
+		},
+	   "status" : "200"
+	} 
+	Error Response {
+		"errors" : "No user for that id was found",
+		"status" :"404"
+	}
+
+     POST api/v1/users
+	CREATE
+	This is a route to create a new user in the system
+	Params: {
+	  "user" : {
+		"email" : "customer@example.com" ,
+		"password" : "password" 
+	}
+	Success Response {
+	  "user" : {
+		"email" : "..." ,
+		"password" : "..." ,
+		"api_key: : "..."
+		},
+	   "status" : "204"
+	} 
+	Error Response {
+		"errors" : "Unable to create a user with the given credentials",
+		"status" : "500"
+	}
+
+
+Production Server Documentation
+	Port access
+	Ruby version
+	Server version
+	Load balancing
+	Domain and ssl credentials
+
+
+Continous Integration Service
+
+We are using the service CircleCI for our continous integration environment. Every commit pushed to the repo triggers a build of that branch with the new commit changes, involving the app being configured, and then automated builds being run. The result of the build is posted to slack, with a passing status if all tests passed, failed otherwise. When pull requests are merged into staging-beta, if the build passes, an automated merge between staging-beta and development occurs. CircleCI provides detailed per build reports, regarding which tests failed or passed, or allowing you to ssh to debug a particular build. More information on CircleCI can be found at http://www.circle.com In the future each master build, if all tests pass, will automatically deploy new code to the production server. 
+

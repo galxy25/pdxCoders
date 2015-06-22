@@ -12,10 +12,10 @@ RSpec.describe Api::ApiController, type: :controller do
             expect(results["status"]).to equal 202
         end
 
-        it "returns 401 when trying ot log in with invalid user credentials " do
-            post :login , token: 'a_made_up_key'
+        it "returns 403 when trying to log in with invalid user credentials " do
+            post :login , api_key: 'a_made_up_key'
             results = JSON.parse(response.body)
-            expect(results["status"]).to equal 401
+            expect(results["status"]).to equal 403
         end
     end
 
