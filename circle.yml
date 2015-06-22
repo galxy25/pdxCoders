@@ -10,3 +10,15 @@ dependencies:
   cache_directories:
     - 'vendor/bundle'
 
+deployment:
+  production:
+    branch: master
+    commands:
+      - echo "Commmands for deploying to production server go here."
+
+  staging-beta:
+    branch: staging-beta
+    commands:
+      - git checkout development
+      - git merge staging-beta
+      - git push

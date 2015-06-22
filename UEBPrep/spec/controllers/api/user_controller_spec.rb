@@ -8,7 +8,7 @@ RSpec.describe Api::UsersController, type: :controller do
 
       describe "#index" do
         before(:each) do
-          get :index
+          get :index ,:api_key => user2.api_key
           @results = JSON.parse(response.body)
         end
 
@@ -19,11 +19,17 @@ RSpec.describe Api::UsersController, type: :controller do
         it "returns all users" do
           expect(@results["users"].count).to be 2
         end
+
+        it "returns 403 when accessed with invalid api_key" do
+          get :index, :api_key => "aaabbbcccc"
+          @results = JSON.parse(response.body)
+          expect(@results["status"]).to be 403
+        end
       end
 
       describe "#show" do
         before(:each) do
-          get :show , :id => user2.id
+          get :show , :id => user2.id , :api_key => user2.api_key
           @results = JSON.parse(response.body)
         end
 
@@ -36,12 +42,16 @@ RSpec.describe Api::UsersController, type: :controller do
           expect(@results["user"]["password"]).to match user2.password
         end
 
-        it "raises an error when asked for non-existent user" do
-          begin
-            get :show, :id => 42
-          rescue => error
-            expect(error.class).to be ActiveRecord::RecordNotFound
-          end
+        it "returns 404 when asked for non-existent user" do
+            get :show, :id => 42 , :api_key => user2.api_key
+            @results = JSON.parse(response.body)
+            expect(@results["status"]).to equal 404
+        end
+
+        it "returns 403 when passed invalid api_key" do
+          get :show , :id => user2.id , :api_key => "aaabbbcccc"
+          @results = JSON.parse(response.body)
+          expect(@results["status"]).to be 403
         end
       end
 
