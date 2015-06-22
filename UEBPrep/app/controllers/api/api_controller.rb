@@ -6,8 +6,14 @@ class Api::ApiController < ActionController::Base
   respond_to :json
 
   def login
-      authenticate
-      render json: { :user => @@user , status: 202 }
+    @user = User.where(api_key: api_base_params[:api_key])
+
+    if @user.count > 0
+      @user = @user.first
+      render json: { :user => @user , status: 202}
+    else
+      render json: {errors: 'No user with that api key was found' , status: 403}
+    end
   end
 
   private
@@ -17,10 +23,10 @@ class Api::ApiController < ActionController::Base
   end
 
   def authenticate
-      @@user = User.where(api_key: api_base_params[:api_key])
+      @user = User.where(api_key: api_base_params[:api_key])
 
-      if @@user.count > 0
-        @@user = @@user.first
+      if @user.count > 0
+        @user = @user.first
         return true
       else
         render json: {errors: 'No user with that api key was found' , status: 403}

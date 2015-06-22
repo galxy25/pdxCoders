@@ -26,6 +26,7 @@
     $> vagrant up
     Ssh to the running machine
     $> vagrant ssh
+    $> cd /vagrant
     Install gems for the project
     $> bundle install
     Set up your database

@@ -13,8 +13,12 @@ class Api::UsersController < Api::ApiController
   end
 
   def show
-    @user = User.find(user_params[:id])
-    render json: { :user => @user  , status: 200 }
+    @user = User.where(id: user_params[:id])
+    if @user.count > 0
+      render json: { :user => @user.first  , status: 200 }
+    else
+      render json: { :errors => "No user with that id was found" , status: 404}
+    end
   end
 
   def create
