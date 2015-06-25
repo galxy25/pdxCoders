@@ -13,4 +13,24 @@
  *= require_tree .
  *= require_self
  */
+html, body
+{
+	height:	  100%;
+	overflow: hidden;
+}
 
+body
+{
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	font-size:	 1.6em;
+	color:		 #fff;
+	margin:		 0;
+}
+
+.app-whitelink
+{
+    color:           #ffffff;
+    cursor:          pointer;
+    text-decoration: none;
+}
+	.app-whitelink:hover { color: #ffaa00; }
