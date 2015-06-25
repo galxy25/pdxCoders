@@ -17,22 +17,28 @@ Feedback on current iteration (5 minutes)
 	-Owner: Brandon Isom
 	-Outcome: Go over completed work, receive 
 
+Review order of work (5 minutes)
+	-Owner: Brandon Isom
+	-Outcome: Review the next stages of work. Adjust priorities if necessary.
+
 Discuss card formats (15 minutes)
 	-Owner: Brandon Isom
 	-Outcome: Nail down nomenclature and specifics for card formats as laid out in sample lessons.
 
-Review order of work (10 minutes)
-	-Owner: Brandon Isom
-	-Outcome: Review the next stages of work. Adjust priorities if necessary.
-
-Sponsor Q&A (15 minutes)
+Sponsor Q&A (10 minutes)
 	-Owner: Sponsor Team
 	-Outcome: Discuss any questions, comments or concerns.
+
+Discuss Server/Domain Config (10 Minutes)
+	-Owner: Levi Schoen
+	-Outcome: Nail down config questions. Set action items for followup.
 
 Meeting Review (5 Minutes)
 	-Owner: Brandon Isom
 	-Outcome: Review meeting points. Verify action items, and discussion items for next meeting.
 
+
+ 
 Action Items:
 
 Additional Discussion Items:
