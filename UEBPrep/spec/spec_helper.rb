@@ -19,6 +19,12 @@
 
 require File.expand_path("../../config/environment", __FILE__)
 # Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.configure do |config|
+  config.path_prefix = "UEBPrep" #the root of your Rails application relative to the repository root
+  config.git_dir = "../" #the relative or absolute location of your git root compared to where your tests are run
+end
+  CodeClimate::TestReporter.start
 require 'database_cleaner'
 
 RSpec.configure do |config|
