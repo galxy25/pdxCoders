@@ -20,6 +20,8 @@ There are links on the homepage for signup, sign-in, and subscribing to the emai
 
 The signup page consist of a form for email and password, if a signup is successful-they provided a unique(to our list of users) email, and a valid password, they will be directed to their new account homepage. Else they will be directed back to the signup form. 
 
+Minimal Password length: 8
+
 The login page consists of a form for user email and password, if they provide matching credentials for an existing user, they will be directed to that user's account home page. Else they will be redirected back to the login page.
 
 
