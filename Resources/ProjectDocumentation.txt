@@ -18,9 +18,7 @@ User Documentation
 The homepage is the first page the user sees, both new users, and continuing users.
 There are links on the homepage for signup, sign-in, and subscribing to the email news letter.
 
-The signup page consist of a form for email and password, if a signup is successful-they provided a unique(to our list of users) email, and a valid password, they will be directed to their new account homepage. Else they will be directed back to the signup form. 
-
-Minimal Password length: 8
+The signup page consist of a form for email and password, if a signup is successful-they provided a unique(to our list of users) email, and a valid password(8 unicode characters or longer), they will be directed to their new account homepage. Else they will be directed back to the signup form. 
 
 The login page consists of a form for user email and password, if they provide matching credentials for an existing user, they will be directed to that user's account home page. Else they will be redirected back to the login page.
 
@@ -37,7 +35,7 @@ A user consists of a unique email address, valid password, and api_key(for api a
   Courses
 
   Authentication
-	Currently no application-level authentication system exists for the app, though plans are for the api to use api_key based security, and for the user facing pages to be controlled through use of the devise gems.
+	The application leverages the devise gem for handling user authentication across the app. Using the built in helper method of current_user, we can scope actions and views to only a valid logged in user.
 
   Mailgun
    The application is configured to send mail through use of a free Mailgun account, limited to 1000 emails per month.
@@ -146,5 +144,5 @@ Production Server Documentation
 
 Continous Integration Service
 
-We are using the service CircleCI for our continous integration environment. Every commit pushed to the repo triggers a build of that branch with the new commit changes, involving the app being configured, and then automated builds being run. The result of the build is posted to slack, with a passing status if all tests passed, failed otherwise. When pull requests are merged into staging-beta, if the build passes, an automated merge between staging-beta and development occurs. CircleCI provides detailed per build reports, regarding which tests failed or passed, or allowing you to ssh to debug a particular build. More information on CircleCI can be found at http://www.circle.com In the future each master build, if all tests pass, will automatically deploy new code to the production server. 
+We are using the service CircleCI for our continuous integration environment. Every commit pushed to the repo triggers a build of that branch with the new commit changes, involving the app being configured, and then automated builds being run. The result of the build is posted to slack, with a passing status if all tests passed, failed otherwise. When pull requests are merged into staging-beta, if the build passes, an automated merge between staging-beta and development occurs. CircleCI provides detailed per build reports, regarding which tests failed or passed, or allowing you to ssh to debug a particular build. More information on CircleCI can be found at http://www.circle.com In the future each master build, if all tests pass, will automatically deploy new code to the production server. 
 
