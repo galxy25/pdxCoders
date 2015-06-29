@@ -4,15 +4,41 @@
 */
 .edit-pane
 {
-    font-size: 1em;
+    background: darkgray;
     font-weight: normal;
     text-shadow: none;
     position: relative;
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 10%;
-    margin-bottom: 0%;
+    margin-bottom: 10%;
     width: 40%;
-    height: 100%;
+    height: 80%;
     padding: 2%;
 }
+
+.edit-pane h1 {
+    text-shadow: none;
+}
+
+.edit-pane label {
+    font-size: 2em;
+}
+
+.edit-pane input {
+    font-size: 2em;
+    margin-top: 2%;
+    margin-right: 2%;
+}
+
+.edit-pane input[type=submit] {
+    padding: 5px 15px;
+    background: #29b0b7;
+    color: #fff;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
