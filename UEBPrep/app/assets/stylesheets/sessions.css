@@ -27,6 +27,7 @@
     border-radius:   6px;
     color:           #fff;
     font-size:     0.75em;
+    cursor:     pointer;
 }
 
 .login-signup a:visited
