@@ -1,0 +1,28 @@
+<div class="cardcreator-content">
+  <h1>Card Creator</h1>
+  <div >
+    <ul>
+      <li>User Id: <%= @user.id %></li>
+      <li>User Email: <%= @user.email %></li>
+    </ul>
+  </div>
+  <table class="signup-inputs">
+    <%= form_for(@user) do |f| %>
+        <tr>
+          <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.label :email %>&nbsp&nbsp
+            <%= f.email_field :email, class: "signup-textbox" %></td>
+        </tr>
+        <tr>
+          <td>&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.label :password %>&nbsp&nbsp
+            <%= f.password_field :password, class: "signup-textbox" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password_confirmation, "Confirmation" %>&nbsp&nbsp
+            <%= f.password_field :password_confirmation, class: "signup-textbox" %></td>
+        </tr>
+        <tr>
+          <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.submit "Create my account", class: "signup-submit" %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
