@@ -1,17 +1,22 @@
-<h1>Sign up</h1>
-<div >
-  <div>
+<div class="signup-content">
+  <h1>Sign up</h1>
+  <table class="signup-inputs">
     <%= form_for(@user) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Create my account" %>
+        <tr>
+      <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.label :email %>&nbsp&nbsp
+      <%= f.email_field :email, class: "signup-textbox" %></td>
+        </tr>
+        <tr>
+          <td>&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.label :password %>&nbsp&nbsp
+            <%= f.password_field :password, class: "signup-textbox" %></td>
+        </tr>
+      <tr>
+        <td><%= f.label :password_confirmation, "Confirmation" %>&nbsp&nbsp
+          <%= f.password_field :password_confirmation, class: "signup-textbox" %></td>
+      </tr>
+        <tr>
+          <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.submit "Create my account", class: "signup-submit" %></td>
+        </tr>
     <% end %>
-  </div>
+  </table>
 </div>

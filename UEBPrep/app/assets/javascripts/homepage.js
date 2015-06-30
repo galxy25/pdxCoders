@@ -1,72 +1,86 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
 /*****************************************************************************
  *
- * Name:             main.js
+ * Name:            main.js
  *
- * Description:      Source Script for the pdxCoders eLearning Platform Project
+ * Description:     Source Script for the pdxCoders eLearning Platform Project
  *
+ *                  All behaviors and hooks related to matching controllers
+ *                  go here; logic automatically available via application.js
  * Log:
  *
- * 0.0  2015-05-25   Initial Revision
+ * 0.0  2015-05-25  Initial Revision
  *
- * Copyright:        pdxCoders (c) 2015 0.0 @ http:// ... .com
+ * 0.1  2015-06-01  Implemented User creation & authentication functionality
+ *
+ * Copyright:       pdxCoders (c) 2015 0.0 @ http:// ... .com
  *****************************************************************************/
-var
-    mainObj = {},
-    windowObj = { winH:$(window).height(), winW:$(window).width() }
-    ;
+// GLOBALS
 
-
-/*****************************************************************************
- *
- * Function:     window.onload
- *
- * Description:  Execute after all content has been loaded
- *
- *****************************************************************************/
-window.onload = function()
+(function($)
 {
+    /*****************************************************************************
+     *
+     * Function:    window.onload()
+     *
+     * Description: Execute after DOM and content (images) have been loaded
+     *
+     *****************************************************************************/
+    window.onload = function() { HOME.init(); };
 
-    // Load main content...
-
-
-    // Resize main content to fit screen appropriately
-    $(window).resize(function()
+    HOME =
     {
-        windowObj.updateHW();
-        resizeFont();
+        // PROPERTIES
 
-        var iconHW = "height:";
-        iconHW += windowObj.winH * 0.12, iconHW += "px;width:auto;";
-        $("#iNav").attr("style", iconHW);
-    });
-    $(window).resize();
+        /*****************************************************************************
+         *
+         * Method:      HOME.init()
+         *
+         * Description: Initalize homepage content
+         *
+         *****************************************************************************/
+        init: function()
+        {
+            this.resizeContent().bindUI();
+        },
 
-    function resizeFont()
-    {
-        /* Resize Font Size
-         var body = $('body'), maxScale = 95, minScale = 30, fontSize = body.width() * 0.065;
-         if (fontSize > maxScale) fontSize = maxScale;
-         if (fontSize < minScale) fontSize = minScale;
-         body.css('font-size', fontSize + '%'); */
-        var fontSize, body = $("body");
-        fontSize = body.width() * 0.075, fontSize = (fontSize > 95) ? 95 : (fontSize < 30) ? 30 : fontSize, fontSize += "%";
-        body.css("font-size", fontSize);
-    }
-};
+        /*****************************************************************************
+         *
+         * Method:      HOME.resizeContent()
+         *
+         * Description: Resize content to fit window screen size appropriately
+         *
+         * Notes:       Font size modified accordingly, tweek as desired:
+         *
+         *              if (fontSize > maxScale) fontSize = maxScale;
+         *              if (fontSize < minScale) fontSize = minScale;
+         *              body.css('font-size', fontSize + '%');
+         *
+         *****************************************************************************/
+        resizeContent: function()
+        {
+            // resize fonts
+            var fontSize, body = $('body');
+            fontSize = body.width() * 0.1, fontSize = (fontSize > 150) ? 150 : (fontSize < 20) ? 20 : fontSize, fontSize += "%";
+            body.css('font-size', fontSize);
 
+            return this;
+        },
 
-/*****************************************************************************
- *
- * Function:     windowObj.updateHW()
- *
- * Description:  Updates windowObj Namespace vars of window's height/width
- *
- *****************************************************************************/
-windowObj.updateHW = function()
-{
-    this.winH = $(window).height(), this.winW = $(window).width();
-    return this;
-}
+        /*****************************************************************************
+         *
+         * Method:      HOME.bindUI()
+         *
+         * Description: UI handlers for user actions
+         *
+         *****************************************************************************/
+        bindUI: function()
+        {
+            var me = this;
 
+            // other (click) functions...
+
+            $(window).resize(function() { me.resizeContent(); });
+        }
+    };
+
+}(jQuery));
