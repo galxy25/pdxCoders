@@ -8,8 +8,12 @@
       <td>
         <table id="home-userInputInner">
           <tr align="center">
-            <td><%= link_to "Sign Up", {controller: "users", action: "new"}, class: "home-userInput" %></td>
+            <td><%= link_to "Sign Up!", {controller: "users", action: "new"}, class: "home-userInput" %></td>
             <td><%= link_to "Login", {controller: "sessions", action: "create"}, class: "home-userInput" %></td>
+
+          </tr>
+          <tr align="center">
+            <td colspan="2"><%= link_to "Facebook", {controller: "sessions", action: "create"}, class: "home-userInput" %></td>
           </tr>
         </table>
       </td>
