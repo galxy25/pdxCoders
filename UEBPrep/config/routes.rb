@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
+  get    'cardcreator' => 'cards#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 

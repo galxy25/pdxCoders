@@ -2,12 +2,12 @@
   <h1>Card Creator</h1>
   <div >
     <ul>
-      <li>User Id: <%= @user.id %></li>
-      <li>User Email: <%= @user.email %></li>
+      <li>User Id: Test</li>
+      <li>User Email: Me</li>
     </ul>
   </div>
   <table class="signup-inputs">
-    <%= form_for(@user) do |f| %>
+    <%= form_for(:session, url: login_path) do |f| %>
         <tr>
           <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.label :email %>&nbsp&nbsp
             <%= f.email_field :email, class: "signup-textbox" %></td>
