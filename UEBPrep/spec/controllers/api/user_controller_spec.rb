@@ -39,7 +39,7 @@ RSpec.describe Api::UsersController, type: :controller do
 
         it "returns the user when given an existing user id" do
           expect(@results["user"]["email"]).to match user2.email
-          expect(@results["user"]["password"]).to match user2.password
+          expect(@results["user"]["api_key"]).to match user2.api_key
         end
 
         it "returns 404 when asked for non-existent user" do
@@ -63,7 +63,6 @@ RSpec.describe Api::UsersController, type: :controller do
           post :create, user: { email: "test@test.com",
                                 password: "password" }
           results = JSON.parse(response.body)
-
           expect(results["status"]).to be 204
           expect(results["user"]["email"]).to match "test@test.com"
           expect(results["user"]["password"]).to match "password"

@@ -31,6 +31,7 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # SMTP settings for mailgun
   ActionMailer::Base.smtp_settings = {
       :port           => 587,
@@ -48,4 +49,5 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.active_record.maintain_test_schema = true
 end
