@@ -1,5 +1,6 @@
 class TitledCardContent < ActiveRecord::Base
   after_save :create_card
+  validates_uniqueness_of :title, :scope => :text
 
   def to_partial_path
     'titled_card_content'
