@@ -14,5 +14,19 @@ RSpec.describe TitledCardContent, type: :model do
       card = Card.find_by content_id: content.id
       expect(card.content_id).to equal content.id
     end
+
+    it "does not duplicate entries" do
+      content = FactoryGirl.create(:titled_card_content)
+      expect {
+        content2 = FactoryGirl.create(:titled_card_content)
+      }.to raise_error ActiveRecord::RecordInvalid
+    end
+
+    it "allows for duplicate titles when text is different" do
+      expect {
+        content = FactoryGirl.create(:titled_card_content)
+        content2 = TitledCardContent.create(title: content.title, text: "totally different text")
+      }.to change { [TitledCardContent.count, Card.count] }.by [2, 2]
+    end
   end
 end

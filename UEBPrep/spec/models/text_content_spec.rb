@@ -14,5 +14,12 @@ RSpec.describe TextContent, type: :model do
       card = Card.find_by content_id: content.id
       expect(card.content_id).to equal content.id
     end
+
+    it "does not duplicate entries" do
+      content = FactoryGirl.create(:text_content)
+      expect {
+        content2 = FactoryGirl.create(:text_content)
+      }.to raise_error ActiveRecord::RecordInvalid
+    end
   end
 end
