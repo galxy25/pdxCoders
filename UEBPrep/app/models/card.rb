@@ -7,6 +7,7 @@ class Card < ActiveRecord::Base
 
   after_initialize :get_content
   after_find       :get_content
+  before_destroy   :destroy_content
 
   private
     # I hate everything about needing to do this ...
@@ -18,5 +19,9 @@ class Card < ActiveRecord::Base
         when 2
           @content = TitledCardContent.find(self.content_id)
       end
+    end
+
+    def destroy_content
+      content.destroy
     end
 end
