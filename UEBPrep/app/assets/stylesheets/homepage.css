@@ -64,6 +64,7 @@ table#home-userInputInner td {
 #facebook-login
 {
     width:  50%;
+    height: 50%;
 }
 
 table#home-userInputOuter
@@ -91,6 +92,11 @@ table#home-userInputOuter
 {
     background: #fff;
     cursor:     pointer;
+}
+
+#facebook_button
+{
+
 }
 
 .home-userInput

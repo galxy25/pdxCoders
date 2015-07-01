@@ -13,7 +13,7 @@
 
           </tr>
           <tr align="center">
-            <td colspan="2"><a href="http://www.facebook.com"><img id="facebook-login" src="assets/homepage/FacebookButton.png" alt="image"></td>
+            <td colspan="2"><div id="facebook_button"></div><%= link_to image_tag("homepage/FacebookButton.png", :width => "50%", :height => "50%"), user_omniauth_authorize_path(:facebook), id: "facebook_button" %></td></div>
           </tr>
         </table>
       </td>
