@@ -9,6 +9,14 @@ RSpec.describe Card, type: :model do
         card = Card.new(content_type_id: 1, content_id: 1, created_by: 1)
       }
     end
+
+    it "does not allow a duplicate card entry for the same content" do
+      content = FactoryGirl.create(:text_content)
+      expect {
+        card = Card.new(content_type_id: 1, content_id: content.id, created_by: 1)
+        card.save
+      }.to change{ Card.count }.by 0
+    end
     
     # TODO: think of more tests.
     # Kind of awkward because of the necessity for a card entry to be created
