@@ -55,8 +55,7 @@ table#home-userInputInner
 
     #facebook-login
     {
-        height: 60%;
-        width:  60%;
+        width:  auto;
     }
 }
 

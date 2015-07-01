@@ -15,7 +15,6 @@ source 'https://rubygems.org'
  gem 'friendly_id', '~> 5.1.0'
  gem 'devise'
  gem 'devise-encryptable'
- gem 'therubyracer'
  gem 'omniauth'
  gem 'omniauth-facebook'
 
