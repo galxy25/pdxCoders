@@ -3,7 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
+<<<<<<< HEAD
          :omniauthable, :omniauth_providers => [ :facebook]
+=======
+         :omniauthable, :omniauth_providers => [:facebook]
+>>>>>>> origin/parker_Not_For_Real_Branch
   acts_as_paranoid
 
   extend FriendlyId
