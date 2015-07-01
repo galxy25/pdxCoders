@@ -51,10 +51,25 @@ h1 { text-shadow: 2px 2px #000; }
 
 table#home-userInputInner
 {
-    width:  40%;
+    width: 40%;
 }
-    table#home-userInputInner td { width: 40%; }
 
+table#home-userInputInner td {
+    width: 40%;
+
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+<<<<<<< HEAD
+=======
+#facebook-login
+{
+    width:  50%;
+    height: 50%;
+}
+
+>>>>>>> origin/parker_Not_For_Real_Branch
 table#home-userInputOuter
 {
     width:      100%;
@@ -80,6 +95,11 @@ table#home-userInputOuter
 {
     background: #fff;
     cursor:     pointer;
+}
+
+#facebook_button
+{
+
 }
 
 .home-userInput

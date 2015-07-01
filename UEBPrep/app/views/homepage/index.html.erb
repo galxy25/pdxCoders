@@ -8,8 +8,19 @@
       <td>
         <table id="home-userInputInner">
           <tr align="center">
-            <td><%= link_to "Sign Up", {controller: "users", action: "new"}, class: "home-userInput" %></td>
+            <td><%= link_to "Sign Up!", {controller: "users", action: "new"}, class: "home-userInput" %></td>
             <td><%= link_to "Login", {controller: "sessions", action: "create"}, class: "home-userInput" %></td>
+
+          </tr>
+          <tr align="center">
+<<<<<<< HEAD
+            <!--
+            <td colspan="2"><a href="http://www.facebook.com"><img id="facebook-login" src="assets/homepage/FacebookButton.png" alt="image"></td>
+            -->
+            <td colspan="2"><div id="facebookbutton"><%= link_to image_tag("homepage/FacebookButton.png", :height => "60%", :width => "60%"), user_omniauth_authorize_path(:facebook), id: "buttonFacebook" %></div></td>
+=======
+            <td colspan="2"><div id="facebook_button"></div><%= link_to image_tag("homepage/FacebookButton.png", :width => "50%", :height => "50%"), user_omniauth_authorize_path(:facebook), id: "facebook_button" %></td></div>
+>>>>>>> origin/parker_Not_For_Real_Branch
           </tr>
         </table>
       </td>
