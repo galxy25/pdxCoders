@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
+<h1> Card Stuff or Whatever </h1>
+    <li>Card Id Id: <%= @card.id %></li>
+    <li>Content Type Id: <%= @card.content_type_id %></li>
+    <li>Content Id: <%= @card.content_id %></li>
 
+    <%= render @card.content %>
+</ul>
 <%= link_to 'Edit', edit_card_path(@card) %> |
 <%= link_to 'Back', cards_path %>
