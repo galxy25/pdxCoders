@@ -22,10 +22,17 @@ RSpec.describe TitledCardContent, type: :model do
       }.to raise_error ActiveRecord::RecordInvalid
     end
 
-    it "allows for duplicate titles when text is different" do
+    it "allows for duplicate entries when text is different" do
       expect {
         content = FactoryGirl.create(:titled_card_content)
         content2 = TitledCardContent.create(title: content.title, text: "totally different text")
+      }.to change { [TitledCardContent.count, Card.count] }.by [2, 2]
+    end
+
+    it "allows for dusplicate entries when title is different" do
+      expect {
+        content = FactoryGirl.create(:titled_card_content)
+        content2 = TitledCardContent.create(title: "totally different title", text: content.text)
       }.to change { [TitledCardContent.count, Card.count] }.by [2, 2]
     end
   end
