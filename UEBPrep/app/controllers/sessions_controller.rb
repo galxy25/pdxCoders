@@ -4,12 +4,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-#<<<<<<< HEAD
-#    user = User.find_by(email: params[:session][:email].downcase, password: params[:session][:password])
-#    if user
-#      log_in user
-#      redirect_to edit_user_path(user.id)
-#=======
     users = User.where(email: params[:session][:email])
     #If it's greater than one, we violated the unique email constraint
     #on the user model
@@ -20,7 +14,6 @@ class SessionsController < ApplicationController
       else
         render 'new'
       end
-#>>>>>>> development
     else
       render 'new'
     end
