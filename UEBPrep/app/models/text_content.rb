@@ -10,7 +10,7 @@ class TextContent < ActiveRecord::Base
     #TODO: remove magic number somehow.
     def create_card
       #TODO: figure out how to snag the current user's id.
-      user_id = User.first.id
+      user_id = User.first.nil? ? 1 : User.first.idgi
       Card.create(content_type_id: 1, content_id: self.id, created_by: user_id)
     end
 end
