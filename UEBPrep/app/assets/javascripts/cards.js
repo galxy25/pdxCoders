@@ -5,20 +5,19 @@ $(document).ready(function() {
        var type = $('#card_type').val();
         if (type == "text"){
             $('<tr/>', {
-                'id':'card_textarea_tr'
+                'id':'card_textarea_tr',
             }).insertAfter($('#card_type_tr'));
             $('<td/>', {
-                'id':'card_textarea_td'
+                'id':'card_textarea_td',
             }).appendTo($('#card_textarea_tr'));
             $('<label/>', {
                 'id':'card_textarea_label',
-                'class':'card_textarea_label',
                 'text': 'Card Text:  '
             }).appendTo($('#card_textarea_td'));
             $('<textarea/>', {
                 'id':'card_textarea',
-                'class':'card_textarea'
-            }).appendTo($('#card_textarea_td'));
+                'class':'card-textarea'
+            }).appendTo($('#card_textarea_label'));
         }
         else if (type == "rule"){
             $('<tr/>', {
@@ -29,13 +28,13 @@ $(document).ready(function() {
             }).appendTo($('#card_title_tr'));
             $('<label/>', {
                 'id':'card_title_label',
-                'class':'card_title_label',
+                'class':'card-title-label',
                 'text': 'Card Title:  '
             }).appendTo($('#card_title_td'));
             $('<input/>', {
                 'type':'text',
                 'id':'card_title',
-                'class':'card_title'
+                'class':'card-title'
             }).appendTo($('#card_title_td'))
             $('<tr/>', {
                 'id':'card_textarea_tr'
@@ -45,13 +44,13 @@ $(document).ready(function() {
             }).appendTo($('#card_textarea_tr'));
             $('<label/>', {
                 'id':'card_textarea_label',
-                'class':'card_textarea_label',
+                'class':'card-textarea-label',
                 'text': 'Card Text:  '
             }).appendTo($('#card_textarea_td'));
             $('<textarea/>', {
                 'id':'card_textarea',
-                'class':'card_textarea'
-            }).appendTo($('#card_textarea_td'));
+                'class':'card-textarea'
+            }).appendTo($('#card_textarea_label'));
         }
     });
 });

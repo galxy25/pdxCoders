@@ -7,10 +7,10 @@
     <%= form_for(:card) do |f| %>
         <tr id="card_type_tr">
           <td><%= f.label nil, "Card Type" %>&nbsp&nbsp
-            <%= f.select "type", [['-Select-','0'],['Rule','rule'],['Text','text']] %></td>
+            <%= f.select "type", [['-Select-','0'],['Rule','rule'],['Text','text']],{} ,class: "card-type-ddl" %></td>
         </tr>
         <tr>
-          <td><%= f.submit "Create my account", class: "signup-submit" %></td>
+          <td><%= f.submit "Create this card", class: "card-submit" %></td>
         </tr>
     <% end %>
   </table>
