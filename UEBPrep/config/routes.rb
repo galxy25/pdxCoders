@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'homepage#index'
   get 'homepage/index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'sessions/new'
 
   post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
@@ -25,6 +25,10 @@ Rails.application.routes.draw do
           resources :users
       end
   end
+
+  #devise_scope :user do
+  #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  #end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
