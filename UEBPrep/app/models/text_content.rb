@@ -2,6 +2,8 @@ class TextContent < ActiveRecord::Base
   after_save   :create_card
   validates_uniqueness_of :text
 
+  attr_accessor :created_by
+
   def to_partial_path
     'text_content'
   end
@@ -9,8 +11,6 @@ class TextContent < ActiveRecord::Base
   private
     #TODO: remove magic number somehow.
     def create_card
-      #TODO: figure out how to snag the current user's id.
-      user_id = User.first.nil? ? 1 : User.first.idgi
-      Card.create(content_type_id: 1, content_id: self.id, created_by: user_id)
+      Card.create(content_type_id: 1, content_id: self.id, created_by: self.created_by)
     end
 end
