@@ -9,7 +9,10 @@ dependencies:
 #        background: true
   cache_directories:
     - 'vendor/bundle'
-
+checkout:
+  post:
+    - git config --global user.email "levi@scratch-it.com"
+    - git config --global user.name "galxy25"
 deployment:
   production:
     branch: master
@@ -19,6 +22,7 @@ deployment:
   staging-beta:
     branch: staging-beta
     commands:
+      - git stash
       - git checkout development
       - git merge staging-beta
       - git push

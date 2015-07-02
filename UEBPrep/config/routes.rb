@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
   root 'homepage#index'
   get 'homepage/index'
+
+  devise_for :users
+  get 'sessions/new'
 
   post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
 
   get 'profile' => 'users#edit'
-  get 'signup' => 'users#new'
+  get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'

@@ -13,9 +13,10 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Do care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # SMTP settings for mailgun
   ActionMailer::Base.smtp_settings = {
       :port           => 587,
@@ -25,7 +26,6 @@ Rails.application.configure do
       :password       => ENV['mailgun_password'],
       :authentication => :plain,
   }
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -45,4 +45,5 @@ Rails.application.configure do
   config.active_job.queue_adapter = :delayed_job
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.active_record.maintain_test_schema = true
 end

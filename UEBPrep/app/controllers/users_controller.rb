@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.friendly.find(user_params[:id])
+    @user = current_user
   end
 
   def new
