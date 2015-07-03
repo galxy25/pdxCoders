@@ -1,22 +1,12 @@
 <% provide(:title, "Log in") %>
-<div class="login-content">
-  <h1>Log in</h1>
-  <table class="login-inputs">
-      <%= form_for(:session, url: login_path) do |f| %>
-        <tr>
-         <td> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.label :email %>&nbsp&nbsp<%= f.email_field :email, class: "login-textbox"  %></td>
-        </tr>
-        <tr>
-         <td><%= f.label :password %>&nbsp&nbsp<%= f.password_field :password, class: "login-textbox" %></td>
-        </tr>
-          <tr>
-            <td>&nbsp&nbsp&nbsp<%= f.submit "Log in", class: "login-submit"%></td>
-          </tr>
-        <tr>
-          <td class="login-signup">New user? <%= link_to "Sign up now!", signup_path %></td>
-        </tr>
-      <% end %>
-
-  </table>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <h1>Log in</h1>
+    <%= form_for(:session, url: login_path) do |f| %>
+      <%= f.label :email %><%= f.email_field :email %>
+      <%= f.label :password %><%= f.password_field :password %>
+      <%= f.submit "Log in", class: "button"%>
+      New user? <%= link_to "Sign up now!", signup_path %>
+    <% end %>
+  </div>
 </div>
-
