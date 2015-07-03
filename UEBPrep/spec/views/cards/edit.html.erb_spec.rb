@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "cards/edit", type: :view do
   before(:each) do
-    TextContent.create(text: "stuff")
+    FactoryGirl.create(:text_content)
     @card = Card.first
   end
 

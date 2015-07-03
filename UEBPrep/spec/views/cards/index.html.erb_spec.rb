@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "cards/index", type: :view do
   before(:each) do
-    TextContent.create(text: "stuff")
-    TextContent.create(text: "stuff2")
+    FactoryGirl.create(:text_content)
+    FactoryGirl.create(:text_content, text: "different")
     @card = Card.first
     assign(:cards, [
       Card.first,
