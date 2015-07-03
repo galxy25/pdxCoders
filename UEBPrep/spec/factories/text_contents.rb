@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :text_content do
-    text "MyString"
+    text 'content'
+    created_by 1
   end
-
 end
