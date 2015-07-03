@@ -4,6 +4,8 @@ class Card < ActiveRecord::Base
   validates :created_by, presence: true
   validates_uniqueness_of :content_id, :scope => :content_type_id
 
+  before_save :content_exists
+
   attr_accessor :content
 
   after_initialize :get_content
@@ -24,5 +26,18 @@ class Card < ActiveRecord::Base
 
     def destroy_content
       content.destroy
+    end
+
+    def content_exists
+      case self.content_type_id
+        when 1
+          if TextContent.find(self.content_id).nil?
+            return false
+          end
+        when 2
+          if TitledCardContent.find(self.content_id).nil?
+            return false
+          end
+      end
     end
 end

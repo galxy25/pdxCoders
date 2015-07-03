@@ -2,19 +2,24 @@ require 'spec_helper'
 
 RSpec.describe Card, type: :model do
 
+  let(:user) { FactoryGirl.create(:user) }
+  let(:content) { FactoryGirl.create(:text_content, created_by: user.id) }
+  let(:card) { content.card }
+
   describe "Create" do
 
     it "does not initialize a card with a non-existant content" do
       expect {
-        card = Card.new(content_type_id: 1, content_id: 1, created_by: 1)
-      }
+        content.destroy
+        card.save
+      }.to raise_error { ActiveRecord::RecordNotFound }
     end
 
     it "does not allow a duplicate card entry for the same content" do
-      content = FactoryGirl.create(:text_content)
+      card.save
       expect {
-        card = Card.new(content_type_id: 1, content_id: content.id, created_by: 1)
-        card.save
+        new_card = Card.new(content_type_id: 1, content_id: content.id, created_by: user.id)
+        new_card.save
       }.to change{ Card.count }.by 0
     end
     
@@ -25,11 +30,10 @@ RSpec.describe Card, type: :model do
 
   describe "Destroy" do
     it "ensures that a card's content is also destroyed" do
-      content = FactoryGirl.create(:text_content)
-      card = Card.find_by content_type_id: 1, content_id: content.id
-
       card.destroy
-      expect { TextContent.find(content.id) }.to raise_error ActiveRecord::RecordNotFound
+      expect {
+        TextContent.find(content.id)
+      }.to raise_error ActiveRecord::RecordNotFound
     end
   end
 end
