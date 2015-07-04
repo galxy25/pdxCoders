@@ -1,24 +1,8 @@
-<div id="home-header">
-  <img id="home-logo" src="assets/homepage/logo2.png" alt="image">
+<div class="row">
+  <div id="home-content" class="small-12 small-centered columns">
+    <h1>Unified English Braille eLearning Platform</h1>
+  </div>
 </div>
-<div id="home-content">
-  <h1>Unified English Braille eLearning Platform</h1>
-  <table id="home-userInputOuter">
-    <tr align="center">
-      <td>
-        <table id="home-userInputInner">
-          <tr align="center">
-            <td><%= link_to "Sign Up", {controller: "users", action: "new"}, class: "home-userInput" %></td>
-            <td><%= link_to "Login", {controller: "sessions", action: "create"}, class: "home-userInput" %></td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-  <%= form_tag("homepage/subscribe_email", method: "post", id: "home-subscribe") do %>
-    <%= email_field_tag(:email_address) %>
-    <p><%= submit_tag("Subscribe", :id=>"home-submit") %></p>
-  <% end %>
-</div>
-<div id="home-footer"><!--&#8226; <div id="home-about" class="app-whitelink">About</div> -->&#8226; <a href="https://github.com/galxy25/pdxCoders" class="app-whitelink" target="_blank">GitHub</a> &#8226;<!-- <div id="home-team" class="app-whitelink">Team</div> &#8226;--></div>
+
+<div id="home-footer">&#8226; <a href="https://github.com/galxy25/pdxCoders" class="app-whitelink" target="_blank">GitHub</a> &#8226;</div>
 <hr id="home-hrFooter">

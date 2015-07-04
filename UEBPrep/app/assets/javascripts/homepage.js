@@ -2,6 +2,8 @@
  *
  * Name:            main.js
  *
+ * Author:          Raven Allan
+ *
  * Description:     Source Script for the pdxCoders eLearning Platform Project
  *
  *                  All behaviors and hooks related to matching controllers
@@ -12,22 +14,16 @@
  *
  * 0.1  2015-06-01  Implemented User creation & authentication functionality
  *
- * Copyright:       pdxCoders (c) 2015 0.0 @ http:// ... .com
+ * 0.2  2015-07-03  Stripped out unused methods - not sure if we'll even need
+ *                  a source .js file for this (home) page, or even the app
+ *
+ * Copyright:       pdxCoders (c) 2015 https://github.com/galxy25/pdxCoders
  *****************************************************************************/
 // GLOBALS
 
 (function($)
 {
-    /*****************************************************************************
-     *
-     * Function:    window.onload()
-     *
-     * Description: Execute after DOM and content (images) have been loaded
-     *
-     *****************************************************************************/
-    window.onload = function() { HOME.init(); };
-
-    HOME =
+    var HOME =
     {
         // PROPERTIES
 
@@ -40,30 +36,7 @@
          *****************************************************************************/
         init: function()
         {
-            this.resizeContent().bindUI();
-        },
-
-        /*****************************************************************************
-         *
-         * Method:      HOME.resizeContent()
-         *
-         * Description: Resize content to fit window screen size appropriately
-         *
-         * Notes:       Font size modified accordingly, tweek as desired:
-         *
-         *              if (fontSize > maxScale) fontSize = maxScale;
-         *              if (fontSize < minScale) fontSize = minScale;
-         *              body.css('font-size', fontSize + '%');
-         *
-         *****************************************************************************/
-        resizeContent: function()
-        {
-            // resize fonts
-            var fontSize, body = $('body');
-            fontSize = body.width() * 0.1, fontSize = (fontSize > 150) ? 150 : (fontSize < 20) ? 20 : fontSize, fontSize += "%";
-            body.css('font-size', fontSize);
-
-            return this;
+            this.bindUI();
         },
 
         /*****************************************************************************
@@ -75,12 +48,21 @@
          *****************************************************************************/
         bindUI: function()
         {
-            var me = this;
+            // var me = this;
 
             // other (click) functions...
 
-            $(window).resize(function() { me.resizeContent(); });
+            // $(window).resize(function() { me.resizeContent(); });
         }
     };
+
+    /*****************************************************************************
+     *
+     * Function:    window.onload()
+     *
+     * Description: Execute after DOM and content (images) have been loaded
+     *
+     *****************************************************************************/
+    window.onload = function() { HOME.init(); };
 
 }(jQuery));

@@ -15,23 +15,12 @@
  *= require foundation_and_overrides
 
  */
-html, body
-{
-	height:	  100%;
-	overflow: hidden;
-}
 
-body
-{
-	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-	font-size:	 1.6em;
-	color:		 #fff;
-	margin:		 0;
-}
+
 
 .app-whitelink
 {
-    color:           #ffffff;
+    color:           #fff;
     cursor:          pointer;
     text-decoration: none;
 }
