@@ -19,14 +19,18 @@ class UsersController < ApplicationController
       log_in @user
       render 'show'
     else
+      flash[:alert] = 'Unable to create an account with that info. Each email can be linked to only one account
+                      , and passwords must be at least 8 characters in length.'
       render 'new'
     end
   end
 
   def update
     if @user.update(user_params)
+      flash[:notice] = 'Your changes have been saved.'
       redirect_to edit_user_path
     else
+      flash[:alert] = 'Unable to make updates.'
       render :edit
     end
   end
@@ -42,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def create_params
-    params.require(:user).permit(:email, :password)
+    params.permit(:user, :email, :password)
   end
 
 end

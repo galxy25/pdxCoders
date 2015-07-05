@@ -12,9 +12,11 @@ class SessionsController < ApplicationController
         sign_in(users.first)
         redirect_to profile_path
       else
+        flash[:alert] = "Incorrect password"
         render 'new'
       end
     else
+      flash[:alert] = "No user with that email and password was found"
       render 'new'
     end
   end
