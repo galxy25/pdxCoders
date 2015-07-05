@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>UEBPrep</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <%= render partial: 'layouts/metadata' %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <%= favicon_link_tag 'favicon.ico' %>
-</head>
-<body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "UEBPrep" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <nav class="top-bar foundation-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "UEBPrep", { controller: "homepage", action: "index" } %></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="active"><%= link_to "Sign Up", {controller: "users", action: "new"} %></li>
+          <li class="active"><%= link_to "Login", {controller: "sessions", action: "create"} %></li>
+        </ul>
+      </section>
+    </nav>
+    <%= yield %>
+
+  </body>
 </html>

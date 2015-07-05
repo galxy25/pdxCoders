@@ -1,3 +1,47 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+.edit-pane
+{
+    background: darkgray;
+    font-weight: normal;
+    text-shadow: none;
+    position: relative;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 40%;
+    height: 80%;
+    padding: 2%;
+}
+
+.edit-pane h1 {
+    text-shadow: none;
+}
+
+.edit-pane label {
+    font-size: 2em;
+}
+
+.edit-pane input {
+    font-size: 2em;
+    margin-top: 2%;
+    margin-right: 2%;
+}
+
+.edit-pane input[type=submit] {
+    padding: 5px 15px;
+    background: #29b0b7;
+    color: #fff;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
 .signup-content
 {
     height:     77%;

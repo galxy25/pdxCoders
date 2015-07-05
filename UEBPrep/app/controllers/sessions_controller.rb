@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if users.count == 1
       if users.first.valid_password?(params[:session][:password])
         sign_in(users.first)
-        redirect_to users.first
+        redirect_to profile_path
       else
         render 'new'
       end
