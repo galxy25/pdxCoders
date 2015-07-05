@@ -9,6 +9,9 @@ dependencies:
 #        background: true
   cache_directories:
     - 'vendor/bundle'
+database:
+  post:
+    - bundle exec rake db:migrate RAILS_ENV=test
 checkout:
   post:
     - git config --global user.email "levi@scratch-it.com"

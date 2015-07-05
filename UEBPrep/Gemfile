@@ -15,6 +15,7 @@ source 'https://rubygems.org'
  gem 'friendly_id', '~> 5.1.0'
  gem 'devise'
  gem 'devise-encryptable'
+ gem 'foundation-rails'
 
 group :development, :test do
   gem 'rspec-rails'

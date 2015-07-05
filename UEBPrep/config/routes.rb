@@ -7,14 +7,16 @@ Rails.application.routes.draw do
 
   post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
 
+  get 'profile' => 'users#edit'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   get    'cardcreator' => 'cards#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  resources :users,  only: [:new, :create, :show]
+  resources :users,  only: [:index, :show, :create, :edit]
 
+  resources :cards
 
   # API Routes
   namespace :api do
