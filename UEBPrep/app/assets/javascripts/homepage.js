@@ -14,8 +14,9 @@
  *
  * 0.1  2015-06-01  Implemented User creation & authentication functionality
  *
- * 0.2  2015-07-03  Stripped out unused methods - not sure if we'll even need
- *                  a source .js file for this (home) page, or even the app
+ * 0.2  2015-07-03  Added Zurb's Foundation FW; stripped out unused methods
+ *                  unsure if we'll need a source .js file for this (home) page,
+ *                  yet, or even the app, but kept for now just in case...
  *
  * Copyright:       pdxCoders (c) 2015 https://github.com/galxy25/pdxCoders
  *****************************************************************************/
