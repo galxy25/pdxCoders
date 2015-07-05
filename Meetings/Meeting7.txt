@@ -1,0 +1,47 @@
+Date: 6/22/2015
+Time: 6:00 PM- 8:00 PM
+Location: Capstone Lab 
+Duration: 2 hours
+
+Requested Attendees: All
+Actual Attendees:
+
+Agenda
+
+Project Status Report & Vision (15 minutes)
+	Discuss thoughts on project status, progress, and hopes for this term in regards 	to the capstone project.
+	-Owner: Everyone
+	-Outcome: 
+Item 1 Unfinished work from last term (10 minutes)
+	Demonstrate new functionality of app, and discuss what remains. 
+	-Owner: Levi Schoen
+	-Outcome
+Item 2 Weekly IPM (15 minutes)
+	Discuss new format for weekly meetings
+		Review Stories From last week-including deliverables(individually)
+		Discuss next sprint's stories(as a team)
+		Modify/write additional stories(as a team)
+		Point new stories(as a team)
+        -Owner: Levi
+        -Outcome
+Item 3 Discuss next weeks stories (45 minutes)
+	Use Case for story 
+	Acceptance Criteria
+	Owners 
+	Subtasks
+	Write additional stories as needed
+
+        -Owner: Everyone
+        -Outcome
+Item 4 Point stories(15 minutes)
+	Planning poker on pivotal tracker stories. 
+	Owner: Everyone
+	Outcome: All stories have been given an estimate of work and agreed upon by the 	majority.
+Item 5 Term logistics (10 minutes)
+	Discuss ideal meeting time and other team logistics(team party, etc...)
+	-Owner: Levi Schoen
+	-Outcome
+
+Action Items:
+
+Additional Discussion Items:
