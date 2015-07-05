@@ -1,5 +1,19 @@
-<h1>New card</h1>
-
-<%= render 'form' %>
-
+<div class="cardcreator-content">
+  <h1>Card Creator</h1>
+  <div >
+    Card Author: <%= @user %>
+  </div>
+  <table id="card-inputs" class="card-inputs">
+    <%= form_for(:card) do |f| %>
+        <tr id="card_type_tr">
+          <td><%= f.label nil, "Card Type" %>&nbsp&nbsp
+            <%= f.select "type", [['-Select-','0'],['Rule','rule'],['Text','text']],{} ,class: "card-type-ddl" %></td>
+        </tr>
+        <tr>
+          <td><%= f.submit "Create this card", class: "card-submit" %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
 <%= link_to 'Back', cards_path %>
+

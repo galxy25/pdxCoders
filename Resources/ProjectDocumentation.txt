@@ -22,6 +22,8 @@ The signup page consist of a form for email and password, if a signup is success
 
 The login page consists of a form for user email and password, if they provide matching credentials for an existing user, they will be directed to that user's account home page. Else they will be redirected back to the login page.
 
+The card creation page is for authorized accounts to create new cards for lessons. It allows them to select the card type and enter pertinent information and stores it along with the user id.
+
 
 Developer Documentation
   Users 

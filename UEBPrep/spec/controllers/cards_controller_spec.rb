@@ -35,125 +35,130 @@ RSpec.describe CardsController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # CardsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
-  describe "GET #index" do
-    it "assigns all cards as @cards" do
-      card = Card.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:cards)).to eq([card])
-    end
+context 'with a valid user' do
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in(@user)
   end
 
-  describe "GET #show" do
-    it "assigns the requested card as @card" do
-      card = Card.create! valid_attributes
-      get :show, {:id => card.to_param}, valid_session
-      expect(assigns(:card)).to eq(card)
-    end
-  end
-
-  describe "GET #new" do
-    it "assigns a new card as @card" do
-      get :new, {}, valid_session
-      expect(assigns(:card)).to be_a_new(Card)
-    end
-  end
-
-  describe "GET #edit" do
-    it "assigns the requested card as @card" do
-      card = Card.create! valid_attributes
-      get :edit, {:id => card.to_param}, valid_session
-      expect(assigns(:card)).to eq(card)
-    end
-  end
-
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Card" do
-        expect {
-          post :create, {:card => valid_attributes}, valid_session
-        }.to change(Card, :count).by(1)
-      end
-
-      it "assigns a newly created card as @card" do
-        post :create, {:card => valid_attributes}, valid_session
-        expect(assigns(:card)).to be_a(Card)
-        expect(assigns(:card)).to be_persisted
-      end
-
-      it "redirects to the created card" do
-        post :create, {:card => valid_attributes}, valid_session
-        expect(response).to redirect_to(Card.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns a newly created but unsaved card as @card" do
-        post :create, {:card => invalid_attributes}, valid_session
-        expect(assigns(:card)).to be_a_new(Card)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, {:card => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested card" do
+    describe "GET #index" do
+      it "assigns all cards as @cards" do
         card = Card.create! valid_attributes
-        put :update, {:id => card.to_param, :card => new_attributes}, valid_session
-        card.reload
-        skip("Add assertions for updated state")
+        get :index, {}, valid_session
+        expect(assigns(:cards)).to eq([card])
       end
+    end
 
+    describe "GET #show" do
       it "assigns the requested card as @card" do
         card = Card.create! valid_attributes
-        put :update, {:id => card.to_param, :card => valid_attributes}, valid_session
+        get :show, {:id => card.to_param}, valid_session
         expect(assigns(:card)).to eq(card)
-      end
-
-      it "redirects to the card" do
-        card = Card.create! valid_attributes
-        put :update, {:id => card.to_param, :card => valid_attributes}, valid_session
-        expect(response).to redirect_to(card)
       end
     end
 
-    context "with invalid params" do
-      it "assigns the card as @card" do
-        card = Card.create! valid_attributes
-        put :update, {:id => card.to_param, :card => invalid_attributes}, valid_session
-        expect(assigns(:card)).to eq(card)
-      end
-
-      it "re-renders the 'edit' template" do
-        card = Card.create! valid_attributes
-        put :update, {:id => card.to_param, :card => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+    describe "GET #new" do
+      it "assigns a new card as @card" do
+        get :new, {}, valid_session
+        expect(assigns(:card)).to be_a_new(Card)
       end
     end
-  end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested card" do
-      card = Card.create! valid_attributes
-      expect {
+    describe "GET #edit" do
+      it "assigns the requested card as @card" do
+        card = Card.create! valid_attributes
+        get :edit, {:id => card.to_param}, valid_session
+        expect(assigns(:card)).to eq(card)
+      end
+    end
+
+    describe "POST #create" do
+      context "with valid params" do
+        it "creates a new Card" do
+          expect {
+            post :create, {:card => valid_attributes}, valid_session
+          }.to change(Card, :count).by(1)
+        end
+
+        it "assigns a newly created card as @card" do
+          post :create, {:card => valid_attributes}, valid_session
+          expect(assigns(:card)).to be_a(Card)
+          expect(assigns(:card)).to be_persisted
+        end
+
+        it "redirects to the created card" do
+          post :create, {:card => valid_attributes}, valid_session
+          expect(response).to redirect_to(Card.last)
+        end
+      end
+
+      context "with invalid params" do
+        it "assigns a newly created but unsaved card as @card" do
+          post :create, {:card => invalid_attributes}, valid_session
+          expect(assigns(:card)).to be_a_new(Card)
+        end
+
+        it "re-renders the 'new' template" do
+          post :create, {:card => invalid_attributes}, valid_session
+          expect(response).to render_template("new")
+        end
+      end
+    end
+
+    describe "PUT #update" do
+      context "with valid params" do
+        let(:new_attributes) {
+          skip("Add a hash of attributes valid for your model")
+        }
+
+        it "updates the requested card" do
+          card = Card.create! valid_attributes
+          put :update, {:id => card.to_param, :card => new_attributes}, valid_session
+          card.reload
+          skip("Add assertions for updated state")
+        end
+
+        it "assigns the requested card as @card" do
+          card = Card.create! valid_attributes
+          put :update, {:id => card.to_param, :card => valid_attributes}, valid_session
+          expect(assigns(:card)).to eq(card)
+        end
+
+        it "redirects to the card" do
+          card = Card.create! valid_attributes
+          put :update, {:id => card.to_param, :card => valid_attributes}, valid_session
+          expect(response).to redirect_to(card)
+        end
+      end
+
+      context "with invalid params" do
+        it "assigns the card as @card" do
+          card = Card.create! valid_attributes
+          put :update, {:id => card.to_param, :card => invalid_attributes}, valid_session
+          expect(assigns(:card)).to eq(card)
+        end
+
+        it "re-renders the 'edit' template" do
+          card = Card.create! valid_attributes
+          put :update, {:id => card.to_param, :card => invalid_attributes}, valid_session
+          expect(response).to render_template("edit")
+        end
+      end
+    end
+
+    describe "DELETE #destroy" do
+      it "destroys the requested card" do
+        card = Card.create! valid_attributes
+        expect {
+          delete :destroy, {:id => card.to_param}, valid_session
+        }.to change(Card, :count).by(-1)
+      end
+
+      it "redirects to the cards list" do
+        card = Card.create! valid_attributes
         delete :destroy, {:id => card.to_param}, valid_session
-      }.to change(Card, :count).by(-1)
-    end
-
-    it "redirects to the cards list" do
-      card = Card.create! valid_attributes
-      delete :destroy, {:id => card.to_param}, valid_session
-      expect(response).to redirect_to(cards_url)
+        expect(response).to redirect_to(cards_url)
+      end
     end
   end
-
 end

@@ -1,0 +1,58 @@
+.cardcreator-content
+{
+    height:     77%;
+    text-align: center;
+}
+
+.card-inputs
+{
+    width:      100%;
+    height:     50%;
+}
+
+.card-type-ddl
+{
+    width:         15%;
+    padding:       .5%;
+    border-radius: 6px;
+    font-size:     0.75em;
+    color:         #000;
+}
+
+.card-textarea
+{
+    width:         25%;
+    height:        20vh;
+    padding:       1%;
+    border-radius: 6px;
+    font-size:     0.75em;
+    color:         #000;
+    resize:        none;
+    vertical-align: middle;
+}
+
+.card-title
+{
+    width:         25%;
+    padding:       1%;
+    border-radius: 6px;
+    font-size:     0.75em;
+    color:         #000;
+}
+
+.card-submit
+{
+    background:      #29b0b7;
+    margin:          auto 0;
+    margin-left:     3%;
+    padding:         1% 3.5%;
+    border-radius:   6px;
+    color:           #fff;
+    font-size:       0.75em;
+    cursor:          pointer;
+}
+
+.login-signup a:visited
+{
+    color: #ffffff;
+}

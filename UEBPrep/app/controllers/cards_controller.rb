@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+
+  before_action :authenticate!
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   # GET /cards
@@ -13,6 +15,7 @@ class CardsController < ApplicationController
 
   # GET /cards/new
   def new
+    @user = current_user
     @card = Card.new
   end
 
