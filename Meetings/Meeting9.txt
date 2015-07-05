@@ -1,0 +1,35 @@
+Date: 7/6/2015
+Time: 6:00 P.M. - 8:00 P.M.
+Location: Capstone Lab
+Duration: 2 hours
+
+Requested Attendees: All
+Actual Attendees:
+
+Agenda Tying Front/Back ends of card creation & viewing 
+
+Week in Preview & Review (20 minutes)
+	-Owner: Everyone
+	-Outcome: Everyone knows what everyone else accomplished last week and what they have planned for this week. Also, timeline will be updated as need be.
+
+Item 1 binding.pry demo (10 minutes)
+	Demonstrate use and reasons for using the pry rails debugger. 
+	-Owner: Levi
+	-Outcome: Everyone understands how and why to use binding.pry for debugging 
+Item 2 Iteration Planning (40 minutes)
+	Oauth: Twitter && Google+
+	ARIA tags everywhere
+	Paperclip for image processing/handling 
+	Tying the front and back end of card creation & viewing
+	Card CRUD API's
+	Playlists
+        -Owner: Levi
+        -Outcome: The team has decided what stories we are going to be working on this week, who will be working on them, and the subtasks and effort for each story.
+Item 3 Sub-team planning (40 minutes)
+	Sub-teams discuss meeting times to work on stories during the week, plan of action for completing the story, ask the group for any necessary clarification. 
+        -Owner: Everyone
+        -Outcome
+
+Action Items:
+
+Additional Discussion Items:
