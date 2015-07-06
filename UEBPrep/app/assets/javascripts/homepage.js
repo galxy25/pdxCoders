@@ -1,6 +1,6 @@
 /*****************************************************************************
  *
- * Name:            main.js
+ * Name:            homepage.js
  *
  * Author:          Raven Allan
  *
@@ -14,56 +14,9 @@
  *
  * 0.1  2015-06-01  Implemented User creation & authentication functionality
  *
- * 0.2  2015-07-03  Added Zurb's Foundation FW; stripped out unused methods
+ * 0.2  2015-07-03  Added Zurb's Foundation FW; stripped out unused code
  *                  unsure if we'll need a source .js file for this (home) page,
  *                  yet, or even the app, but kept for now just in case...
  *
  * Copyright:       pdxCoders (c) 2015 https://github.com/galxy25/pdxCoders
  *****************************************************************************/
-// GLOBALS
-
-(function($)
-{
-    var HOME =
-    {
-        // PROPERTIES
-
-        /*****************************************************************************
-         *
-         * Method:      HOME.init()
-         *
-         * Description: Initalize homepage content
-         *
-         *****************************************************************************/
-        init: function()
-        {
-            this.bindUI();
-        },
-
-        /*****************************************************************************
-         *
-         * Method:      HOME.bindUI()
-         *
-         * Description: UI handlers for user actions
-         *
-         *****************************************************************************/
-        bindUI: function()
-        {
-            // var me = this;
-
-            // other (click) functions...
-
-            // $(window).resize(function() { me.resizeContent(); });
-        }
-    };
-
-    /*****************************************************************************
-     *
-     * Function:    window.onload()
-     *
-     * Description: Execute after DOM and content (images) have been loaded
-     *
-     *****************************************************************************/
-    window.onload = function() { HOME.init(); };
-
-}(jQuery));
