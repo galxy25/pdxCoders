@@ -50,6 +50,36 @@ RSpec.describe UsersController, type: :controller do
         expect(@json_response['id']).to be nil
       end
     end
+
+    describe '#edit' do
+      it 'returns the asked for user when passed an id' do
+        @user2=FactoryGirl.create(:user, :email => 'newUser@users.com')
+        get :edit, :id =>  @user2.id , :format => :json
+        @json_response = JSON.parse(response.body)
+        expect(@json_response['id']).to eq @user2.id
+      end
+
+      it 'returns the current user when not passed any id' do
+        get :edit, :id =>  nil, :format => :json
+        @json_response = JSON.parse(response.body)
+        expect(@json_response['id']).to eq @user.id
+      end
+    end
+
+    describe '#update' do
+      it 'updates the user with valid new data' do
+        patch :update, :id => @user.id, :email => 'new@new.com', :format => :json
+        @json_response = JSON.parse(response.body)
+        expect(@json_response['email']).to eq 'new@new.com'
+      end
+
+      it 'reports an error when trying ot update with invalid data' do
+        patch :update, :id => @user.id, :email => 'new.com', :format => :json
+        @json_response = JSON.parse(response.body)
+        expect(@json_response['status']).to eq 400
+      end
+    end
+
   end
 
   context 'without a valid signed in user' do
@@ -75,10 +105,45 @@ RSpec.describe UsersController, type: :controller do
 
     describe '#new' do
       it 'builds a generic user' do
-        expect{get :new, :format => :json}.to change{User.all.count}.by 0
+        expect{get :new, :format => :json}.to change{User.count}.by 0
         @json_response = JSON.parse(response.body)
         expect(@json_response['id']).to be nil
       end
     end
+
+    describe '#create' do
+      it 'creates a new user when given valid data' do
+        expect{post :create, :email => 'user@user.com', :password => 'password', :format => :json}.to change{User.count}.by 1
+        @json_response = JSON.parse(response.body)
+        expect(@json_response['email']).to eq 'user@user.com'
+      end
+
+      it 'does not create a user when given invalid data' do
+        expect{post :create, :email => 'bad@bad.com', :password => '2Short', :format => :json}.to change{User.count}.by 0
+        @json_response= JSON.parse(response.body)
+        expect(@json_response['status']).to eq 400
+      end
+    end
+
+    describe '#edit' do
+      it 'raises NoMethodError' do
+        begin
+          get :edit, :id =>  @user.id , :format => :json
+        rescue => error
+          expect(error.class).to eq(NoMethodError)
+        end
+      end
+    end
+
+    describe '#update' do
+      it 'raises NoMethodError' do
+        begin
+          patch :update, :id =>  1, :email => 'new.com', :format => :json
+        rescue => error
+          expect(error.class).to eq(NoMethodError)
+        end
+      end
+    end
+
   end
 end

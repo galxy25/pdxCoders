@@ -30,27 +30,43 @@ class UsersController < ApplicationController
     @user = User.new(:email => create_params[:email] , :password => create_params[:password])
 
     if @user.save
-      log_in @user
-      render 'show'
+      respond_to do |format|
+        format.html { render 'show'}
+        format.json { render json: @user }
+      end
     else
       flash[:alert] = 'Unable to create an account with that info. Each email can be linked
                        to only one account, and passwords must be at least 8 characters in length.'
-      render 'new'
+      respond_to do |format|
+        format.html { render 'new'}
+        format.json {render json: {errors: 'Unable to create a user with the information provided' , status: 400} }
+      end
     end
   end
 
   def update
-    if @user.update(user_params)
+    @user = current_user
+    if @user.update(update_params)
       flash[:notice] = 'Your changes have been saved.'
-      redirect_to edit_user_path
+      respond_to do |format|
+        format.html {redirect_to user_path @user}
+        format.json { render json: @user }
+      end
     else
       flash[:alert] = 'Unable to make updates.'
-      render :edit
+      respond_to do |format|
+        format.html {render 'edit'}
+        format.json {render json: {errors: 'Unable to make updates.' , status: 400} }
+      end
     end
   end
 
   def edit
     @user = !params[:id].nil? ? User.find(params[:id]) : current_user
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
+    end
   end
 
   private
@@ -61,6 +77,10 @@ class UsersController < ApplicationController
 
   def create_params
     params.permit(:user, :email, :password)
+  end
+
+  def update_params
+    params.permit(:email, :password)
   end
 
 end
