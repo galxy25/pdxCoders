@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   resources :users,  only: [:new, :create, :show]
 
-
   # API Routes
   namespace :api do
       # Because nothing is ever perfect the first time...

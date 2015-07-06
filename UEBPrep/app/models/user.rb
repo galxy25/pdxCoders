@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # The :omniauthable modules make our model omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable, :omniauth_providers => [:facebook] #, :twitter]
   acts_as_paranoid
 
   extend FriendlyId
