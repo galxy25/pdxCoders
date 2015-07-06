@@ -30,5 +30,5 @@ deployment:
       - git pull
       - git checkout development
       - git pull
-      - git merge --ff-only staging-beta
+      - git merge staging-beta 
       - git push
