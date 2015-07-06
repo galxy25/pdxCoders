@@ -2,7 +2,227 @@
 // DO NOT MODIFY THAT FILE - USE AS REFERENCE ONLY. THAT WAY, IF/WHEN THE FOUNDATION
 // GEM IS UPDATED/MODIFIED, OUR CUSTOM SETTINGS (HERE) WILL NOT BE AFFECTED
 
-$white       : #FFFFFF;
+
+// Table of Contents
+// Foundation Settings
+//
+// a. Base
+// b. Grid
+// c. Global
+// d. Media Query Ranges
+// e. Typography
+// 01. Accordion
+// 02. Alert Boxes
+// 03. Block Grid
+// 04. Breadcrumbs
+// 05. Buttons
+// 06. Button Groups
+// 07. Clearing
+// 08. Dropdown
+// 09. Dropdown Buttons
+// 10. Flex Video
+// 11. Forms
+// 12. Icon Bar
+// 13. Inline Lists
+// 14. Joyride
+// 15. Keystrokes
+// 16. Labels
+// 17. Magellan
+// 18. Off-canvas
+// 19. Orbit
+// 20. Pagination
+// 21. Panels
+// 22. Pricing Tables
+// 23. Progress Bar
+// 24. Range Slider
+// 25. Reveal
+// 26. Side Nav
+// 27. Split Buttons
+// 28. Sub Nav
+// 29. Switch
+// 30. Tables
+// 31. Tabs
+// 32. Thumbnails
+// 33. Tooltips
+// 34. Top Bar
+// 36. Visibility Classes
+
+
+// a. Base
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$rem-base: 16px;
+
+@import 'foundation/functions';
+
+$base-font-size: 100%;
+
+$base-line-height: 150%;
+
+$include-html-classes: true;
+
+$include-html-global-classes: $include-html-classes;
+
+// b. Grid
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$include-html-grid-classes: $include-html-classes;
+
+$row-width: rem-calc(1000);
+$total-columns: 12;
+$column-gutter: rem-calc(30);
+
+// c. Global
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$font-weight-normal: normal;
+
+$white  : #FFFFFF;
+$jet    : #222222;
+$orange : #FFAA00;
+
+// We use these as default colors throughout
+// $primary-color: #008CBA;
+// $secondary-color: #e7e7e7;
+// $alert-color: #f04124;
+// $success-color: #43AC6A;
+// $warning-color: #f08a24;
+// $info-color: #a0d3e8;
+
+// We use these to control various global styles
+$body-bg: $jet;
+$body-font-color: $white;
+$body-font-family: $font-family-sans-serif;
+$body-font-weight: $font-weight-normal;
+$body-font-style: normal;
+
+$global-radius: 3px;
+
+// d. Media Query Ranges
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// e. Typography
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$include-html-type-classes: $include-html-classes;
+
+$header-font-family: $body-font-family;
+$header-font-weight: $font-weight-normal;
+$header-font-style: normal;
 $header-font-color: $white;
+$header-line-height: 1.4;
+$header-top-margin: .2rem;
+$header-bottom-margin: .5rem;
+$header-text-rendering: optimizeLegibility;
+
+$anchor-text-decoration: none;
+$anchor-text-decoration-hover: none;
+$anchor-font-color: $white;
+$anchor-font-color-hover: $orange;
+
+// 01. Accordion
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 02. Alert Boxes
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 03. Block Grid
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 04. Breadcrumbs
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 05. Buttons
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 06. Button Groups
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 07. Clearing
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 08. Dropdown
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 09. Dropdown Buttons
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 10. Flex Video
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 11. Forms
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$include-html-form-classes: $include-html-classes;
 
 $form-label-font-color: $white;
+
+// 12. Icon Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 13. Inline Lists
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 14. Joyride
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 15. Keystrokes
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 16. Labels
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 17. Magellan
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 18. Off-canvas
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 19. Orbit
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 20. Pagination
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 21. Panels
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 22. Pricing Tables
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 23. Progress Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 24. Range Slider
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 25. Reveal
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 26. Side Nav
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 27. Split Buttons
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 28. Sub Nav
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 29. Switch
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 30. Tables
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 31. Tabs
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 32. Thumbnails
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 33. Tooltips
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 34. Top Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 36. Visibility Classes
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$include-accessibility-classes: true;
+

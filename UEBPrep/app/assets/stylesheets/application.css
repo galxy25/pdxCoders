@@ -15,13 +15,3 @@
  *= require foundation_and_overrides
 
  */
-
-
-
-.app-whitelink
-{
-    color:           #fff;
-    cursor:          pointer;
-    text-decoration: none;
-}
-	.app-whitelink:hover { color: #ffaa00; }
