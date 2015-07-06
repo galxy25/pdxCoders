@@ -30,5 +30,5 @@ deployment:
       - git pull
       - git checkout development
       - git pull
-      - git merge staging-beta 
+      - git merge staging-beta -m 'Auto merging staging-beta into development via CircleCI'
       - git push
