@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'homepage#index'
   get 'homepage/index'
 
+  # We added a callback which sends the user back after they
+  # sign-up with facebook.
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'sessions/new'
 
