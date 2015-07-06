@@ -1,15 +1,29 @@
 class UsersController < ApplicationController
+  before_action :authenticate!
+  skip_before_action :authenticate!, only: [:create, :new]
 
   def index
     @users = User.all()
+    respond_to do |format|
+      format.html
+      format.json { render json: @users }
+    end
   end
 
   def show
     @user = current_user
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
+    end
   end
 
   def new
     @user = User.new
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
+    end
   end
 
   def create
@@ -19,8 +33,8 @@ class UsersController < ApplicationController
       log_in @user
       render 'show'
     else
-      flash[:alert] = 'Unable to create an account with that info. Each email can be linked to only one account
-                      , and passwords must be at least 8 characters in length.'
+      flash[:alert] = 'Unable to create an account with that info. Each email can be linked
+                       to only one account, and passwords must be at least 8 characters in length.'
       render 'new'
     end
   end
