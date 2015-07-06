@@ -29,5 +29,5 @@ deployment:
       - git pull
       - git stash
       - git checkout development
-      - git merge staging-beta --no-edit
+      - git merge staging-beta
       - git push
