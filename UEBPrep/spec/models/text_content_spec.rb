@@ -21,9 +21,11 @@ RSpec.describe TextContent, type: :model do
 
     it "doesn't create a TextContent entry when the associated Card entry fails to save" do
       expect {
-        allow(Card).to recieve(:save) { false }
-        content.save
-      }.to raise_error { ActiveRecord::RecordInvalid }
+        expect {
+          allow(Card).to recieve(:save) { false }
+          content.save
+        }.to raise_error { ActiveRecord::RecordInvalid }
+      }.to_not change { [TextContent.count, Card.count] }
     end
 
     it "does not duplicate entries" do
