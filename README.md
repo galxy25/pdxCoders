@@ -1,8 +1,8 @@
 #pdxCoders/UEBPrep
 ##Build Status
  [![Circle CI](https://circleci.com/gh/galxy25/pdxCoders/tree/staging-beta.svg?style=svg)]
-##CodeClimate Grade
- [![Code Climate](https://codeclimate.com/github/galxy25/pdxCoders/badges/gpa.svg)]
+##CodeClimate Grades
+ [![Code Climate](https://codeclimate.com/github/galxy25/pdxCoders/badges/gpa.svg)] [![Test Coverage](https://codeclimate.com/github/galxy25/pdxCoders/badges/coverage.svg)]
 
 ##Developer Environment Setup
 *Prerequisites* 
