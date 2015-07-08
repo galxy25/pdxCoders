@@ -19,6 +19,13 @@ RSpec.describe TitledCardContent, type: :model do
       expect(card.content_id).to equal content.id
     end
 
+    it "doesn't create a TextContent entry when the associated Card entry fails to save" do
+      expect {
+        allow(Card).to recieve(:save) { false }
+        content.save
+      }.to raise_error { ActiveRecord::RecordInvalid }
+    end
+
     it "does not duplicate entries" do
       expect {
         content.save

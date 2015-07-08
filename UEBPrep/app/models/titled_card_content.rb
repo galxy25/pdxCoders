@@ -13,6 +13,8 @@ class TitledCardContent < ActiveRecord::Base
     #TODO: remove magic number somehow.
     def create_card
       @card = Card.new(content_type_id: 2, content_id: self.id, created_by: self.created_by)
-      @card.save
+      if !@card.save
+        raise ActiveRecord::RecordInvalid.new(self)
+      end
     end
 end
