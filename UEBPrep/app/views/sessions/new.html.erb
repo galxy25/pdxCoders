@@ -7,6 +7,7 @@
       <%= f.label :password %><%= f.password_field :password %>
       <%= f.submit "Log in", class: "button"%>
       New user? <%= link_to "Sign up now!", signup_path %>
+      <div><%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %></div>
     <% end %>
   </div>
 </div>
