@@ -8,5 +8,6 @@
       <%= f.file_field :avatar%>
       <%= f.submit "Create my account", class: "button" %>
     <% end %>
+    <div><%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %></div>
   </div>
 </div>
