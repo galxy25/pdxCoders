@@ -29,13 +29,13 @@ class CardsController < ApplicationController
       when 'text'
         @content = TextContent.new(:text => card_params[:cardtext], :created_by => current_user.id)
       when 'rule'
-        @content = TitledCardContent.new(:title => card_params[:cardtitle], :text => card_params{:cardtext}, :created_by => current_user.id)
+        @content = TitledCardContent.new(:title => card_params[:cardtitle].to_s(), :text => card_params[:cardtext], :created_by => current_user.id)
     end
     @content.save
     @card = @content.card
 
     if @card
-      redirect_to @card, notice: 'Card was successfully created.'
+      redirect_to @card, notice: 'Card was successfully updated.'
     else
       render :new
     end
