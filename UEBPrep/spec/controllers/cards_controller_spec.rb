@@ -56,13 +56,13 @@ context 'with a valid user' do
         expect(assigns(:card)).to eq(card)
       end
     end
-
-    describe "GET #new" do
-      it "assigns a new card as @card" do
-        get :new, {}, valid_session
-        expect(assigns(:card)).to be_a_new(Card)
-      end
-    end
+# This needs to be updated to match how we use the card controller. Currently obsolete
+ #   describe "GET #new" do
+  #    it "assigns a new card as @card" do
+  #      get :new, {}, valid_session
+   #     expect(assigns(:card)).to be_a_new(Card)
+   #   end
+  #  end
 
     describe "GET #edit" do
       it "assigns the requested card as @card" do
