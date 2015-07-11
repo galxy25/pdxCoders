@@ -4,7 +4,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
-      # sign_in_and_redirect @user, :event => :authentication
       sign_in(@user)
       redirect_to profile_path
     else
