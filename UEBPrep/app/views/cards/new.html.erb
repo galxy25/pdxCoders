@@ -1,19 +1,17 @@
-<div class="cardcreator-content">
+<div class="row">
+  <div class="small-10 small-centered columns">
   <h1>Card Creator</h1>
-  <div >
-    Card Author: <%= @user %>
-  </div>
-  <table id="card-inputs" class="card-inputs">
+  <h2>Card Author: <%= @user %></h2>
     <%= form_for(:card) do |f| %>
-        <tr id="card_type_tr">
-          <td><%= f.label nil, "Card Type" %>&nbsp&nbsp
-            <%= f.select "type", [['-Select-','0'],['Rule','rule'],['Text','text']],{} ,class: "card-type-ddl" %></td>
-        </tr>
-        <tr>
-          <td><%= f.submit "Create this card", class: "card-submit" %></td>
-        </tr>
+        <%= label_tag(:cardtype, "Card Type") %>
+        <%= select_tag(:cardtype, options_for_select([['-Select-','0'],['Rule','rule'],['Text','text']])) %>
+        <%= label_tag(:cardtitle, "Title") %>
+        <%= text_field_tag(:cardtitle) %>
+        <%= label_tag(:cardtext, "Text") %>
+        <%= text_area_tag(:cardtext,"", size: "8x8") %>
+        <%= submit_tag("Create this card", :id=> "cardsubmit") %>
     <% end %>
-  </table>
+  </div>
 </div>
 <%= link_to 'Back', cards_path %>
 
