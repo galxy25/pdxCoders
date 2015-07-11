@@ -44,6 +44,9 @@ A user consists of a unique email address, valid password, and api_key(for api a
 
   Roles
 
+  Images
+    We are using the paperclip gem(v 4+) for image processing and storing. Currently we store images for the user avatar. Images are stored in the default paperclip path of /public/system.  
+
 
 API Documentation
   This application using a RESTful JSON api key based authentication api. It supports scoped CRUD operations on users, cards, and analytics pertaining to the user as well as content specific analytics.

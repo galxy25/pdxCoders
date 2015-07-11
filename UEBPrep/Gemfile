@@ -16,6 +16,7 @@ source 'https://rubygems.org'
  gem 'devise'
  gem 'devise-encryptable'
  gem 'foundation-rails'
+ gem 'paperclip', '~> 4.3'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -22,3 +22,6 @@
 
 # Vim .swp files.
 *.swp
+
+/User images
+/public/system

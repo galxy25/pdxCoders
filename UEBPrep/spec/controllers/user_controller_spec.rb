@@ -68,13 +68,13 @@ RSpec.describe UsersController, type: :controller do
 
     describe '#update' do
       it 'updates the user with valid new data' do
-        patch :update, :id => @user.id, :email => 'new@new.com', :format => :json
+        patch :update, :id => @user.id, :user => { :email => 'new@new.com' }, :format => :json
         @json_response = JSON.parse(response.body)
         expect(@json_response['email']).to eq 'new@new.com'
       end
 
       it 'reports an error when trying ot update with invalid data' do
-        patch :update, :id => @user.id, :email => 'new.com', :format => :json
+        patch :update, :id => @user.id, :user => { :email => 'new.com' }, :format => :json
         @json_response = JSON.parse(response.body)
         expect(@json_response['status']).to eq 400
       end
@@ -113,13 +113,13 @@ RSpec.describe UsersController, type: :controller do
 
     describe '#create' do
       it 'creates a new user when given valid data' do
-        expect{post :create, :email => 'user@user.com', :password => 'password', :format => :json}.to change{User.count}.by 1
+        expect{post :create, :user => { :email => 'user@user.com', :password => 'password' }, :format => :json}.to change{User.count}.by 1
         @json_response = JSON.parse(response.body)
         expect(@json_response['email']).to eq 'user@user.com'
       end
 
       it 'does not create a user when given invalid data' do
-        expect{post :create, :email => 'bad@bad.com', :password => '2Short', :format => :json}.to change{User.count}.by 0
+        expect{post :create, :user => { :email => 'bad@bad.com', :password => '2Short' }, :format => :json}.to change{User.count}.by 0
         @json_response= JSON.parse(response.body)
         expect(@json_response['status']).to eq 400
       end
