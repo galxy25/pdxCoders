@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'homepage#index'
   get 'homepage/index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
   get 'sessions/new'
 
   post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  resources :users,  only: [:index, :show, :create, :edit]
+  resources :users,  only: [:index, :show, :create, :edit, :update]
 
   resources :cards
 

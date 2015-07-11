@@ -26,6 +26,9 @@ deployment:
     branch: staging-beta
     commands:
       - git stash
+      - git checkout staging-beta
+      - git pull
       - git checkout development
-      - git merge staging-beta
+      - git pull
+      - git merge staging-beta -m 'Auto merging staging-beta into development via CircleCI'
       - git push
