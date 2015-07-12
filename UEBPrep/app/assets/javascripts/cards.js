@@ -1,56 +1,22 @@
 $(document).ready(function() {
-    $('#card_type').change(function(){
-        $('#card_title_tr').remove();
-        $('#card_textarea_tr').remove();
-       var type = $('#card_type').val();
+    $('#cardtype').change(function(){
+        $('label[for="cardtitle"]').css('display', 'none');
+        $('#cardtitle').css('display', 'none');
+        $('label[for="cardtext"]').css('display', 'none');
+        $('#cardtext').css('display', 'none');
+        $('#cardsubmit').css('display', 'none');
+        var type = $('#cardtype').val();
         if (type == "text"){
-            $('<tr/>', {
-                'id':'card_textarea_tr',
-            }).insertAfter($('#card_type_tr'));
-            $('<td/>', {
-                'id':'card_textarea_td',
-            }).appendTo($('#card_textarea_tr'));
-            $('<label/>', {
-                'id':'card_textarea_label',
-                'text': 'Card Text:  '
-            }).appendTo($('#card_textarea_td'));
-            $('<textarea/>', {
-                'id':'card_textarea',
-                'class':'card-textarea'
-            }).appendTo($('#card_textarea_label'));
+            $('label[for="cardtext"]').css('display', 'block');
+            $('#cardtext').css('display', 'block');
+            $('#cardsubmit').css('display', 'block');
         }
         else if (type == "rule"){
-            $('<tr/>', {
-                'id':'card_title_tr'
-            }).insertAfter($('#card_type_tr'));
-            $('<td/>', {
-                'id':'card_title_td'
-            }).appendTo($('#card_title_tr'));
-            $('<label/>', {
-                'id':'card_title_label',
-                'class':'card-title-label',
-                'text': 'Card Title:  '
-            }).appendTo($('#card_title_td'));
-            $('<input/>', {
-                'type':'text',
-                'id':'card_title',
-                'class':'card-title'
-            }).appendTo($('#card_title_td'))
-            $('<tr/>', {
-                'id':'card_textarea_tr'
-            }).insertAfter($('#card_title_tr'));
-            $('<td/>', {
-                'id':'card_textarea_td'
-            }).appendTo($('#card_textarea_tr'));
-            $('<label/>', {
-                'id':'card_textarea_label',
-                'class':'card-textarea-label',
-                'text': 'Card Text:  '
-            }).appendTo($('#card_textarea_td'));
-            $('<textarea/>', {
-                'id':'card_textarea',
-                'class':'card-textarea'
-            }).appendTo($('#card_textarea_label'));
+            $('label[for="cardtitle"]').css('display', 'block');
+            $('#cardtitle').css('display', 'block');
+            $('label[for="cardtext"]').css('display', 'block');
+            $('#cardtext').css('display', 'block');
+            $('#cardsubmit').css('display', 'block');
         }
     });
 });
