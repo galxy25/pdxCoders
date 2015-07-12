@@ -1,5 +1,7 @@
 class TitledCardContent < ActiveRecord::Base
   after_save :create_card
+  validates :text, presence: true
+  validates :title, presence: true
   validates_uniqueness_of :title, :scope => :text
 
   attr_accessor :created_by
