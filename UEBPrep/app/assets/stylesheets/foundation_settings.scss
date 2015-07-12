@@ -75,9 +75,10 @@ $column-gutter: rem-calc(30);
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 $font-weight-normal: normal;
 
-$white  : #FFFFFF;
+$black  : #000000;
 $jet    : #222222;
 $orange : #FFAA00;
+$white  : #FFFFFF;
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
@@ -151,7 +152,7 @@ $anchor-font-color-hover: $orange;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 $include-html-form-classes: $include-html-classes;
 
-$form-label-font-color: $white;
+$form-label-font-color: $black;
 
 // 12. Icon Bar
 // - - - - - - - - - - - - - - - - - - - - - - - - -
