@@ -1,6 +1,7 @@
 label[for=cardtype]
 {
     font-size:       1.5em;
+    color: white;
 }
 
 #cardtype
@@ -14,6 +15,7 @@ label[for=cardtype]
 label[for=cardtitle]
 {
     font-size:       1.5em;
+    color: white;
     display: none;
 }
 
@@ -28,6 +30,7 @@ label[for=cardtitle]
 label[for=cardtext]
 {
     font-size:       1.5em;
+    color: white;
     display: none;
 }
 
