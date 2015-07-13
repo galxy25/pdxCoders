@@ -45,6 +45,52 @@ RSpec.describe Api::CardsController, type: :controller do
           end
 
         end
+
+        describe '#edit' do
+          before :each do
+            @card = Card.where(content_id: text_card.id).first
+            get :edit , :id => @card.id,
+                :content =>  {
+                    text: 'New Text'
+                },
+                :api_key => user.api_key
+            @results = JSON.parse(response.body)
+            @card = JSON.parse(@results["card"])
+            text_card.reload
+          end
+
+          it 'updates the card with new text' do
+            expect(@card["text_content"]["text"]).to eq "New Text"
+            expect(@results["status"]).to eq 204
+          end
+
+          it 'updates a title card title and text' do
+            @card = Card.where(content_id: titled_card_content.id).first
+            get :edit , :id => @card.id,
+                :content =>  {
+                    text: 'New Text',
+                    title: 'New Title'
+                },
+                :api_key => user.api_key
+            @results = JSON.parse(response.body)
+            @card = JSON.parse(@results["card"])
+            titled_card_content.reload
+
+            expect(@card["titled_card_content"]["text"]).to eq "New Text"
+            expect(@card["titled_card_content"]["title"]).to eq "New Title"
+            expect(@results["status"]).to eq 204
+          end
+          it 'returns 404 for a non existent card id' do
+            @card = Card.where(content_id: text_card.id).first
+            get :edit , :id => Card.count * 3,
+                content:  {
+                    text: 'New Text'
+                },
+                :api_key => user.api_key
+            @results = JSON.parse(response.body)
+            expect(@results["status"]).to eq 404
+          end
+        end
       end
 
       context 'with an invalid api key' do
@@ -57,15 +103,30 @@ RSpec.describe Api::CardsController, type: :controller do
         end
 
         describe '#show' do
-          it 'returns 404 when passed an invalid api_key and valid card id' do
+          it 'returns 404 when passed a valid card id' do
             @card = Card.where(content_id: titled_card_content.id).first
             get :show , :id => @card.id, :api_key => 'not a real api key'
             @results = JSON.parse(response.body)
             expect(@results["status"]).to be 403
           end
 
-          it 'returns 404 when passed an invalid api_key and invalid card id' do
+          it 'returns 404 when passed an invalid card id' do
             get :show , :id => Card.count * 3, :api_key => 'not a real api key'
+            @results = JSON.parse(response.body)
+            expect(@results["status"]).to be 403
+          end
+        end
+
+        describe 'edit' do
+          it 'returns 404 when passed a valid card id' do
+            @card = Card.where(content_id: titled_card_content.id).first
+            get :edit , :id => @card.id, :api_key => 'not a real api key'
+            @results = JSON.parse(response.body)
+            expect(@results["status"]).to be 403
+          end
+
+          it 'returns 404 when passed an invalid card id' do
+            get :edit , :id => Card.count * 3, :api_key => 'not a real api key'
             @results = JSON.parse(response.body)
             expect(@results["status"]).to be 403
           end
