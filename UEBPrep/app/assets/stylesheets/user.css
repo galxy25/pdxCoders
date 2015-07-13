@@ -1,94 +1,29 @@
-/****************************************************************/
-/* WHERE ARE THESE CLASSES USED ??? IF UNUSED, PLEASE DELETE!!! */
-/****************************************************************/
-.edit-pane
+.user-card.panel
 {
-    background: darkgray;
-    font-weight: normal;
-    text-shadow: none;
-    position: relative;
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    width: 40%;
-    height: 80%;
-    padding: 2%;
+    margin:         3rem auto;
+    padding-bottom: 5%;
+    border:         2px solid #444;
+    background:     #eee;
 }
 
-.edit-pane h1 {
-    text-shadow: none;
-}
-
-.edit-pane label {
-    font-size: 2em;
-}
-
-.edit-pane input {
-    font-size: 2em;
-    margin-top: 2%;
-    margin-right: 2%;
-}
-
-.edit-pane input[type=submit] {
-    padding: 5px 15px;
-    background: #29b0b7;
-    color: #fff;
-    border: 0 none;
-    cursor: pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    margin-top: 2%;
-}
-/****************************************************************/
-/****************************************************************/
-
-
-/*  IN PROGRESS WORK
-.header.panel
+.user-card.panel .sign
 {
-    margin: 3rem auto;
-    border: 2px solid #444;
-    background: #fff;
+    background: #eee;
+    width:      150px;
+    height:     2.4rem;
+    border:     2px solid #444;
+    position:   relative;
+    top:        -2.5rem;
+    margin:     auto;
 }
 
-.header.panel p
-{
-    font: 1rem "Avenir Next";
-    padding: 1rem 2rem 2rem 2rem;
-    margin-top: -1.25rem;
-}
-
-.header.panel p span
+.user-card.panel .sign h1
 {
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 75%;
-    font-weight: bold;
+    text-shadow:    none;
+    font:           bolder 0.875rem;
+    color:          #666;
+    font-size:      70%;
+    text-align:     center;
+    line-height:    2rem;
 }
-
-.header.panel .sign
-{
-    background: #fff;
-    width: 150px;
-    height: 2.4rem;
-    border: 2px solid #444;
-    position: relative;
-    top: -2.5rem;
-    margin: auto;
-}
-
-.header.panel .sign h1
-{
-    text-transform: uppercase;
-    font: bolder 0.875rem "Avenir Next";
-    letter-spacing: 3px;
-    color: #666;
-    font-size: 70%;
-    text-align: center;
-    line-height: 2rem;
-}
-
-*/
-
-
