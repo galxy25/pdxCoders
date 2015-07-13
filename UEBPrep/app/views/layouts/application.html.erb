@@ -21,9 +21,8 @@
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
       <section class="top-bar-section">
-        <ul class="right">
-          <li class="active"><%= link_to "Sign Up", signup_path %></li>
-          <li class="active"><%= link_to "Login", login_path %></li>
+        <ul class="left">
+          <%= content_for?(:navlinks) ? yield(:navlinks) : "" %>
         </ul>
       </section>
     </nav>

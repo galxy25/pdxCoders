@@ -1,3 +1,7 @@
+<% provide(:title, "UEBPrep - Card Creator") %>
+<% content_for :navlinks do %>
+  <li class="active"><%= link_to "Back", cards_path %></li>
+<% end %>
 <div class="row">
   <div class="small-10 small-centered columns">
   <h1>Card Creator</h1>
@@ -13,5 +17,3 @@
     <% end %>
   </div>
 </div>
-<%= link_to 'Back', cards_path %>
-
