@@ -16,7 +16,6 @@ class CardsController < ApplicationController
   # GET /cards/new
   def new
     @user = current_user
-    @card = Card.new
   end
 
   # GET /cards/1/edit
@@ -25,10 +24,18 @@ class CardsController < ApplicationController
 
   # POST /cards
   def create
-    @card = Card.new(card_params)
+    #binding.pry
+    case card_params[:cardtype]
+      when 'text'
+        @content = TextContent.new(:text => card_params[:cardtext], :created_by => current_user.id)
+      when 'rule'
+        @content = TitledCardContent.new(:title => card_params[:cardtitle], :text => card_params[:cardtext], :created_by => current_user.id)
+    end
+    @content.save
+    @card = @content.card
 
-    if @card.save
-      redirect_to @card, notice: 'Card was successfully created.'
+    if @card
+      redirect_to @card, notice: 'Card was successfully updated.'
     else
       render :new
     end
@@ -57,6 +64,7 @@ class CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params[:card]
+      params.permit(:cardtype, :cardtitle, :cardtext)
     end
+
 end

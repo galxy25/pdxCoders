@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+<% provide(:title, "UEBPrep - Login") %>
+<div class="row app-txt-centered">
+  <div class="app-block medium-3 medium-centered columns hide-for-small-only">
+    <img src="assets/homepage/iHeader.png" alt="image" data-interchange="">
+=======
 <% provide(:title, "UEBPrep Log in") %>
 <div class="row">
   <div class="small-6 small-centered columns">
@@ -10,5 +16,26 @@
     <% end %>
     <div><%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %></div>
     <div><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></div>
+>>>>>>> origin/development
+  </div>
+</div>
+<div class="row">
+  <div class="app-modalbox app-roundedbox small-10 medium-7 small-centered columns">
+    <div class="app-txt-centered small-8 large-10 small-centered columns">
+      <h4>Login</h4>
+      <hr>
+      <%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
+        <img class="app-btns app-roundedbox" src="assets/homepage/google.png" alt="image" data-interchange="">
+      <% end %>
+    </div>
+    <br>
+    <div class="app-block small-16 large-10 small-centered columns">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <%= f.label :email %><%= f.email_field :email %>
+        <%= f.label :password %><%= f.password_field :password %>
+        <div id="home-newUserTxt">New User?</div>
+        <br><%= f.submit "Log in", class: "button" %><%= link_to "Sign up!", signup_path, class: "button app-floatR" %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,0 +1,7 @@
+<%= form_tag("/cards", method: "new") do %>
+  <%= label_tag(:content_type_id, 'Content Type Id:') %>
+  <%= text_field_tag(:content_type_id) %>
+  <%= label_tag(:text, 'Text:') %>
+  <%= text_field_tag :text %>
+  <%= submit_tag "Create Card", class: "button" %>
+<% end %>

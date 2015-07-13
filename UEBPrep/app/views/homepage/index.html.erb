@@ -1,17 +1,19 @@
-<div class="row">
-  <div id="home-content" class="small-12 small-centered columns">
-	<div class="row"><img src="assets/homepage/iHeader.png" alt="image" data-interchange=""></div>
-	<h1>Unified English Braille eLearning Platform</h1>
-	<div id="home-mailList" class="small-6 small-centered columns">
-		<p><h4>Join our mailing list for project updates!</h4></p><br>
-		<div class="small-8 small-centered columns">
+<div class="row app-txt-centered">
+	<div class="app-block medium-3 medium-centered columns hide-for-small-only">
+		<img src="assets/homepage/iHeader.png" alt="image" data-interchange="">
+	</div>
+	<div class="row">
+		<div class="small-11 small-centered columns">
+			<h1>Unified English Braille eLearning Platform</h1>
+		</div>
+	</div>
+	<div class="app-modalbox app-block app-roundedbox small-8 medium-6 small-centered columns">
+		<h4>Join our mailing list for project updates!</h4><br>
+		<div class="small-10 small-centered columns">
 			<%= form_tag("homepage/subscribe_email", method: "post") do %>
 				<%= email_field_tag(:email_address, nil, :placeholder=>"Email") %>
 				<p><%= submit_tag("Subscribe", :class=>"button") %></p>
 			<% end %>
 	    </div>
     </div>
-  </div>
 </div>
-<div id="home-footer">&#8226; <a href="https://github.com/galxy25/pdxCoders" target="_blank">GitHub</a> &#8226;</div>
-<hr id="home-hrFooter">
