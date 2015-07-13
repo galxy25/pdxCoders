@@ -1,5 +1,8 @@
-<h1> Text Content Or Whatever </h1>
-<ul>
-    <li>Text Content Id: <%= @card.content.id %></li>
-    <li>Text Content Text: <%= @card.content.text %></li>
-</ul>
+<div class="row">
+	<div class="user-card panel app-block app-roundedbox small-8 medium-5 small-centered columns">
+		<div class="sign">
+			<h1><%= @card.content.id %></h1>
+		</div>
+		<%= @card.content.text %>
+	</div>
+</div>
