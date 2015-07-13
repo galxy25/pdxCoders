@@ -9,7 +9,19 @@ class Api::CardsController < Api::ApiController
 
   def index
     @cards = Card.all
-    render json: { :users => @cards, status: 200 }
+    render json: { :cards => Rabl::Renderer.json(@cards, 'api/cards/index') , status: 200 , :count => @cards.count}
+  end
+
+  def show
+
+  end
+
+  def edit
+
+  end
+
+  def create
+
   end
 
   private
@@ -22,3 +34,6 @@ class Api::CardsController < Api::ApiController
     params.require(:card).permit(:content_type_id, :content_id)
   end
 end
+
+
+
