@@ -1,3 +1,7 @@
+<% content_for :navlinks do %>
+	<li class="active"><%= link_to "Sign Up", signup_path %></li>
+	<li class="active"><%= link_to "Login", login_path %></li>
+<% end %>
 <div class="row app-txt-centered">
 	<div class="app-block medium-3 medium-centered columns hide-for-small-only">
 		<img src="assets/homepage/iHeader.png" alt="image" data-interchange="">
@@ -7,8 +11,8 @@
 			<h1>Unified English Braille eLearning Platform</h1>
 		</div>
 	</div>
-	<div class="app-modalbox app-block app-roundedbox small-8 medium-6 small-centered columns">
-		<h4>Join our mailing list for project updates!</h4><br>
+	<div class="app-block app-modalbox app-roundedbox small-8 medium-6 small-centered columns">
+		<p>Join our mailing list for project updates!</p>
 		<div class="small-10 small-centered columns">
 			<%= form_tag("homepage/subscribe_email", method: "post") do %>
 				<%= email_field_tag(:email_address, nil, :placeholder=>"Email") %>
