@@ -3,7 +3,6 @@ class Api::CardsController < Api::ApiController
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
   before_action :authenticate
-  # skip_before_action :authenticate, only: [:create]
 
   respond_to :json
 
@@ -13,7 +12,12 @@ class Api::CardsController < Api::ApiController
   end
 
   def show
-
+    @card = Card.where(id: card_params[:id])
+    if @card.count > 0
+      render json: { :card => Rabl::Renderer.json(@card.first, 'api/cards/show') , status: 200, :count => @card.count}
+    else
+      render json: { status: 404, :errors => 'No card with this id was found'}
+    end
   end
 
   def edit
@@ -27,7 +31,7 @@ class Api::CardsController < Api::ApiController
   private
 
   def card_params
-    params.permit(:content_type_id, :content_id, :created_by)
+    params.permit(:content_type_id, :content_id, :created_by, :id)
   end
 
   def create_params
