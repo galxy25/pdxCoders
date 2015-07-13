@@ -1,7 +1,6 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+/****************************************************************/
+/* WHERE ARE THESE CLASSES USED ??? IF UNUSED, PLEASE DELETE!!! */
+/****************************************************************/
 .edit-pane
 {
     background: darkgray;
@@ -41,35 +40,55 @@
     border-radius: 5px;
     margin-top: 2%;
 }
+/****************************************************************/
+/****************************************************************/
 
-.signup-content
+
+/*  IN PROGRESS WORK
+.header.panel
 {
-    height:     77%;
+    margin: 3rem auto;
+    border: 2px solid #444;
+    background: #fff;
+}
+
+.header.panel p
+{
+    font: 1rem "Avenir Next";
+    padding: 1rem 2rem 2rem 2rem;
+    margin-top: -1.25rem;
+}
+
+.header.panel p span
+{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 75%;
+    font-weight: bold;
+}
+
+.header.panel .sign
+{
+    background: #fff;
+    width: 150px;
+    height: 2.4rem;
+    border: 2px solid #444;
+    position: relative;
+    top: -2.5rem;
+    margin: auto;
+}
+
+.header.panel .sign h1
+{
+    text-transform: uppercase;
+    font: bolder 0.875rem "Avenir Next";
+    letter-spacing: 3px;
+    color: #666;
+    font-size: 70%;
     text-align: center;
+    line-height: 2rem;
 }
 
-.signup-inputs
-{
-    width:      100%;
-    height:     50%;
-}
+*/
 
-.signup-textbox
-{
-    width:         15%;
-    padding:       1%;
-    border-radius: 6px;
-    font-size:     0.75em;
-    color:         #000;
-}
 
-.signup-submit
-{
-    background:      #29b0b7;
-    margin:          auto 0;
-    padding:         1% 3.5%;
-    border-radius:   6px;
-    color:           #fff;
-    font-size:     0.75em;
-    cursor:     pointer;
-}

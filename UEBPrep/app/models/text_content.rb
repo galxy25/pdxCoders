@@ -1,5 +1,6 @@
 class TextContent < ActiveRecord::Base
   after_save   :create_card
+  validates :text, presence: true
   validates_uniqueness_of :text
 
   attr_accessor :created_by

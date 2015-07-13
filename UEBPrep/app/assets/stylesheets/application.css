@@ -15,3 +15,36 @@
  *= require foundation_and_overrides
 
  */
+
+body {overflow-x:hidden;}
+
+.app-block { margin: 3% 0; }
+
+.app-btns
+{
+	opacity:   		    0.95;
+	-webkit-transition: opacity .3s ease;
+	transition:			opacity .3s ease;
+}
+	.app-btns:hover { opacity:1; }
+
+.app-floatR
+{
+	position: relative;
+	float:    right;
+}
+
+.app-modalbox
+{
+	background: #eee;
+	padding:    4%;
+}
+
+.app-roundedbox
+{
+    border-radius: 6px;
+    border:  	   0;
+    box-shadow:    0 2px 6px #000;
+}
+
+.app-txt-centered { text-align: center; }
