@@ -1,8 +1,8 @@
 class Card < ActiveRecord::Base
   validates :content_type_id, presence: true
   validates :content_id, presence: true
-  validates :created_by, presence: true
-  validates_uniqueness_of :content_id, :scope => :content_type_id
+  # validates :created_by, presence: true
+  # validates_uniqueness_of :content_id, :scope => :content_type_id
 
   before_save :content_exists
 
