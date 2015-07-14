@@ -1,0 +1,44 @@
+Date: July 2
+Time: 3:00-4:00pm
+Location: Capstone Lab
+Duration:	60 minutes
+
+Requested Attendees: Capstone Team: Brandon Isom, Parker Berger
+										 Sponsor Team: Holly Lawson, Samuel Sennot, Christopf Teuscher
+Actual Attendees:
+
+Agenda
+
+Week in Preview & Review (10 minutes)
+	-Owner: Brandon Isom
+	-Outcome: Demo completed features. Previous week's work reviewed. Expectations for next week's work set.
+
+Feedback on current iteration (5 minutes)
+	-Owner: Brandon Isom
+	-Outcome: Go over completed work, receive 
+
+Review order of work (5 minutes)
+	-Owner: Brandon Isom
+	-Outcome: Review the next stages of work. Adjust priorities if necessary.
+
+3rd party app API account (5 minutes)
+	-Owner: Brandon Isom
+	-Outcome: Get existing API details, or plan for later.
+
+Plan first user testing  (15 minutes)
+	-Owner: Brandon Isom
+	-Outcome: Date/time. Participants. Planned lesson info.
+
+Sponsor Q&A (10 minutes)
+	-Owner: Sponsor Team
+	-Outcome: Discuss any questions, comments or concerns.
+
+Meeting Review (5 Minutes)
+	-Owner: Brandon Isom
+	-Outcome: Review meeting points. Verify action items, and discussion items for next meeting.
+
+
+ 
+Action Items:
+
+Additional Discussion Items:
