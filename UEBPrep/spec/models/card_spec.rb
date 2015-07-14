@@ -15,13 +15,13 @@ RSpec.describe Card, type: :model do
       }.to raise_error { ActiveRecord::RecordNotFound }
     end
 
-    it "does not allow a duplicate card entry for the same content" do
-      card.save
-      expect {
-        new_card = Card.new(content_type_id: 1, content_id: content.id, created_by: user.id)
-        new_card.save
-      }.to change{ Card.count }.by 0
-    end
+    # it "does not allow a duplicate card entry for the same content" do
+    #   card.save
+    #   expect {
+    #     new_card = Card.new(content_type_id: 1, content_id: content.id, created_by: user.id)
+    #     new_card.save
+    #   }.to change{ Card.count }.by 0
+    # end
     
     # TODO: think of more tests.
     # Kind of awkward because of the necessity for a card entry to be created

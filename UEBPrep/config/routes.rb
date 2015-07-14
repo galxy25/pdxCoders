@@ -26,6 +26,7 @@ Rails.application.routes.draw do
           post   'login'  => 'api#login'
           delete 'logout' => 'api#logout'
 
+          resources :cards 
           resources :users
       end
   end
