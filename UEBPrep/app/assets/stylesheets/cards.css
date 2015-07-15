@@ -43,6 +43,22 @@ label[for=cardtext]
     display: none;
 }
 
+label[for=cardimage]
+{
+    font-size:       1.5em;
+    color: white;
+    display: none;
+}
+
+#cardimage
+{
+    width:         15%;
+    padding:       .5%;
+    border-radius: 6px;
+    font-size:       1.5em;
+    display: none;
+}
+
 #cardsubmit
 {
     background:      #29b0b7;

@@ -8,11 +8,13 @@
   <h2>Card Author: <%= @user.email %></h2>
     <%= form_for(:card) do |f| %>
         <%= label_tag(:cardtype, "Card Type") %>
-        <%= select_tag(:cardtype, options_for_select([['-Select-','0'],['Rule','rule'],['Text','text']])) %>
+        <%= select_tag(:cardtype, options_for_select([['-Select-','0'],['Image','image'],['Rule','rule'],['Text','text']])) %>
         <%= label_tag(:cardtitle, "Title") %>
         <%= text_field_tag(:cardtitle) %>
         <%= label_tag(:cardtext, "Text") %>
         <%= text_area_tag(:cardtext,"", size: "8x8") %>
+        <%= label_tag(:cardimage, "Image") %>
+        <%= image_tag("your_image_here.png", :alt => "Your Image Here", :id => "cardimage") %>
         <%= submit_tag("Create this card", :id=> "cardsubmit") %>
     <% end %>
   </div>
