@@ -1,10 +1,11 @@
 class ImageCardContent < ActiveRecord::Base
-  #after_save :create_card
-  #validates :text, presence: true
-  #validates_uniqueness_of :scope => :text
+  has_attached_file :image, styles: {small: "64x64", med: "100x100", large: "200x200"}
+  after_save :create_card
+  validates :text, presence: true
+  validates_uniqueness_of :scope => :text
 
-  #attr_accessor :created_by
-  #attr_reader :card
+  attr_accessor :created_by
+  attr_reader :card
 
   def to_partial_path
     'image_card_content'
