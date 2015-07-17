@@ -6,18 +6,21 @@
   <li class="active"><%= link_to "Logout", logout_path, method: "delete" %></li>
 <% end %>
 
-<h1>A single user</h1>
-<div >
-  <div >
+<div class="row app-txt-centered">
+  <div class="medium-3 medium-centered columns hide-for-small-only">
+    <img src="/assets/homepage/iHeader.png" alt="image" data-interchange="">
+  </div>
+</div>
+<div class="row">
+  <div class="app-block app-modalbox app-roundedbox small-10 medium-7 small-centered columns">
+    <div class="app-txt-centered small-8 large-10 small-centered columns">
+      <h4>My Profile</h4>
+      <hr>
+    </div>
+    <div class="app-block small-8 medium-15 small-centered columns">
       <ul>
-        <li>User Id: <%= @user.id %></li>
-        <li>User API Key: <%= @user.api_key %></li>
-        <li>User Email: <%= @user.email %></li>
-        <li>Username: <%= @user.username %></li>
-        <li>Location: <%= @user.location %></li>
-        <li>Member Since: <%= @user.created_at %></li>
-        <li><%= image_tag @user.avatar.url %></li>
-        <li><%= image_tag @user.avatar.url(:small) %></li>
+      	<%= render 'show_profile' %>
       </ul>
+    </div>
   </div>
 </div>

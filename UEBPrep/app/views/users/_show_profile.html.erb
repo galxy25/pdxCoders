@@ -1,0 +1,8 @@
+<li>User Id: <%= @user.id %></li>
+<li>User API Key: <%= @user.api_key %></li>
+<li>User Email: <%= @user.email %></li>
+<li>Username: <%= @user.username %></li>
+<li>Location: <%= @user.location %></li>
+<li>Member Since: <%= @user.created_at %></li>
+<li><%= image_tag @user.avatar.url %></li>
+<li><%= image_tag @user.avatar.url(:small) %></li>
