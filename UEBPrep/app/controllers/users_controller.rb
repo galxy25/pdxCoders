@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(:email => create_params[:email] , :password => create_params[:password])
+    @user = User.new(:email => create_params[:email] , :password => create_params[:password], :username => create_params[:username])
 
     if @user.save
       respond_to do |format|
