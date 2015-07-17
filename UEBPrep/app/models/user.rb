@@ -6,10 +6,11 @@ class User < ActiveRecord::Base
          :omniauth_providers => [:facebook, :google_oauth2]
   acts_as_paranoid
 
+  # Checks to ensure that username is present, unique and that the length is within 3 and 20
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
 
   extend FriendlyId
-  friendly_id :email, use: :slugged 
+  friendly_id :email, use: :slugged
 
   before_create do |doc|
     doc.api_key = doc.generate_api_key
