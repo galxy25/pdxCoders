@@ -1,3 +1,11 @@
+<% provide(:title, "UEBPrep - My Profile") %>
+
+<% content_for :navlinks do %>
+  <li class="active"><%=link_to "View Profile", {:controller => "users", :action => "show", :id => @user.id } %></li>
+  <li class="active"><%= link_to "Edit Profile", profile_path, method: "get" %></li>
+  <li class="active"><%= link_to "Logout", logout_path, method: "delete" %></li>
+<% end %>
+
 <h1>A single user</h1>
 <div >
   <div >
