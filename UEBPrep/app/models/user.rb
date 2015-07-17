@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
          :omniauth_providers => [:facebook, :google_oauth2]
   acts_as_paranoid
 
+  validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
+
   extend FriendlyId
-  friendly_id :email, use: :slugged
+  friendly_id :email, use: :slugged 
 
   before_create do |doc|
     doc.api_key = doc.generate_api_key

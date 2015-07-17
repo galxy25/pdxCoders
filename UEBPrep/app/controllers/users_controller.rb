@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate!
   skip_before_action :authenticate!, only: [:create, :new]
 
+
+
   def index
     @users = User.all()
     respond_to do |format|
