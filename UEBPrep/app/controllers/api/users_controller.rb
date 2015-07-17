@@ -38,10 +38,10 @@ class Api::UsersController < Api::ApiController
   private
 
   def user_params
-    params.permit(:id, :password, :email)
+    params.require(:user).permit(:avatar, :email, :password, :username, :location)
   end
 
   def create_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:avatar, :email, :password, :username, :location)
   end
 end
