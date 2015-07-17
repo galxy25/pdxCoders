@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate!
   skip_before_action :authenticate!, only: [:create, :new]
 
-
-
   def index
     @users = User.all()
     respond_to do |format|
@@ -29,7 +27,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(:email => create_params[:email] , :password => create_params[:password], :username => create_params[:username])
+    @user = User.new(:email => create_params[:email], :password => create_params[:password], :username => create_params[:username])
+
+
+  #def create
+    #@user = User.new
+    #(
+      #:avatar   => create_params[:avatar],    # will need default image file/urlpath
+      #:email    => create_params[:email],
+      #:password => create_params[:password],
+      #:username => create_params[:username]
+      #:location => create_params[:location],  # default location or null?
+      #:bio      => create_params[:bio]        # default bio or null ?
+    #)
+
 
     if @user.save
       respond_to do |format|
@@ -74,15 +85,15 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:avatar, :email, :password, :username, :location)
+    params.require(:user).permit(:avatar, :email, :password, :username, :location, :bio)
   end
 
   def create_params
-    params.require(:user).permit(:avatar, :email, :password, :username, :location)
+    params.require(:user).permit(:avatar, :email, :password, :username, :location, :bio)
   end
 
   def update_params
-    params.require(:user).permit(:avatar, :email, :password, :username, :location)
+    params.require(:user).permit(:avatar, :email, :password, :username, :location, :bio)
   end
 
 end

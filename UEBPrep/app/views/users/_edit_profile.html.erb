@@ -1,0 +1,48 @@
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <% @user.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form_tag(method: "update_params") do %>
+
+      <!--
+
+        in progress... trying to do
+
+        1) get current user's avatar (on pg load)
+        2) use this as the file-input button (which opens the file browser to select a new avatar img)
+        3) optionally allow user to use URL link to img also ?
+        3) when user clicks submit, controller determines which one to use/update (if at all; aka changed)
+
+      -->
+      <div class="image-upload">
+        <%= f.label :avatar %>
+        <label for="file-input">
+          <%= image_tag @user.avatar.url(:small) %>
+        </label>
+        <input id="file-input" type="file"/>
+      </div>
+      <!-- <%= f.file_field :avatar %> -->
+
+    <%= label_tag(:email,    'Email:')    %><%= email_field_tag  :email,    "", value: @user.email    %>
+    <%= label_tag(:username, 'Username:') %><%= text_field_tag   :username, "", value: @user.username %>
+    <%= label_tag(:location, 'Location:') %><%= text_field_tag   :location, "", value: @user.location %>
+
+
+    <!--                        UPDATE USER MODEL FOR LOCATION & BIO                        -->
+    <!-- :location (below) NEEDS TO BE RENAMED/CHANGED TO :bio ONCE DB HOOKS ARE ADDED!!!   -->
+    <!--            INCORECTLY NAMED HERE FOR PAGE TO RENDER W/OUT ERRORS!                  -->
+    <%= label_tag(:bio,      'Bio:')      %><%= text_area(:user, :location, rows: 10)                 %>
+
+
+
+    <%= submit_tag "Update Profile", class: "button" %>
+  <% end %>
+
+<% end %>
