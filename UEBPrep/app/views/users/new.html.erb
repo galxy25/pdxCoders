@@ -1,9 +1,10 @@
-
 <% provide(:title, "UEBPrep - Sign up") %>
+
 <% content_for :navlinks do %>
   <li class="active"><%= link_to "Sign Up", signup_path %></li>
   <li class="active"><%= link_to "Login", login_path %></li>
 <% end %>
+
 <div class="row app-txt-centered">
   <div class="medium-3 medium-centered columns hide-for-small-only">
     <img src="assets/homepage/iHeader.png" alt="image" data-interchange="">
@@ -34,6 +35,7 @@
     <div class="app-block small-8 medium-15 small-centered columns">
       <%= form_for(@user) do |f| %>
         <%= f.label :email %><%= f.email_field :email %>
+        <%= f.label :username %><%= f.text_field :username %>
         <%= f.label :password %><%= f.password_field :password %>
         <%= f.label :password_confirmation, "Confirmation" %><%= f.password_field :password_confirmation %>
         <%= f.label :avatar, "Add a profile picture" %><%= f.file_field :avatar%>
