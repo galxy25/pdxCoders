@@ -89,12 +89,12 @@ ActiveRecord::Schema.define(version: 20150710165115) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
