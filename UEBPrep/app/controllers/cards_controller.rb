@@ -21,16 +21,16 @@ class CardsController < ApplicationController
 
   # GET /cards/1/edit
   def edit
+    @card = Card.find(params[:id])
   end
 
   # POST /cards
   def create
-    #binding.pry
-    case card_params[:cardtype]
+    case create_params[:cardtype]
       when 'text'
-        @content = TextContent.new(:text => card_params[:cardtext], :created_by => current_user.id)
+        @content = TextContent.new(:text => create_params[:cardtext], :created_by => current_user.id)
       when 'rule'
-        @content = TitledCardContent.new(:title => card_params[:cardtitle], :text => card_params[:cardtext], :created_by => current_user.id)
+        @content = TitledCardContent.new(:title => create_params[:cardtitle], :text => create_params[:cardtext], :created_by => current_user.id)
     end
     @content.save
     @card = @content.card
@@ -65,7 +65,10 @@ class CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.permit(:cardtype, :cardtitle, :cardtext)
+      params.permit(:cardType,:title, :text)
     end
 
+    def create_params
+      params.permit(:cardtype,:cardtitle, :cardtext)
+    end
 end

@@ -10,7 +10,18 @@
       </ul>
     </div>
   <% end %>
-
+    <% if @card.content_type_id == 1 %>
+        <h2>Text Content</h2>
+        <%= label_tag(:cardtext, "Text") %>
+        <%= text_area_tag( 'text', TextContent.find(@card.content_id).text , size: '8x8') %>
+    <% else %>
+        <h2>Card Title</h2>
+        <%= label_tag(:cardtitle, "Title") %>
+        <%= text_field_tag( 'title', TitledCardContent.find(@card.content_id).title) %>
+        <h2>Text Content</h2>
+        <%= label_tag(:cardtext, "Text") %>
+        <%= text_area_tag( 'text', TitledCardContent.find(@card.content_id).text , size: '8x8') %>
+    <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
