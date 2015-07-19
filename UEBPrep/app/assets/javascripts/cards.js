@@ -6,6 +6,8 @@ $(document).ready(function() {
         $('#cardtext').css('display', 'none');
         $('label[for="cardimage"]').css('display', 'none');
         $('#cardimage').css('display', 'none');
+        $('label[for="cardimagealt"]').css('display', 'none');
+        $('#cardimagealt').css('display', 'none');
         $('label[for="uploadcardimage"]').text("Cannot upload an image for this card type");
         $('#cardsubmit').css('display', 'none');
         var type = $('#cardtype').val();
@@ -28,9 +30,11 @@ $(document).ready(function() {
             $('#cardtext').css('display', 'block');
             $('label[for="cardimage"]').css('display', 'block');
             $('#cardimage').css('display', 'block');
-            $('#cardsubmit').css('display', 'block');
+            $('label[for="cardimagealt"]').css('display', 'block');
+            $('#cardimagealt').css('display', 'block');
             $('label[for="uploadcardimage"]').text("Upload an image");
             $('#uploadcardimage').prop('disabled', false);
+            $('#cardsubmit').css('display', 'block');
         }
     });
 });
@@ -42,11 +46,9 @@ $(function() {
         var reader = new FileReader();
         reader.onload = function(file) {
             var img = new Image();
-            console.log(file);
             img.src = file.target.result;
             $('#cardimage').attr('src',img.src);
         }
         reader.readAsDataURL(image);
-        console.log(files);
     });
 });

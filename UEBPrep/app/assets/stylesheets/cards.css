@@ -56,6 +56,21 @@ label[for=uploadcardimage]
     color: white;
 }
 
+label[for=cardimagealt]
+{
+    font-size:       1.5em;
+    color: white;
+    display: none;
+}
+
+#cardimagealt
+{
+    padding:       1%;
+    border-radius: 6px;
+    font-size:       1.5em;
+    display: none;
+}
+
 #cardimage
 {
     width:         15%;
