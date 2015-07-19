@@ -4,6 +4,6 @@
       <h1><%= @card.content.title %></h1>
     </div>
     <%= @card.content.text %>
-    <%= link_to image_tag(@card.content.image.url(:med)), @card.content.image.url %>
+    <%= link_to image_tag(@card.content.image.url(:med)), alt: @card.content.alt %>
   </div>
 </div>
