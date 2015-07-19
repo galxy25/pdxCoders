@@ -15,6 +15,8 @@
         <%= text_area_tag(:cardtext,"", size: "8x8") %>
         <%= label_tag(:cardimage, "Image") %>
         <%= image_tag("your_image_here.png", :alt => "Your Image Here", :id => "cardimage") %>
+        <%= label_tag(:uploadcardimage, "Cannot upload an image for this card type") %>
+        <%= file_field_tag('uploadcardimage',disabled: true, accept: 'image/png,image/gif,image/jpeg')%>
         <%= submit_tag("Create this card", :id=> "cardsubmit") %>
     <% end %>
   </div>

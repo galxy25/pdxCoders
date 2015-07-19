@@ -6,6 +6,7 @@ $(document).ready(function() {
         $('#cardtext').css('display', 'none');
         $('label[for="cardimage"]').css('display', 'none');
         $('#cardimage').css('display', 'none');
+        $('label[for="uploadcardimage"]').text("Cannot upload an image for this card type");
         $('#cardsubmit').css('display', 'none');
         var type = $('#cardtype').val();
         if (type == "text"){
@@ -28,6 +29,24 @@ $(document).ready(function() {
             $('label[for="cardimage"]').css('display', 'block');
             $('#cardimage').css('display', 'block');
             $('#cardsubmit').css('display', 'block');
+            $('label[for="uploadcardimage"]').text("Upload an image");
+            $('#uploadcardimage').prop('disabled', false);
         }
+    });
+});
+
+$(function() {
+    $('#uploadcardimage').on('change', function(event) {
+        var files = event.target.files;
+        var image = files[0]
+        var reader = new FileReader();
+        reader.onload = function(file) {
+            var img = new Image();
+            console.log(file);
+            img.src = file.target.result;
+            $('#cardimage').attr('src',img.src);
+        }
+        reader.readAsDataURL(image);
+        console.log(files);
     });
 });

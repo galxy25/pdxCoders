@@ -50,6 +50,12 @@ label[for=cardimage]
     display: none;
 }
 
+label[for=uploadcardimage]
+{
+    font-size:       1.5em;
+    color: white;
+}
+
 #cardimage
 {
     width:         15%;

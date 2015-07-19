@@ -31,6 +31,8 @@ class CardsController < ApplicationController
         @content = TextContent.new(:text => card_params[:cardtext], :created_by => current_user.id)
       when 'rule'
         @content = TitledCardContent.new(:title => card_params[:cardtitle], :text => card_params[:cardtext], :created_by => current_user.id)
+      when 'image'
+        @content = ImageCardContent.new(:title => card_params[:cardtitle], :text => card_params[:cardtext], :image => card_params[:cardimage], :created_by => current_user.id)
     end
     @content.save
     @card = @content.card
@@ -65,7 +67,7 @@ class CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.permit(:cardtype, :cardtitle, :cardtext)
+      params.permit(:cardtype, :cardtitle, :cardtext, :cardimage)
     end
 
 end
