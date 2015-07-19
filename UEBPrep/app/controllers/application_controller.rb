@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate!
-    unless user_signed_in?
-      redirect_to login_path
+    unless session.blank? || user_signed_in?
+      redirect_to login_path , :status => 403
     end
   end
 end

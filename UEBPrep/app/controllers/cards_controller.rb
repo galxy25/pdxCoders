@@ -7,11 +7,19 @@ class CardsController < ApplicationController
   # GET /cards
   def index
     @cards = Card.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @cards }
+    end
   end
 
   # GET /cards/1
   def show
-
+    @card = Card.find(params["id"].to_i)
+    respond_to do |format|
+      format.html
+      format.json { render json: @card }
+    end
   end
 
   # GET /cards/new
