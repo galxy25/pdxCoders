@@ -31,6 +31,14 @@ Developer Documentation
 A user consists of a unique email address, valid password, and api_key(for api access both on behalf of and for the user). 
 
   Cards
+		In the database, a card is represented by a unique combination of content type id and content id, and a created by field that is the user id of the user who created it. A card object also includes a non-persisted field representing it's content. The content is retrieved, upon instantiation, from the table referred to by the content type id, at the content id stored in the card table. To create a card, the content must first be created created. The content object then creates a card entry associated to itself. 
+
+	Card Content
+		Text Content
+			The text content type contains one field for a unicode string. Creating a text content automatically creates a card entry associated to it. 
+
+		Titled Card Content
+			The titled card content type contains two unicode string fields. One is for the displayed title of the card. The other field is a text field representing the string content of the card. Creating a titled card content automatically creates a card entry associated to it.
 
   Lessons
 
