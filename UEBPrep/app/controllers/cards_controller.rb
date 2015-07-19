@@ -11,7 +11,7 @@ class CardsController < ApplicationController
 
   # GET /cards/1
   def show
-
+    @current_user = current_user
   end
 
   # GET /cards/new
