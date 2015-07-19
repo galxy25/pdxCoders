@@ -12,3 +12,7 @@
   </div>
   <%= render @card.content %>
 </div>
+
+<%unless @current_user.nil? %>
+    <%= render 'links' %>
+<%end %>
