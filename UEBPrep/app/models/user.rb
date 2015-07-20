@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   acts_as_paranoid
 
   # Checks to ensure that username is present, unique and that the length is within 3 and 20
-  validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
+  validates :username, :presence => true, :uniqueness => true, :length => { :in => 1..100 }
 
   extend FriendlyId
   friendly_id :username, use: :slugged
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.username = auth.info.email
+      user.username = auth.info.email.split('@')[0] # This not the best way to: drop the '@etc.com'
     end
   end
 
