@@ -47,6 +47,18 @@ RSpec.describe CardsController, type: :controller do
           expect(@results['id']).to eq @card.id
         end
       end
+
+      describe '#create' do
+        it 'should create a text card when given valid data' do
+          post :create, card: {:cardtext => "hello world", :cardtype => 'text'} , :format => :json
+          @results = JSON.parse(response.body)
+          expect(TextContent.find(@results['content_id']).text).to eq "hello world"
+        end
+
+        it 'creates a new card in the database' do
+          expect{post :create, card: {:cardtext => "hello world", :cardtype => 'text'} , :format => :json}.to change{Card.all.count}.by 1
+        end
+      end
     end
 
     context 'without a valid user' do

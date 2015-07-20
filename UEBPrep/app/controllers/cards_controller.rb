@@ -37,7 +37,6 @@ class CardsController < ApplicationController
 
   # POST /cards
   def create
-    #binding.pry
     case card_params[:cardtype]
       when 'text'
         @content = TextContent.new(:text => card_params[:cardtext], :created_by => current_user.id)
@@ -51,9 +50,15 @@ class CardsController < ApplicationController
     @card = @content.card
 
     if @card
-      redirect_to @card, notice: 'Card was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to @card, notice: 'Card was successfully created' }
+        format.json { render json: @card, status: 204 }
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html render :new
+        format.json { render json: {errors: 'Unable to create your card',  status: 422} }
+      end
     end
   end
 
@@ -79,8 +84,8 @@ class CardsController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    def card_params
-      params.permit(:cardtype, :cardtitle, :cardtext, :uploadcardimage, :cardimagealt)
-    end
+  def card_params
+    params.require(:card).permit(:cardtype, :cardtitle, :cardtext, :uploadcardimage, :cardimagealt)
+  end
 
 end
