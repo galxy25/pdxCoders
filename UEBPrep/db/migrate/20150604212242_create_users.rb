@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :location
       t.text :bio
-
       t.timestamps
     end
   end

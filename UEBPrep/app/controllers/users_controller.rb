@@ -27,14 +27,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(
-        :email => create_params[:email],
-        :password => create_params[:password],
-        :username => create_params[:username],
-        :location => create_params[:location],  # default location or null?
-        :bio => create_params[:bio]             # default bio or null ?
-        #:avatar   => create_params[:avatar],    # will need default image file/urlpath
-    )
+    @user = User.new(:email => create_params[:email], :password => create_params[:password], :username => create_params[:username], :location => create_params[:location], :bio => create_params[:bio])
 
     if @user.save
       respond_to do |format|

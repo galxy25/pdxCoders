@@ -32,7 +32,7 @@
 
     <%= label_tag(:email,    'Email:')    %><%= email_field_tag  :email,    "", value: @user.email    %>
     <%= label_tag(:username, 'Username:') %><%= text_field_tag   :username, "", value: @user.username %>
-    <%= label_tag(:location, 'Location:') %><%= text_field_tag   :location, "", value: @user.location %>
+    <%= label_tag(:location, 'Location:') %><%= text_field_tag (:user, :location, rows: 1) %>
     <%= label_tag(:bio,      'Bio:')      %><%= text_area(:user, :bio, rows: 10) %>
 
 
