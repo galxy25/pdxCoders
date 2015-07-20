@@ -52,7 +52,7 @@ class CardsController < ApplicationController
     if @card
       respond_to do |format|
         format.html { redirect_to @card, notice: 'Card was successfully created' }
-        format.json { render json: @card, status: 204 }
+        format.json { render json: @card, status: 200 }
       end
     else
       respond_to do |format|
@@ -65,16 +65,25 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1
   def update
     if @card.update(card_params)
-      redirect_to @card, notice: 'Card was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to @card, notice: 'Card was successfully updated.' }
+        format.json { render json: @card, status: 200 }
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html render :edit
+        format.json { render json: {errors: 'Unable to update your card',  status: 422} }
+      end
     end
   end
 
   # DELETE /cards/1
   def destroy
     @card.destroy
-    redirect_to cards_url, notice: 'Card was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.'}
+      format.json status: 204
+    end
   end
 
   private
