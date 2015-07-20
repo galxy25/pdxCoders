@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
 
   extend FriendlyId
-  friendly_id :email, use: :slugged
+  friendly_id :username, use: :slugged
 
   before_create do |doc|
     doc.api_key = doc.generate_api_key
