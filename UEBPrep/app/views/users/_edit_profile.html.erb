@@ -33,13 +33,7 @@
     <%= label_tag(:email,    'Email:')    %><%= email_field_tag  :email,    "", value: @user.email    %>
     <%= label_tag(:username, 'Username:') %><%= text_field_tag   :username, "", value: @user.username %>
     <%= label_tag(:location, 'Location:') %><%= text_field_tag   :location, "", value: @user.location %>
-
-
-    <!--                        UPDATE USER MODEL FOR LOCATION & BIO                        -->
-    <!-- :location (below) NEEDS TO BE RENAMED/CHANGED TO :bio ONCE DB HOOKS ARE ADDED!!!   -->
-    <!--            INCORECTLY NAMED HERE FOR PAGE TO RENDER W/OUT ERRORS!                  -->
-    <%= label_tag(:bio,      'Bio:')      %><%= text_area(:user, :location, rows: 10)                 %>
-
+    <%= label_tag(:bio,      'Bio:')      %><%= text_area(:user, :bio, rows: 10) %>
 
 
     <%= submit_tag "Update Profile", class: "button" %>

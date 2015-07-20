@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20150710165115) do
     t.string   "password"
     t.string   "username"
     t.string   "location"
+    t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
