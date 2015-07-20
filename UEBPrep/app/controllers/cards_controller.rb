@@ -6,7 +6,7 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-    @cards = Card.all
+    @cards = Card.order(:id).page params[:page]
   end
 
   # GET /cards/1

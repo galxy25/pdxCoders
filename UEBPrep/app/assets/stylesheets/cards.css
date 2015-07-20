@@ -53,3 +53,7 @@ label[for=cardtext]
     cursor:          pointer;
     display: none;
 }
+
+.accordion {
+    margin: 0;
+}
