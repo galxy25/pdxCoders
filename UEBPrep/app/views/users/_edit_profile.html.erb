@@ -30,10 +30,10 @@
       </div>
       <!-- <%= f.file_field :avatar %> -->
 
-    <%= label_tag(:email,    'Email:')    %><%= email_field_tag  :email,    "", value: @user.email    %>
-    <%= label_tag(:username, 'Username:') %><%= text_field_tag   :username, "", value: @user.username %>
-    <%= label_tag(:location, 'Location:') %><%= text_area(:user, :location, rows: 1) %>
-    <%= label_tag(:bio,      'Bio:')      %><%= text_area(:user, :bio, rows: 10) %>
+    <%= f.label :email %><%= f.text_field :email %>
+    <%= f.label :username %><%= f.text_field :username %>
+    <%= f.label :location %><%= f.text_field :location %>
+    <%= f.label :bio %><%= f.text_area :bio %>
 
 
     <%= submit_tag "Update Profile", class: "button" %>
