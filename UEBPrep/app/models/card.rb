@@ -12,6 +12,30 @@ class Card < ActiveRecord::Base
   after_find       :get_content
   before_destroy   :destroy_content
 
+  def update(params)
+    case content_type_id
+      when 1
+        content = TextContent.find(content_id)
+        content.update(text: params[:text])
+        content.save!
+        self.reload
+      when 2
+        content = TitledCardContent.find(content_id)
+        content.update(text: params[:text],
+                       title: params[:title])
+        content.save!
+        self.reload
+      when 3
+        content = ImageCardContent.find(content_id)
+        content.update(text: params[:text],
+                       title: params[:title],
+                       alt: params[:alt],
+                       image: params[:uploadcardimage])
+        content.save!
+        self.reload
+    end
+  end
+
   private
     # I hate everything about needing to do this ...
     # something not quite right with my schema
