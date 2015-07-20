@@ -11,7 +11,7 @@ class CardsController < ApplicationController
 
   # GET /cards/1
   def show
-
+    @current_user = current_user
   end
 
   # GET /cards/new
@@ -26,11 +26,20 @@ class CardsController < ApplicationController
 
   # POST /cards
   def create
-    case create_params[:cardtype]
+    case card_params[:cardtype]
       when 'text'
-        @content = TextContent.new(:text => create_params[:cardtext], :created_by => current_user.id)
+        @content = TextContent.new(:text => card_params[:cardtext],
+                                   :created_by => current_user.id)
       when 'rule'
-        @content = TitledCardContent.new(:title => create_params[:cardtitle], :text => create_params[:cardtext], :created_by => current_user.id)
+        @content = TitledCardContent.new(:title => card_params[:cardtitle],
+                                         :text => card_params[:cardtext],
+                                         :created_by => current_user.id)
+      when 'image'
+        @content = ImageCardContent.new(:title => card_params[:cardtitle],
+                                        :text => card_params[:cardtext],
+                                        :image => card_params[:uploadcardimage],
+                                        :created_by => current_user.id,
+                                        :alt => card_params[:cardimagealt])
     end
     @content.save
     @card = @content.card
@@ -44,7 +53,7 @@ class CardsController < ApplicationController
 
   # PATCH/PUT /cards/1
   def update
-    if @card.update(card_params)
+    if @card.update(update_params)
       redirect_to @card, notice: 'Card was successfully updated.'
     else
       render :edit
@@ -65,10 +74,10 @@ class CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.permit(:cardType,:title, :text)
+      params.permit(:cardtype, :cardtitle, :cardtext, :uploadcardimage, :cardimagealt )
     end
 
-    def create_params
-      params.permit(:cardtype,:cardtitle, :cardtext)
+    def update_params
+      params.permit(:cardtype, :title , :text , :uploadcardimage, :alt )
     end
 end

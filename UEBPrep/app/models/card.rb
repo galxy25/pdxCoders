@@ -21,7 +21,16 @@ class Card < ActiveRecord::Base
         self.reload
       when 2
         content = TitledCardContent.find(content_id)
-        content.update(text: params[:text], title: params[:title])
+        content.update(text: params[:text],
+                       title: params[:title])
+        content.save!
+        self.reload
+      when 3
+        content = ImageCardContent.find(content_id)
+        content.update(text: params[:text],
+                       title: params[:title],
+                       alt: params[:alt],
+                       image: params[:uploadcardimage])
         content.save!
         self.reload
     end
@@ -36,6 +45,8 @@ class Card < ActiveRecord::Base
           @content = TextContent.find(self.content_id)
         when 2
           @content = TitledCardContent.find(self.content_id)
+        when 3
+          @content = ImageCardContent.find(self.content_id)
       end
     end
 
@@ -51,6 +62,10 @@ class Card < ActiveRecord::Base
           end
         when 2
           if TitledCardContent.find(self.content_id).nil?
+            return false
+          end
+        when 3
+          if ImageCardContent.find(self.content_id).nil?
             return false
           end
       end
