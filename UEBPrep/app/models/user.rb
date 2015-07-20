@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
          :omniauth_providers => [:facebook, :google_oauth2]
   acts_as_paranoid
 
+  has_many :playlists, dependent: :destroy
+
   extend FriendlyId
   friendly_id :email, use: :slugged
 
