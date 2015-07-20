@@ -43,6 +43,43 @@ label[for=cardtext]
     display: none;
 }
 
+label[for=cardimage]
+{
+    font-size:       1.5em;
+    color: white;
+    display: none;
+}
+
+label[for=uploadcardimage]
+{
+    font-size:       1.5em;
+    color: white;
+}
+
+label[for=cardimagealt]
+{
+    font-size:       1.5em;
+    color: white;
+    display: none;
+}
+
+#cardimagealt
+{
+    padding:       1%;
+    border-radius: 6px;
+    font-size:       1.5em;
+    display: none;
+}
+
+#cardimage
+{
+    width:         15%;
+    padding:       .5%;
+    border-radius: 6px;
+    font-size:       1.5em;
+    display: none;
+}
+
 #cardsubmit
 {
     background:      #29b0b7;

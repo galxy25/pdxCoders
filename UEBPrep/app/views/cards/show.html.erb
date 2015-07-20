@@ -12,3 +12,6 @@
   </div>
   <%= render partial: @card.content, locals: { content: @card.content } %>
 </div>
+<%unless @current_user.nil? %>
+    <%= render 'links' %>
+<%end %>
