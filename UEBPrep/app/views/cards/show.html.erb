@@ -10,5 +10,8 @@
       <h1>Cards</h1>
     </div>
   </div>
-  <%= render @card.content %>
+  <%= render partial: @card.content, locals: { content: @card.content } %>
 </div>
+<%unless @current_user.nil? %>
+    <%= render 'links' %>
+<%end %>

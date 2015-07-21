@@ -1,0 +1,11 @@
+<ul class="accordion" id="card-list" data-accordion>
+  <% @cards.each do |card| %>
+    <% content_type_string = ContentType.find_by(id: card.content_type_id).name %>
+    <li class="accordion-navigation" created_by="<%=card.created_by%>">
+      <a href="#panel<%= card.id %>">A <%= content_type_string %> card</a>
+      <div id="panel<%= card.id %>" class="content">
+        <%= render partial: card.content, locals: { content: card.content } %>
+      </div>
+    </li>
+  <% end %>
+</ul>

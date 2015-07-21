@@ -16,6 +16,8 @@ if Rails.env.test? || Rails.env.development?
 
   content_type2 = ContentType.find_by(name: 'TitledCardContent') || ContentType.create(name: 'TitledCardContent')
   titled_card_content = TitledCardContent.find_by(title: 'super cool title') || TitledCardContent.create(title: 'super cool title', text: 'double super cool text', created_by: jane_doe.id)
+
+  content_type3 = ContentType.find_by(name: 'ImageContent') || ContentType.create(name: 'ImageContent')
 end
 
 
