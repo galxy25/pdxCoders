@@ -9,7 +9,7 @@
     </div>
   <% end %>
 
-  <%= form_tag(method: "update_params") do %>
+  <%= form_tag(method: "update_params", html: { multipart: true }) do %>
 
       <!--
 
@@ -28,7 +28,7 @@
         </label>
         <input id="file-input" type="file"/>
       </div>
-      <!-- <%= f.file_field :avatar %> -->
+      <%= f.file_field :avatar %>
 
     <%= f.label :email %><%= f.text_field :email %>
     <%= f.label :username %><%= f.text_field :username %>

@@ -33,7 +33,7 @@
     </div>
     <br>
     <div class="app-block small-8 medium-15 small-centered columns">
-      <%= form_for(@user) do |f| %>
+      <%= form_for @user, html: { multipart: true } do |f| %>
         <%= f.label :email %><%= f.email_field :email %>
         <%= f.label :username %><%= f.text_field :username %>
         <%= f.label :password %><%= f.password_field :password %>

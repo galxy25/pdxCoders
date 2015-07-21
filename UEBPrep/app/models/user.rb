@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   # Validate content type
   validates_attachment_content_type :avatar, :content_type => /\Aimage/
   # Validate filename
-  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
+  #validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
 
   def generate_api_key
     loop do
