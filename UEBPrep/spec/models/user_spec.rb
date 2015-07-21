@@ -5,17 +5,17 @@ RSpec.describe User, type: :model do
 
   describe "Create" do
     it "Creates a user when given valid input" do
-      u=User.new(email: "test@test.com", password: "abcd1234")
+      u=User.new(email: "test@test.com", username: "test", password: "abcd1234")
       expect{u.save}.to change{User.count}.by 1
     end
 
     it "Does not create a user when given an invalid email" do
-      u=User.new(email: "testbad", password: "abcd1234")
+      u=User.new(email: "testbad", username: "testbad", password: "abcd1234")
       expect{u.save}.to change{User.count}.by 0
     end
 
     it "Does not create a user when given an invalid password" do
-      u=User.new(email: "test@test.com", password: "abc")
+      u=User.new(email: "test@test.com", username: "test1", password: "abc")
       expect{u.save}.to change{User.count}.by 0
     end
   end

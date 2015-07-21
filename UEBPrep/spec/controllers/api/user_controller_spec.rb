@@ -4,7 +4,7 @@ RSpec.describe Api::UsersController, type: :controller do
 
     context "with two users" do
       let!(:user) {FactoryGirl.create(:user)}
-      let!(:user2) {FactoryGirl.create(:user, :email => "some@some.com")}
+      let!(:user2) {FactoryGirl.create(:user, :email => "some@some.com", :username => 'some')}
 
       describe "#index" do
         before(:each) do
