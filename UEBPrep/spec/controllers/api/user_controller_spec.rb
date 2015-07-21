@@ -4,7 +4,7 @@ RSpec.describe Api::UsersController, type: :controller do
 
     context "with two users" do
       let!(:user) {FactoryGirl.create(:user)}
-      let!(:user2) {FactoryGirl.create(:user, :email => "some@some.com", :username => 'some')}
+      let!(:user2) {FactoryGirl.create(:user2)}
 
       describe "#index" do
         before(:each) do
@@ -29,7 +29,7 @@ RSpec.describe Api::UsersController, type: :controller do
 
       describe "#show" do
         before(:each) do
-          get :show , :id => user2.id , :api_key => user2.api_key
+          get :show , :id => user2.id, :api_key => user2.api_key
           @results = JSON.parse(response.body)
         end
 
@@ -61,7 +61,8 @@ RSpec.describe Api::UsersController, type: :controller do
         end
         it "creates a new user when given valid user data" do
           post :create, user: { email: "test@test.com",
-                                password: "password" }
+                                password: "password",
+                                username: "test username" }
           results = JSON.parse(response.body)
           expect(results["status"]).to be 204
           expect(results["user"]["email"]).to match "test@test.com"
