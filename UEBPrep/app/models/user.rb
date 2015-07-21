@@ -20,9 +20,10 @@ class User < ActiveRecord::Base
                     styles: { small: "64x64", med: "100x100", large: "200x200" }
 
   # Validate content type
-  validates_attachment_content_type :avatar, :content_type => /\Aimage/
+  validates_attachment_content_type :avatar, :content_type => %w(image/jpeg image/jpg image/png)
   # Validate filename
-  #validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
+  # validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
+
 
   def generate_api_key
     loop do
