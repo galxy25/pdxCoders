@@ -33,9 +33,15 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.username = auth.info.email.split('@')[0] # This not the best way to: drop the '@etc.com'
+      if !user.email
+        user.email = "noValidEmail@wrong.com"
+        user.password = "vagrant"
+        user.username = "noValidEmail"
+      else
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        user.username = auth.info.email.split('@')[0] # This not the best way to: drop the '@etc.com'
+      end
     end
   end
 
