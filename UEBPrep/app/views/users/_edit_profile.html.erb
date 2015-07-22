@@ -1,0 +1,42 @@
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <% @user.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form_tag(method: "update_params", html: { multipart: true }) do %>
+
+      <!--
+
+        in progress... trying to do
+
+        1) get current user's avatar (on pg load)
+        2) use this as the file-input button (which opens the file browser to select a new avatar img)
+        3) optionally allow user to use URL link to img also ?
+        3) when user clicks submit, controller determines which one to use/update (if at all; aka changed)
+
+      -->
+      <div class="image-upload">
+        <%= f.label :avatar %>
+        <label for="file-input">
+          <%= image_tag @user.avatar.url(:small) %>
+        </label>
+        <input id="file-input" type="file"/>
+      </div>
+      <%= f.file_field :avatar %>
+
+    <%= f.label :email %><%= f.text_field :email %>
+    <%= f.label :username %><%= f.text_field :username %>
+    <%= f.label :location %><%= f.text_field :location %>
+    <%= f.label :bio %><%= f.text_area :bio %>
+
+
+    <%= submit_tag "Update Profile", class: "button" %>
+  <% end %>
+
+<% end %>

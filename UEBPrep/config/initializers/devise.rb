@@ -31,7 +31,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [:email]
+  config.authentication_keys = [:email, :username]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -246,6 +246,8 @@ Devise.setup do |config|
   # Declare the provider as facebook and sends in the APP_ID and APP_SECRET from a
   # file called: config/application.yml
   config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET']
+
+  require 'omniauth-twitter'
   config.omniauth :twitter, ENV['TW_APP_ID'], ENV['TW_APP_SECRET']
 
 

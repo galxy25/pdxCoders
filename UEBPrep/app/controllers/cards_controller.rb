@@ -6,11 +6,15 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-    @cards = Card.all
+
+    @cards = Card.order(:id).page params[:page]
     respond_to do |format|
       format.html
       format.json { render json: @cards }
     end
+
+    # @cards = Card.order(:id).page params[:page]
+
   end
 
   # GET /cards/1
@@ -33,19 +37,28 @@ class CardsController < ApplicationController
 
   # GET /cards/1/edit
   def edit
+    @card = Card.find(params[:id])
   end
 
   # POST /cards
   def create
     case card_params[:cardtype]
       when 'text'
-        @content = TextContent.new(:text => card_params[:cardtext], :created_by => current_user.id)
+        @content = TextContent.new(:text => card_params[:cardtext],
+                                   :created_by => current_user.id)
       when 'rule'
-        @content = TitledCardContent.new(:title => card_params[:cardtitle], :text => card_params[:cardtext], :created_by => current_user.id)
+        @content = TitledCardContent.new(:title => card_params[:cardtitle],
+                                         :text => card_params[:cardtext],
+                                         :created_by => current_user.id)
       when 'image'
-        @content = ImageCardContent.new(:title => card_params[:cardtitle], :text => card_params[:cardtext],
-                                        :image => card_params[:uploadcardimage], :created_by => current_user.id, :alt => card_params[:cardimagealt])
+        @content = ImageCardContent.new(:title => card_params[:cardtitle],
+                                        :text => card_params[:cardtext],
+                                        :image => card_params[:uploadcardimage],
+                                        :created_by => current_user.id,
+                                        :alt => card_params[:cardimagealt])
     end
+
+    binding.pry
     @content.save
     @card = @content.card
 
@@ -93,8 +106,11 @@ class CardsController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-  def card_params
-    params.require(:card).permit(:cardtype, :cardtitle, :cardtext, :uploadcardimage, :cardimagealt)
-  end
+    def card_params
+      params.permit(:cardtype, :cardtitle, :cardtext, :uploadcardimage, :cardimagealt )
+    end
 
+    def update_params
+      params.permit(:cardtype, :title , :text , :uploadcardimage, :alt )
+    end
 end

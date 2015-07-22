@@ -11,7 +11,7 @@ RSpec.describe UsersController, type: :controller do
     describe '#index' do
       describe 'with two users' do
         before(:each) do
-          @user2=FactoryGirl.create(:user, :email => 'newUser@users.com')
+          @user2=FactoryGirl.create(:user, :email => 'newUser@users.com', :username => 'newUser1')
           get :index , :format => :json
           @json_response = JSON.parse(response.body)
 
@@ -35,7 +35,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'still returns the current user even when you request a different user' do
-        @user2=FactoryGirl.create(:user, :email => 'newUser@users.com')
+        @user2=FactoryGirl.create(:user, :email => 'newUser@users.com', :username => 'newUser2')
         get :show, :id =>  @user2.slug , :format => :json
         @json_response = JSON.parse(response.body)
         expect(@json_response['id']).to eq @user.id
@@ -53,7 +53,7 @@ RSpec.describe UsersController, type: :controller do
 
     describe '#edit' do
       it 'returns the asked for user when passed an id' do
-        @user2=FactoryGirl.create(:user, :email => 'newUser@users.com')
+        @user2=FactoryGirl.create(:user, :email => 'newUser@users.com', :username => 'newUser3')
         get :edit, :id =>  @user2.id , :format => :json
         @json_response = JSON.parse(response.body)
         expect(@json_response['id']).to eq @user2.id
@@ -68,13 +68,13 @@ RSpec.describe UsersController, type: :controller do
 
     describe '#update' do
       it 'updates the user with valid new data' do
-        patch :update, :id => @user.id, :user => { :email => 'new@new.com' }, :format => :json
+        patch :update, :id => @user.id, :user => { :email => 'new@new.com', :username => 'newUser' }, :format => :json
         @json_response = JSON.parse(response.body)
         expect(@json_response['email']).to eq 'new@new.com'
       end
 
       it 'reports an error when trying ot update with invalid data' do
-        patch :update, :id => @user.id, :user => { :email => 'new.com' }, :format => :json
+        patch :update, :id => @user.id, :user => { :email => 'new.com', :username => 'newUser' }, :format => :json
         @json_response = JSON.parse(response.body)
         expect(@json_response['status']).to eq 400
       end
@@ -113,13 +113,13 @@ RSpec.describe UsersController, type: :controller do
 
     describe '#create' do
       it 'creates a new user when given valid data' do
-        expect{post :create, :user => { :email => 'user@user.com', :password => 'password' }, :format => :json}.to change{User.count}.by 1
+        expect{post :create, :user => { :email => 'user@user.com', :password => 'password', :username => 'user' }, :format => :json}.to change{User.count}.by 1
         @json_response = JSON.parse(response.body)
         expect(@json_response['email']).to eq 'user@user.com'
       end
 
       it 'does not create a user when given invalid data' do
-        expect{post :create, :user => { :email => 'bad@bad.com', :password => '2Short' }, :format => :json}.to change{User.count}.by 0
+        expect{post :create, :user => { :email => 'bad@bad.com', :password => '2Short', :username => 'bad' }, :format => :json}.to change{User.count}.by 0
         @json_response= JSON.parse(response.body)
         expect(@json_response['status']).to eq 400
       end
@@ -138,7 +138,7 @@ RSpec.describe UsersController, type: :controller do
     describe '#update' do
       it 'raises NoMethodError' do
         begin
-          patch :update, :id =>  1, :email => 'new.com', :format => :json
+          patch :update, :id =>  1, :email => 'new.com', :username => 'new', :format => :json
         rescue => error
           expect(error.class).to eq(NoMethodError)
         end
