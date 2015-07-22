@@ -1,0 +1,6 @@
+<div>
+  <%= link_to "Logout", logout_path, method: "delete" %>
+  <%=link_to "Info", {:controller => "users", :action => "show", :id => @user.id } %>
+  <%= link_to "Profile", profile_path, method: "get" %>
+  <%= link_to "Cards",  cards_path, method: "get" %>
+</div>

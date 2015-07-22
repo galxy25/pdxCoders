@@ -1,0 +1,17 @@
+<% provide(:title, "UEBPrep - Cards") %>
+<% content_for :navlinks do %>
+  <li class="active"><%= link_to "Back", cards_path %></li>
+  <li class="active"><%= link_to "Edit", edit_card_path(@card) %></li>
+<% end %>
+<p id="notice"><%= notice %></p>
+<div class="row app-txt-centered">
+  <div class="row">
+    <div class="small-11 small-centered columns">
+      <h1>Cards</h1>
+    </div>
+  </div>
+  <%= render partial: @card.content, locals: { content: @card.content } %>
+</div>
+<%unless @current_user.nil? %>
+    <%= render 'links' %>
+<%end %>

@@ -1,19 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>UEBPrep</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= render partial: 'layouts/metadata' %>
-
-  <%= favicon_link_tag 'favicon.ico' %>
-
-  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans:300' rel='stylesheet' type='text/css'>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= content_for?(:title) ? yield(:title) : "UEBPrep" %></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="top-bar foundation-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "UEBPrep", root_path %></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left"><%= content_for?(:navlinks) ? yield(:navlinks) : "" %></ul>
+        <ul class="right">
+          <li class="active">
+            <%= link_to src="https://www.facebook.com/uebprep?fref=ts" do %>
+                <img class="app-btns" src="/assets/facebookLogo.png" alt="image" data-interchange="">
+            <% end %>
+          </li>
+          <li class="active">
+            <%= link_to src="https://twitter.com/uebprep" do %>
+                <img class="app-btns" src="/assets/twitterLogo-white.png" alt="image" data-interchange="">
+            <% end %>
+          </li>
+        </ul>
+      </section>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% flash.clear %>
+    <%= yield %>
+  </body>
 </html>

@@ -1,18 +1,23 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
   root 'homepage#index'
   get 'homepage/index'
 
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
+  get 'sessions/new'
+
   post 'homepage/subscribe_email', to: 'homepage#subscribe_email'
 
-  get 'signup' => 'users#new'
+  get    'profile' => 'users#edit'
+  get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
+  get    'cardcreator' => 'cards#new'
+  post   'cardcreator' => 'cards#create'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  resources :users,  only: [:index, :show, :create]
+  resources :users,  only: [:index, :show, :create, :edit, :update]
 
+  resources :cards
 
   # API Routes
   namespace :api do
@@ -21,6 +26,7 @@ Rails.application.routes.draw do
           post   'login'  => 'api#login'
           delete 'logout' => 'api#logout'
 
+          resources :cards 
           resources :users
       end
   end

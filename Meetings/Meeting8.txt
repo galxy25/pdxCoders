@@ -1,0 +1,38 @@
+Date: 06/29/2015
+Time: 6-8pm
+Location: Capstone Lab Room
+Duration: 2 hours
+
+Requested Attendees: All
+Actual Attendees:
+
+Agenda
+
+Week in Preview & Review (20 minutes)
+	-Owner: Everyone
+	-Outcome: Everyone knows what everyone else accomplished last week and what they have planned for this week. Also, timeline will be updated as need be.
+
+Item 1 360 Review Feedback (10 minutes)
+	Discuss feedback from Warren, reiterate points of emphasis for this term, review course grading policy. 
+	-Owner: Levi
+	-Outcome
+
+Item 2 Next Sprints Story (45 minutes)
+	Review, point, signup for stories. 
+
+	Single Card Creation: Backend
+	Single Card Creation: Front-end
+	Sign-in/Account Creation Omni-auth-Facebook
+	Sign-in/Account Creation Omni-auth-Facebook
+
+        -Owner
+        -Outcome
+
+Item 3 Work Week Planning (45 minutes)
+	Coordinate Meeting times, task assignments, ask technical questions for the stories to be done this week. 
+        -Owner
+        -Outcome
+
+Action Items:
+
+Additional Discussion Items:

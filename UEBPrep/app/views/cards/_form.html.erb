@@ -1,0 +1,41 @@
+<%= form_for @card, :html => { :multipart => true } do |f| %>
+  <% if @card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+      <% @card.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <% if @card.content_type_id == 1 %>
+        <h2>Text Content</h2>
+        <%= label_tag(:cardtext, "Text") %>
+        <%= text_area_tag( 'text', TextContent.find(@card.content_id).text , size: '8x8') %>
+    <% elsif @card.content_type_id == 2 %>
+        <h2>Card Title</h2>
+        <%= label_tag(:cardtitle, "Title") %>
+        <%= text_field_tag( 'title', TitledCardContent.find(@card.content_id).title) %>
+        <h2>Text Content</h2>
+        <%= label_tag(:cardtext, "Text") %>
+        <%= text_area_tag( 'text', TitledCardContent.find(@card.content_id).text , size: '8x8') %>
+    <% else %>
+        <h2>Card Title</h2>
+        <%= label_tag(:cardtitle, "Title") %>
+        <%= text_field_tag( 'title', ImageCardContent.find(@card.content_id).title) %>
+        <h2>Text Content</h2>
+        <%= label_tag(:cardtext, "Text") %>
+        <%= text_area_tag( 'text', ImageCardContent.find(@card.content_id).text , size: '8x8') %>
+        <h2>Alt Text Content</h2>
+        <%= label_tag(:cardalt, " Alt Text") %>
+        <%= text_area_tag( 'alt', ImageCardContent.find(@card.content_id).alt , size: '8x8') %>
+        <%= label_tag(:cardimagealt, "Image") %>
+        <%= link_to image_tag(@card.content.image.url(:med)), alt: @card.content.alt %>
+        <%= file_field_tag('uploadcardimage', accept: 'image/png,image/gif,image/jpeg')%>
+    <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

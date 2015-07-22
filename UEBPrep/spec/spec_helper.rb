@@ -19,6 +19,12 @@
 
 require File.expand_path("../../config/environment", __FILE__)
 # Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.configure do |config|
+  config.path_prefix = "UEBPrep" #the root of your Rails application relative to the repository root
+  config.git_dir = "../" #the relative or absolute location of your git root compared to where your tests are run
+end
+  CodeClimate::TestReporter.start
 require 'database_cleaner'
 
 RSpec.configure do |config|
@@ -26,6 +32,8 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
   config.include FactoryGirl::Syntax::Methods
+  config.include Devise::TestHelpers, :type => :controller
+  config.include Capybara::DSL
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
@@ -93,6 +101,12 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+    begin
+      DatabaseCleaner.start
+      FactoryGirl.lint
+    ensure
+      DatabaseCleaner.clean
+    end
   end
 
   config.around(:each) do |example|

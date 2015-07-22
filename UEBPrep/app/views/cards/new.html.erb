@@ -1,0 +1,25 @@
+<% provide(:title, "UEBPrep - Card Creator") %>
+<% content_for :navlinks do %>
+  <li class="active"><%= link_to "Back", cards_path %></li>
+<% end %>
+<div class="row">
+  <div class="small-10 small-centered columns">
+  <h1>Card Creator</h1>
+  <h2>Card Author: <%= @user.email %></h2>
+    <%= form_for :card, :html => { :multipart => true } do |f| %>
+        <%= label_tag(:cardtype, "Card Type") %>
+        <%= select_tag(:cardtype, options_for_select([['-Select-','0'],['Image','image'],['Rule','rule'],['Text','text']])) %>
+        <%= label_tag(:cardtitle, "Title") %>
+        <%= text_field_tag(:cardtitle) %>
+        <%= label_tag(:cardtext, "Text") %>
+        <%= text_area_tag(:cardtext,"", size: "8x8") %>
+        <%= label_tag(:cardimage, "Image") %>
+        <%= image_tag("your_image_here.png", :alt => "Your Image Here", :id => "cardimage") %>
+        <%= label_tag(:cardimagealt, "Alt") %>
+        <%= text_field_tag(:cardimagealt) %>
+        <%= label_tag(:uploadcardimage, "Cannot upload an image for this card type") %>
+        <%= file_field_tag('uploadcardimage',disabled: true, accept: 'image/png,image/gif,image/jpeg')%>
+        <%= submit_tag("Create this card", :id=> "cardsubmit") %>
+    <% end %>
+  </div>
+</div>

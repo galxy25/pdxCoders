@@ -1,4 +1,29 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+.user-card.panel
+{
+    margin:         3rem auto;
+    padding-bottom: 5%;
+    border:         2px solid #444;
+    background:     #eee;
+}
+
+.user-card.panel .sign
+{
+    background: #eee;
+    width:      150px;
+    height:     2.4rem;
+    border:     2px solid #444;
+    position:   relative;
+    top:        -2.5rem;
+    margin:     auto;
+}
+
+.user-card.panel .sign h1
+{
+    text-transform: uppercase;
+    text-shadow:    none;
+    font:           bolder 0.875rem;
+    color:          #666;
+    font-size:      70%;
+    text-align:     center;
+    line-height:    2rem;
+}

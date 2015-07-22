@@ -1,0 +1,24 @@
+<% provide(:title, "UEBPrep - Edit Profile") %>
+
+<% content_for :navlinks do %>
+  <li class="active"><%=link_to "View Profile", {:controller => "users", :action => "show", :id => @user.id } %></li>
+  <li class="active"><%= link_to "Edit Profile", profile_path, method: "get" %></li>
+  <li class="active"><%= link_to "Logout", logout_path, method: "delete" %></li>
+<% end %>
+
+<div class="row">
+  <div class="medium-3 medium-centered columns hide-for-small-only">
+    <img src="assets/homepage/iHeader.png" alt="image" data-interchange="">
+  </div>
+</div>
+<div class="row">
+  <div class="app-block app-modalbox app-roundedbox small-10 medium-7 small-centered columns">
+    <div class="app-txt-centered small-8 large-10 small-centered columns">
+      <h4>Edit Profile</h4>
+      <hr>
+    </div>
+    <div class="app-block small-16 large-10 small-centered columns">
+      <%= render 'edit_profile' %>
+    </div>
+  </div>
+</div>

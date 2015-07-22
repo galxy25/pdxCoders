@@ -1,0 +1,96 @@
+label[for=cardtype]
+{
+    font-size:       1.5em;
+    color: white;
+}
+
+#cardtype
+{
+    width:         15%;
+    padding:       .5%;
+    border-radius: 6px;
+    font-size:       1.5em;
+}
+
+label[for=cardtitle]
+{
+    font-size:       1.5em;
+    color: white;
+    display: none;
+}
+
+#cardtitle
+{
+    padding:       1%;
+    border-radius: 6px;
+    font-size:       1.5em;
+    display: none;
+}
+
+label[for=cardtext]
+{
+    font-size:       1.5em;
+    color: white;
+    display: none;
+}
+
+#cardtext
+{
+    padding:       1%;
+    border-radius: 6px;
+    resize: none;
+    font-size:       1.5em;
+    display: none;
+}
+
+label[for=cardimage]
+{
+    font-size:       1.5em;
+    color: white;
+    display: none;
+}
+
+label[for=uploadcardimage]
+{
+    font-size:       1.5em;
+    color: white;
+}
+
+label[for=cardimagealt]
+{
+    font-size:       1.5em;
+    color: white;
+    display: none;
+}
+
+#cardimagealt
+{
+    padding:       1%;
+    border-radius: 6px;
+    font-size:       1.5em;
+    display: none;
+}
+
+#cardimage
+{
+    width:         15%;
+    padding:       .5%;
+    border-radius: 6px;
+    font-size:       1.5em;
+    display: none;
+}
+
+#cardsubmit
+{
+    background:      #29b0b7;
+    padding:         1% 3.5%;
+    border-radius:   6px;
+    color:           #fff;
+    font-size:       1.5em;
+    cursor:          pointer;
+    display: none;
+}
+
+.accordion {
+    margin: 0;
+}

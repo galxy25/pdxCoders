@@ -1,19 +1,37 @@
-<% provide(:title, "Log in") %>
-<h1>Log in</h1>
-
+<% provide(:title, "UEBPrep - Login") %>
+<% content_for :navlinks do %>
+  <li class="active"><%= link_to "Sign Up", signup_path %></li>
+  <li class="active"><%= link_to "Login", login_path %></li>
+<% end %>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  <div class="app-modalbox app-roundedbox small-10 medium-7 small-centered columns">
+    <div class="app-txt-centered small-8 large-10 small-centered columns">
+      <h4>Login</h4>
+      <hr>
+      <div class="google">
+        <%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
+            <img class="app-btns app-roundedbox" src="assets/homepage/google.png" alt="image" data-interchange="">
+        <% end %>
+      </div>
+      <div class="facebook">
+        <!--%= link_to user_omniauth_authorize_path(:facebook) do %-->
+            <img class="app-btns app-roundedbox" src="assets/homepage/facebook_login_button.png" alt="image" data-interchange="">
+        <!--% end %-->
+      </div>
+      <div class="twitter">
+        <%= link_to user_omniauth_authorize_path(:twitter) do %>
+            <img class="app-btns app-roundedbox" src="assets/homepage/twitter_login_button.png" alt="image" data-interchange="">
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <div class="app-block small-16 large-10 small-centered columns">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <%= f.label :email %><%= f.email_field :email %>
+        <%= f.label :password %><%= f.password_field :password %>
+        <div id="home-newUserTxt">New User?</div>
+        <br><%= f.submit "Log in", class: "button" %><%= link_to "Sign up!", signup_path, class: "button app-floatR" %>
+      <% end %>
+    </div>
   </div>
 </div>

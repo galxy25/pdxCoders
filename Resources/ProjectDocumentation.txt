@@ -18,9 +18,11 @@ User Documentation
 The homepage is the first page the user sees, both new users, and continuing users.
 There are links on the homepage for signup, sign-in, and subscribing to the email news letter.
 
-The signup page consist of a form for email and password, if a signup is successful-they provided a unique(to our list of users) email, and a valid password, they will be directed to their new account homepage. Else they will be directed back to the signup form. 
+The signup page consist of a form for email and password, if a signup is successful-they provided a unique(to our list of users) email, and a valid password(8 unicode characters or longer), they will be directed to their new account homepage. Else they will be directed back to the signup form. 
 
 The login page consists of a form for user email and password, if they provide matching credentials for an existing user, they will be directed to that user's account home page. Else they will be redirected back to the login page.
+
+The card creation page is for authorized accounts to create new cards for lessons. It allows them to select the card type and enter pertinent information and stores it along with the user id.
 
 
 Developer Documentation
@@ -29,18 +31,29 @@ Developer Documentation
 A user consists of a unique email address, valid password, and api_key(for api access both on behalf of and for the user). 
 
   Cards
+		In the database, a card is represented by a unique combination of content type id and content id, and a created by field that is the user id of the user who created it. A card object also includes a non-persisted field representing it's content. The content is retrieved, upon instantiation, from the table referred to by the content type id, at the content id stored in the card table. To create a card, the content must first be created created. The content object then creates a card entry associated to itself. 
+
+	Card Content
+		Text Content
+			The text content type contains one field for a unicode string. Creating a text content automatically creates a card entry associated to it. 
+
+		Titled Card Content
+			The titled card content type contains two unicode string fields. One is for the displayed title of the card. The other field is a text field representing the string content of the card. Creating a titled card content automatically creates a card entry associated to it.
 
   Lessons
 
   Courses
 
   Authentication
-	Currently no application-level authentication system exists for the app, though plans are for the api to use api_key based security, and for the user facing pages to be controlled through use of the devise gems.
+	The application leverages the devise gem for handling user authentication across the app. Using the built in helper method of current_user, we can scope actions and views to only a valid logged in user.
 
   Mailgun
    The application is configured to send mail through use of a free Mailgun account, limited to 1000 emails per month.
 
   Roles
+
+  Images
+    We are using the paperclip gem(v 4+) for image processing and storing. Currently we store images for the user avatar. Images are stored in the default paperclip path of /public/system.  
 
 
 API Documentation
@@ -133,6 +146,114 @@ API Documentation
 		"status" : "500"
 	}
 
+	Cards
+		Routes exist for viewing all cards, for viewing a particular card by id, or for editing the text content of an existing card by id.
+		GET api/v1/cards
+	READ::INDEX
+	This is a route for seeing a list of all cards. 
+	Params: {
+	  "api_key" : "your_api_key_please"
+	}
+	Success Response 
+	{
+	 “cards” => 
+	  {
+	    "card"=>
+   		{
+		  "id"=>3,
+    		  "content_type_id"=>1,
+    		  "content_id"=>1,
+    		  "created_at"=>"2015-07-13T06:01:55.868Z",
+    		  "updated_at"=>"2015-07-13T06:01:55.868Z",
+    		  "created_by"=>1,
+    		  "content"=>
+     		{
+			"text"=>"content",
+      			"created_at"=>"2015-07-13T06:01:55.866Z",
+      			"updated_at"=>"2015-07-13T06:01:55.866Z"}}},
+ 	{
+	  "card"=>
+   		{
+			"id"=>4,
+    			"content_type_id"=>2,
+   			 "content_id"=>2,
+    			"created_at"=>"2015-07-13T06:01:55.933Z",
+    			"updated_at"=>"2015-07-13T06:01:55.933Z",
+    			"created_by"=>1,
+    			"content"=>
+     					{
+						"title"=>"title",
+      						"text"=>"content",
+      						"created_at"=>"2015-07-13T06:01:55.930Z",
+      						"updated_at"=>"2015-07-13T06:01:55.930Z"
+					}
+		}
+		, “status” : 200 ,
+		   “count” : 2
+	}
+	
+
+	Error Response {
+		"errors" : "No user with that api key was found",
+		"status" : "403"
+	}
+	GET api/v1/cards/:id'
+	READ::SHOW
+	This is a route to get one particular card
+	Params: {
+	  "api_key" : "your_api_key_please"
+	  "id" : “card_id”
+	}
+	Success Response {
+	  {"card"=>
+  		{"id"=>3,
+   			"content_type_id"=>1,
+  			 "content_id"=>1,
+  			 "created_at"=>"2015-07-13T06:07:55.230Z",
+  			 "updated_at"=>"2015-07-13T06:07:55.230Z",
+   			"created_by"=>1,
+   			"content"=>
+    				{"text"=>"content",
+    				 "created_at"=>"2015-07-13T06:07:55.227Z",
+     				"updated_at"=>"2015-07-13T06:07:55.227Z"
+				}
+		},
+		“status:” => 200
+	}	
+	Error Response {
+				"errors" : "No card for that id was found",
+				"status" :"404"
+	}
+	GET api/v1/cards/:id/edit
+	READ::UPDATE
+	This is a route to update the text or title content of a card. If you are editing a title content card you must pass in both the title and the text, even if you are only editing one of the fields.
+	Params: {
+	  “api_key”: “your_api_key_please”
+	  “id” : “card_id”
+	  “content” : {
+			 “text” : “Updated text”
+			}
+	}
+	Success Response {
+		{"card"=>
+  		{"id"=>3,
+   			"content_type_id"=>1,
+  			 "content_id"=>1,
+  			 "created_at"=>"2015-07-13T06:07:55.230Z",
+  			 "updated_at"=>"2015-07-13T06:07:55.230Z",
+   			"created_by"=>1,
+   			"content"=>
+    				{"text"=>”Updated text“,
+    				 "created_at"=>"2015-07-13T06:07:55.227Z",
+     				"updated_at"=>"2015-07-13T06:07:55.227Z"
+				}
+		}, “status” : “204”
+	}
+	Error Response {
+		"errors" : “Unable to update the card you requested, bad API_KEY”,
+		"status" : "404"
+	}
+
 
 Production Server Documentation
 	Port access
@@ -144,5 +265,5 @@ Production Server Documentation
 
 Continous Integration Service
 
-We are using the service CircleCI for our continous integration environment. Every commit pushed to the repo triggers a build of that branch with the new commit changes, involving the app being configured, and then automated builds being run. The result of the build is posted to slack, with a passing status if all tests passed, failed otherwise. When pull requests are merged into staging-beta, if the build passes, an automated merge between staging-beta and development occurs. CircleCI provides detailed per build reports, regarding which tests failed or passed, or allowing you to ssh to debug a particular build. More information on CircleCI can be found at http://www.circle.com In the future each master build, if all tests pass, will automatically deploy new code to the production server. 
+We are using the service CircleCI for our continuous integration environment. Every commit pushed to the repo triggers a build of that branch with the new commit changes, involving the app being configured, and then automated builds being run. The result of the build is posted to slack, with a passing status if all tests passed, failed otherwise. When pull requests are merged into staging-beta, if the build passes, an automated merge between staging-beta and development occurs. CircleCI provides detailed per build reports, regarding which tests failed or passed, or allowing you to ssh to debug a particular build. More information on CircleCI can be found at http://www.circle.com In the future each master build, if all tests pass, will automatically deploy new code to the production server. 
 
