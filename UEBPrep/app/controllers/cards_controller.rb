@@ -57,8 +57,6 @@ class CardsController < ApplicationController
                                         :created_by => current_user.id,
                                         :alt => card_params[:cardimagealt])
     end
-
-    binding.pry
     @content.save
     @card = @content.card
 

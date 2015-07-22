@@ -4,7 +4,7 @@ RSpec.describe CardsController, type: :controller do
   context 'with two valid cards' do
 
     let!(:text_card) {FactoryGirl.create(:text_content, id: 1)}
-    let!(:titled_card_content) {FactoryGirl.create(:titled_card_content, id: 2)}
+    let!(:titled_card_content) {FactoryGirl.create(:titled_card_content, id: 1)}
 
     context 'with a signed in user' do
 
