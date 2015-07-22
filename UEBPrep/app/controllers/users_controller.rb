@@ -27,7 +27,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(:email => create_params[:email] , :password => create_params[:password])
+    @user = User.new(:email => create_params[:email],
+                     :password => create_params[:password],
+                     :username => create_params[:username],
+                     :location => create_params[:location],
+                     :bio => create_params[:bio],
+                     :avatar => create_params[:avatar]
+    )
 
     if @user.save
       respond_to do |format|
@@ -72,15 +78,15 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:avatar, :email, :password)
+    params.require(:user).permit(:avatar, :email, :password, :username, :location, :bio)
   end
 
   def create_params
-    params.require(:user).permit(:avatar, :email, :password)
+    params.require(:user).permit(:avatar, :email, :password, :username, :location, :bio)
   end
 
   def update_params
-    params.require(:user).permit(:avatar, :email, :password)
+    params.require(:user).permit(:avatar, :email, :password, :username, :location, :bio)
   end
 
 end
