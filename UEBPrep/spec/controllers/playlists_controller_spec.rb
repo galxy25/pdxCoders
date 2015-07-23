@@ -37,10 +37,10 @@ RSpec.describe PlaylistsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "assigns all playlists.rb as @playlists.rb" do
+    it "assigns all playlists as @playlists" do
       playlist = Playlist.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:'playlists.rb')).to eq([playlist])
+      expect(assigns(:playlists)).to eq([playlist])
     end
   end
 
@@ -149,7 +149,7 @@ RSpec.describe PlaylistsController, type: :controller do
       }.to change(Playlist, :count).by(-1)
     end
 
-    it "redirects to the playlists.rb list" do
+    it "redirects to the playlists list" do
       playlist = Playlist.create! valid_attributes
       delete :destroy, {:id => playlist.to_param}, valid_session
       expect(response).to redirect_to(playlists_url)
