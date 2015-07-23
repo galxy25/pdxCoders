@@ -78,7 +78,8 @@ ActiveRecord::Schema.define(version: 20150720070215) do
   end
 
   create_table "playlists", force: true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "user_id"
   end
 
   create_table "playlists_users", id: false, force: true do |t|
