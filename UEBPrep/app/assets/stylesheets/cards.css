@@ -90,3 +90,7 @@ label[for=cardimagealt]
     cursor:          pointer;
     display: none;
 }
+
+.accordion {
+    margin: 0;
+}
