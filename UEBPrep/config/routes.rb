@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :users,  only: [:index, :show, :create, :edit, :update]
 
   resources :cards
+  resources :playlists
 
   # API Routes
   namespace :api do
