@@ -4,8 +4,8 @@
   <li class="active"><%= link_to "Login", login_path %></li>
 <% end %>
 <div class="row">
-  <div class="app-modalbox app-roundedbox small-10 medium-7 small-centered columns">
-    <div class="app-txt-centered small-8 large-10 small-centered columns">
+  <div class="app-modalbox app-roundedbox small-10 medium-7 small-centered columns" role="main">
+    <div class="app-txt-centered small-8 large-10 small-centered columns" role="complementary">
       <h4>Login</h4>
       <hr>
       <div class="google">
@@ -25,7 +25,7 @@
       </div>
     </div>
     <br>
-    <div class="app-block small-16 large-10 small-centered columns">
+    <div class="app-block small-16 large-10 small-centered columns" role="form">
       <%= form_for(:session, url: login_path) do |f| %>
         <%= f.label :email %><%= f.email_field :email %>
         <%= f.label :password %><%= f.password_field :password %>

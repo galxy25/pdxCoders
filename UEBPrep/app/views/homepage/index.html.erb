@@ -3,15 +3,17 @@
 	<li class="active"><%= link_to "Login", login_path %></li>
 <% end %>
 <div class="row app-txt-centered">
-	<div class="app-block medium-3 medium-centered columns hide-for-small-only">
+	<div role="banner">
+      <div class="app-block medium-3 medium-centered columns hide-for-small-only">
 		<img src="assets/homepage/iHeader.png" alt="image" data-interchange="">
-	</div>
-	<div class="row">
+      </div>
+      <div class="row">
 		<div class="small-11 small-centered columns">
 			<h1>Unified English Braille eLearning Platform</h1>
-		</div>
+      </div>
+    </div>
 	</div>
-	<div class="app-block app-modalbox app-roundedbox small-8 medium-6 small-centered columns">
+	<div class="app-block app-modalbox app-roundedbox small-8 medium-6 small-centered columns" role="main">
 		<p>Join our mailing list for project updates!</p>
 		<div class="small-10 small-centered columns">
 			<%= form_tag("homepage/subscribe_email", method: "post") do %>
