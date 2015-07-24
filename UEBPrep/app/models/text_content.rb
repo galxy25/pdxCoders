@@ -7,7 +7,7 @@ class TextContent < ActiveRecord::Base
   attr_reader :card
 
   def to_partial_path
-    'text_content'
+    'cards/text_content'
   end
 
   private
