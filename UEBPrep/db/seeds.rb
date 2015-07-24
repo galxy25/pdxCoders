@@ -23,6 +23,7 @@ if Rails.env.test? || Rails.env.development?
   playlist = Playlist.create(name: 'This is a playlist')
   playlist.user = john_doe
   playlist.cards.push(text_content.card)
+  playlist.cards.push(titled_card_content.card)
   playlist.save
 
 end
