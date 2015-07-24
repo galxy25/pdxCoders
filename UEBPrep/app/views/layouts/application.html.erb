@@ -19,15 +19,15 @@
       </ul>
       <section class="top-bar-section">
         <ul class="left"><%= content_for?(:navlinks) ? yield(:navlinks) : "" %></ul>
-        <ul class="right">
-          <li class="active">
+        <ul class="right" arial-label= "social media">
+          <li class="active" arial-label= "link to UEB Prep facebook">
             <%= link_to src="https://www.facebook.com/uebprep?fref=ts", :target => "_blank" do %>
-                <img class="app-btns" src="/assets/facebookLogo.png" alt="image" data-interchange="">
+                <img class="app-btns" src="/assets/facebookLogo.png" alt="facebook logo" data-interchange="">
             <% end %>
           </li>
-          <li class="active">
+          <li class="active" arial-label= "link to UEB Prep twitter">
             <%= link_to src="https://twitter.com/uebprep", :target => "_blank" do %>
-                <img class="app-btns" src="/assets/twitterLogo-white.png" alt="image" data-interchange="">
+                <img class="app-btns" src="/assets/twitterLogo-white.png" alt="twitter logo" data-interchange="">
             <% end %>
           </li>
         </ul>
