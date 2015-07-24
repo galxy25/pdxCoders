@@ -2,7 +2,7 @@
 <%= label_tag "Name" %>
 <%= label_tag @playlist.name %>
 <%= @playlist.cards.each do |card| %>
-  <%= render partial: 'cards/text_content', locals: { content: card.content } %>
+  <%= render partial: card.content, locals: { content: card.content } %>
 <% end %>
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
