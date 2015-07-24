@@ -37,7 +37,7 @@ RSpec.describe Playlist, type: :model do
       playlist = FactoryGirl.build(:playlist, user: user)
       expect {
         playlist.save
-        playlist.add(card)
+        playlist.add_card(card)
       }.to change { playlist.cards.count }.by 1
     end
 
@@ -48,18 +48,18 @@ RSpec.describe Playlist, type: :model do
     it "removes a card from the playlist" do
       playlist = FactoryGirl.build(:playlist, user: user)
       playlist.save
-      playlist.add(card)
+      playlist.add_card(card)
       expect {
-        playlist.remove(card)
+        playlist.remove_card(card)
       }.to change { playlist.cards.count }.by -1
     end
 
     it "does not remove the card entry from the db" do
       playlist = FactoryGirl.build(:playlist, user: user)
       playlist.save
-      playlist.add(card)
+      playlist.add_card(card)
       expect {
-        playlist.remove(card)
+        playlist.remove_card(card)
       }.to_not change { Card.count }
     end
   end

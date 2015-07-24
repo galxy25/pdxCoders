@@ -4,12 +4,12 @@ class Playlist < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :cards
 
-  def add(card)
+  def add_card(card)
     cards.push(card)
     save
   end
 
-  def remove(card)
+  def remove_card(card)
     cards.delete(card)
     save
   end
