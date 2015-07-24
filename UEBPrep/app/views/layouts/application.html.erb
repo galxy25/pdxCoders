@@ -21,12 +21,12 @@
         <ul class="left"><%= content_for?(:navlinks) ? yield(:navlinks) : "" %></ul>
         <ul class="right">
           <li class="active">
-            <%= link_to src="https://www.facebook.com/uebprep?fref=ts" do %>
+            <%= link_to src="https://www.facebook.com/uebprep?fref=ts", :target => "_blank" do %>
                 <img class="app-btns" src="/assets/facebookLogo.png" alt="image" data-interchange="">
             <% end %>
           </li>
           <li class="active">
-            <%= link_to src="https://twitter.com/uebprep" do %>
+            <%= link_to src="https://twitter.com/uebprep", :target => "_blank" do %>
                 <img class="app-btns" src="/assets/twitterLogo-white.png" alt="image" data-interchange="">
             <% end %>
           </li>
