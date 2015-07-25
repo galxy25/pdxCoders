@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
          :omniauth_providers => [:facebook, :google_oauth2, :twitter]
   acts_as_paranoid
 
+  has_many :playlists, dependent: :destroy
+
   # Checks to ensure that username is present, unique and that the length is within 3 and 20
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 1..100 }
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716005712) do
+ActiveRecord::Schema.define(version: 20150720070215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20150716005712) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "created_by"
+  end
+
+  create_table "cards_playlists", force: true do |t|
+    t.integer "order"
+    t.integer "card_id"
+    t.integer "playlist_id"
   end
 
   create_table "content_types", force: true do |t|
@@ -71,6 +77,16 @@ ActiveRecord::Schema.define(version: 20150716005712) do
     t.text     "alt"
   end
 
+  create_table "playlists", force: true do |t|
+    t.string  "name"
+    t.integer "user_id"
+  end
+
+  create_table "playlists_users", id: false, force: true do |t|
+    t.integer "playlist_id", null: false
+    t.integer "user_id",     null: false
+  end
+
   create_table "text_contents", force: true do |t|
     t.string   "text"
     t.datetime "created_at"
@@ -115,5 +131,9 @@ ActiveRecord::Schema.define(version: 20150716005712) do
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
+
+  Foreigner.load
+  add_foreign_key "cards_playlists", "cards", name: "cards_playlists_card_id_fk"
+  add_foreign_key "cards_playlists", "playlists", name: "cards_playlists_playlist_id_fk"
 
 end
