@@ -46,9 +46,24 @@ RSpec.describe CardsController, type: :controller do
       end
 
       describe '#update' do
+        it "" do
+
+        end
 
       end
+
+      describe '#destroy' do
+        it "deletes the specified card from the database" do
+            @card = Card.where(content_id: text_card.id, content_type_id: 1).first
+            deleted_id = @card.id
+            delete :destroy, :id => @card.id
+            expect{Card.find(deleted_id)}.to raise_error ActiveRecord::RecordNotFound
+        end
+
+      end
+
     end
+
   end
 
 end

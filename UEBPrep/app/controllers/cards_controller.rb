@@ -93,7 +93,7 @@ class CardsController < ApplicationController
     @card.destroy
     respond_to do |format|
       format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.'}
-      format.json status: 204
+      format.json {render json: {status: 204} }
     end
   end
 
