@@ -1,14 +1,14 @@
 <div class="row user-card-height">
   <div class="user-card panel app-block app-roundedbox small-12 small-centered columns">
     <div class="sign">
-      <h1><%= content.title %></h1>
+      <h1><%= @card.nil? ? content.title : @card.content.title %></h1>
     </div>
     <div class="row">
       <div class="small-4 uncentered columns">
-        <%= link_to image_tag(content.image.url(:large)), alt: content.alt %>
+        <%= link_to image_tag( @card.nil? ? content.image.url(:large) : content.image.url(:large) ), alt: @card.nil? ? content.alt : @card.content.alt %>
       </div>
       <div class="small-8 small-centered columns user-card-image">
-        <%= content.text %>
+        <%= @card.nil? ? content.text : @card.content.text %>
       </div>
     </div>
   </div>

@@ -13,4 +13,5 @@
 </div>
 <%unless @current_user.nil? %>
     <%= render 'links' %>
+    <%= button_to "Delete Card", {:controller => "cards", :action => 'destroy', :id => @card.id}, :confirm => "Are you sure you want to delete this card?", :method => :delete %>
 <%end %>
