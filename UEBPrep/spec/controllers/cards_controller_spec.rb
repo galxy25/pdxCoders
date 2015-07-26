@@ -46,8 +46,15 @@ RSpec.describe CardsController, type: :controller do
       end
 
       describe '#update' do
-        it "" do
-
+        it "updates an existing card with new valid data" do
+          @card = Card.where(content_id: text_card.id, content_type_id: 1).first
+          update_params = {:cardtype => 'text',
+                           :cardtext => 'New Text',
+                           :id => @card.id
+                          }
+          patch :update, :id => @card.id, :cardtype => 'text', :text => 'New Text' , :format => :json
+          text_card.reload
+          expect(text_card.text).to eq 'New Text'
         end
 
       end

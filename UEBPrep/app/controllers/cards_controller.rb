@@ -6,15 +6,11 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-
     @cards = Card.order(:id).page params[:page]
     respond_to do |format|
       format.html
       format.json { render json: @cards }
     end
-
-    # @cards = Card.order(:id).page params[:page]
-
   end
 
   # GET /cards/1
@@ -75,7 +71,7 @@ class CardsController < ApplicationController
 
   # PATCH/PUT /cards/1
   def update
-    if @card.update(card_params)
+    if @card.update(update_params)
       respond_to do |format|
         format.html { redirect_to @card, notice: 'Card was successfully updated.' }
         format.json { render json: @card, status: 200 }
