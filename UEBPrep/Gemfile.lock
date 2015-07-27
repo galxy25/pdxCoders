@@ -42,6 +42,7 @@ GEM
       timers (~> 4.0.0)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
+    client_side_validations (3.2.7)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -292,6 +293,7 @@ PLATFORMS
 DEPENDENCIES
   activejob_backport
   capybara
+  client_side_validations
   codeclimate-test-reporter
   database_cleaner
   delayed_job_active_record
