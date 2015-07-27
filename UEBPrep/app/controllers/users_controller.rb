@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @playlist = Playlist.where("user_id = " + @user.id.to_s)
+    @playlists = Playlist.where(user_id: + @user.id)
     respond_to do |format|
       format.html
       format.json { render json: @user }

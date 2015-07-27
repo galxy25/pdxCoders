@@ -16,7 +16,7 @@
     <h4 style="text-align: center">My Playlists</h4>
     <hr/>
     <ul id="user_playlists">
-      <% @playlist.each do |playlist| %>
+      <% @playlists.each do |playlist| %>
           <li style="list-style-type: none;"><%= playlist.name + " (" + playlist.cards.count.to_s + ")" %></li>
       <% end %>
     </ul>
