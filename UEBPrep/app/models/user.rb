@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      if !user.email
+      if !auth.info.email
         user.email = "noValidEmail@wrong.com"
         user.password = "vagrant"
         user.username = "noValidEmail"
