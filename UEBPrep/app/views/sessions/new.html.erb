@@ -1,32 +1,33 @@
 <% provide(:title, "UEBPrep - Login") %>
+
 <div class="row">
-  <div class="app-modalbox app-roundedbox small-10 medium-7 small-centered columns">
-    <div class="app-txt-centered small-8 large-10 small-centered columns">
+  <div class="app-modalbox app-roundedbox small-10 medium-7 small-centered columns" role="main">
+    <div class="app-txt-centered small-8 large-10 small-centered columns" role="complementary">
       <h4>Login</h4>
       <hr>
-      <div class="google">
+      <div class="google" arial-label= "sign in with google">
         <%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
-            <img class="app-btns app-roundedbox" src="assets/homepage/google.png" alt="image" data-interchange="">
+            <img class="app-btns app-roundedbox" src="assets/homepage/google.png" alt="google logo and text" data-interchange="">
         <% end %>
       </div>
-      <div class="facebook">
+      <div class="facebook" arial-label= "sign in with facebook">
         <!--%= link_to user_omniauth_authorize_path(:facebook) do %-->
-            <img class="app-btns app-roundedbox" src="assets/homepage/facebook_login_button.png" alt="image" data-interchange="">
+            <img class="app-btns app-roundedbox" src="assets/homepage/facebook_login_button.png" alt="facebook logo and text" data-interchange="">
         <!--% end %-->
       </div>
-      <div class="twitter">
+      <div class="twitter" arial-label= "sign in with twitter">
         <%= link_to user_omniauth_authorize_path(:twitter) do %>
-            <img class="app-btns app-roundedbox" src="assets/homepage/twitter_login_button.png" alt="image" data-interchange="">
+            <img class="app-btns app-roundedbox" src="assets/homepage/twitter_login_button.png" alt="twitter logo and text" data-interchange="">
         <% end %>
       </div>
     </div>
     <br>
-    <div class="app-block small-16 large-10 small-centered columns">
+    <div class="app-block small-16 large-10 small-centered columns" role="form">
       <%= form_for(:session, url: login_path) do |f| %>
-        <%= f.label :email %><%= f.email_field :email %>
-        <%= f.label :password %><%= f.password_field :password %>
+        <%= f.label :email %><%= f.email_field :email, 'arial-label'=> "enter email" %>
+        <%= f.label :password %><%= f.password_field :password, 'arial-label'=> "enter password" %>
         <div id="home-newUserTxt">New User?</div>
-        <br><%= f.submit "Log in", class: "button" %><%= link_to "Sign up!", signup_path, class: "button app-floatR" %>
+        <br><%= f.submit "Log in", class: "button", 'arial-label'=> "lgoin button" %><%= link_to "Sign up!", signup_path, class: "button app-floatR", 'arial-label'=> "sign-up button" %>
       <% end %>
     </div>
   </div>

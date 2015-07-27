@@ -7,11 +7,23 @@ class CardsController < ApplicationController
   # GET /cards
   def index
     @cards = Card.order(:id).page params[:page]
+    respond_to do |format|
+      format.html
+      format.json { render json: @cards }
+    end
   end
 
   # GET /cards/1
   def show
-    @current_user = current_user
+    unless session.blank?
+      @current_user = current_user
+    end
+
+    @card = Card.find(params["id"].to_i)
+    respond_to do |format|
+      format.html
+      format.json { render json: @card }
+    end
   end
 
   # GET /cards/new
@@ -22,6 +34,33 @@ class CardsController < ApplicationController
   # GET /cards/1/edit
   def edit
     @card = Card.find(params[:id])
+  end
+
+  # POST /cards
+  def import
+    cards_table = CSV.table((params[:file]).path)
+    cards_table.each do |row|
+      p row
+      case row[:cardtype]
+        when 'rule'
+          @content = TitledCardContent.new(:title => row[:cardtitle],
+                                           :text => row[:cardtext],
+                                           :created_by => current_user.id)
+        else #default to text card if no card type specified
+          @content = TextContent.new(:text => row[:cardtext],
+                                     :created_by => current_user.id)
+      end
+
+      @content.save
+      @card = @content.card
+      unless @card
+        respond_to do |format|
+          format.html render :new
+          format.json { render json: {errors: 'Unable to create your card', status: 422} }
+        end
+      end
+    end
+    redirect_to cards_url, notice: "Cards imported successfully"
   end
 
   # POST /cards
@@ -45,25 +84,40 @@ class CardsController < ApplicationController
     @card = @content.card
 
     if @card
-      redirect_to @card, notice: 'Card was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to @card, notice: 'Card was successfully created' }
+        format.json { render json: @card, status: 200 }
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html render :new
+        format.json { render json: {errors: 'Unable to create your card',  status: 422} }
+      end
     end
   end
 
   # PATCH/PUT /cards/1
   def update
     if @card.update(update_params)
-      redirect_to @card, notice: 'Card was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to @card, notice: 'Card was successfully updated.' }
+        format.json { render json: @card, status: 200 }
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html render :edit
+        format.json { render json: {errors: 'Unable to update your card',  status: 422} }
+      end
     end
   end
 
   # DELETE /cards/1
   def destroy
     @card.destroy
-    redirect_to cards_url, notice: 'Card was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.'}
+      format.json {render json: {status: 204} }
+    end
   end
 
   private

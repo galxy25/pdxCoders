@@ -1,11 +1,11 @@
 <div class="row user-card-height">
 	<div class="user-card panel app-block app-roundedbox small-12 small-centered columns">
 		<div class="sign">
-			<h1><%= content.title %></h1>
+			<h1><%= @card.nil? ? content.title : @card.content.title %></h1>
 		</div>
       <div class="row">
         <div class="user-card-content small-12 uncentered columns">
-          <%= content.text %>
+          <%= @card.nil? ? content.text : @card.content.text %>
         </div>
       </div>
 	</div>

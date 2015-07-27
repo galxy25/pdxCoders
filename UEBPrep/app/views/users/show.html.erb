@@ -8,7 +8,18 @@
 
 <div class="row app-txt-centered">
   <div class="medium-3 medium-centered columns hide-for-small-only">
-    <img src="/assets/homepage/iHeader.png" alt="image" data-interchange="">
+    <img src="/assets/homepage/iHeader.png" alt="UEB Prep Logo: reading, games, chat" data-interchange="">
+  </div>
+</div>
+<div class="row" style="float:left">
+  <div class="app-block app-modalbox app-roundedbox small-3 small-uncentered columns">
+    <h4 style="text-align: center">My Playlists</h4>
+    <hr/>
+    <ul id="user_playlists">
+      <% @playlists.each do |playlist| %>
+          <li style="list-style-type: none;"><%= playlist.name + " (" + playlist.cards.count.to_s + ")" %></li>
+      <% end %>
+    </ul>
   </div>
 </div>
 <div class="row">
@@ -23,4 +34,5 @@
       </ul>
     </div>
   </div>
+  <%= render 'footer_links' %>
 </div>
