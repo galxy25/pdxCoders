@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <li class="active"><%=link_to "View Profile", {:controller => "users", :action => "show", :id => current_user.id } %></li>
   <li class="active"><%= link_to "Edit Profile", profile_path, method: "get" %></li>
+  <li class="active"><%= link_to "Card Creator", cardcreator_path, method: "get" %></li>
   <li class="active"><%= link_to "Logout", logout_path, method: "delete" %></li>
 <% else %>
   <li class="active"><%= link_to "Sign Up", signup_path %></li>
