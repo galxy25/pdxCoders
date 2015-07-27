@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -35,6 +36,7 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
+
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       if !auth.info.email
         user.email = "noValidEmail@wrong.com"
