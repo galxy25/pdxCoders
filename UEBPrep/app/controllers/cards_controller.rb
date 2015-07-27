@@ -37,6 +37,33 @@ class CardsController < ApplicationController
   end
 
   # POST /cards
+  def import
+    cards_table = CSV.table((params[:file]).path)
+    cards_table.each do |row|
+      p row
+      case row[:cardtype]
+        when 'rule'
+          @content = TitledCardContent.new(:title => row[:cardtitle],
+                                           :text => row[:cardtext],
+                                           :created_by => current_user.id)
+        else #default to text card if no card type specified
+          @content = TextContent.new(:text => row[:cardtext],
+                                     :created_by => current_user.id)
+      end
+
+      @content.save
+      @card = @content.card
+      unless @card
+        respond_to do |format|
+          format.html render :new
+          format.json { render json: {errors: 'Unable to create your card', status: 422} }
+        end
+      end
+    end
+    redirect_to cards_url, notice: "Cards imported successfully"
+  end
+
+  # POST /cards
   def create
     case card_params[:cardtype]
       when 'text'

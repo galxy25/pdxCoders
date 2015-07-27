@@ -17,7 +17,10 @@ Rails.application.routes.draw do
 
   resources :users,  only: [:index, :show, :create, :edit, :update]
 
-  resources :cards
+  resources :cards do
+    collection { post :import }
+  end
+
   resources :playlists
 
   # API Routes
