@@ -1,11 +1,5 @@
 <% provide(:title, "UEBPrep - Edit Profile") %>
 
-<% content_for :navlinks do %>
-  <li class="active"><%=link_to "View Profile", {:controller => "users", :action => "show", :id => @user.id } %></li>
-  <li class="active"><%= link_to "Edit Profile", profile_path, method: "get" %></li>
-  <li class="active"><%= link_to "Logout", logout_path, method: "delete" %></li>
-<% end %>
-
 <div class="row">
   <div class="medium-3 medium-centered columns hide-for-small-only">
     <img src="assets/homepage/iHeader.png" alt="UEB Prep Logo: reading, games, chat" data-interchange="">
