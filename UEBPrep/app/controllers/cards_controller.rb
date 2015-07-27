@@ -4,6 +4,10 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate!, only: [:show]
 
+
+
+
+
   # GET /cards
   def index
     @cards = Card.order(:id).page params[:page]
@@ -34,6 +38,20 @@ class CardsController < ApplicationController
   # GET /cards/1/edit
   def edit
     @card = Card.find(params[:id])
+  end
+
+  # POST /cards
+  def import
+    #CSV.foreach((params[:file]).path, headers: true) do |row|
+    cards_table = CSV.table("card_list.csv")
+    cards_table.each do |row|
+      p row
+      @content = TextContent.new(:text => row[:cardtext],
+                                 :created_by => current_user.id)
+      @content.save
+      @card = @content.card
+    end
+    redirect_to cards_url, notice: "done"
   end
 
   # POST /cards
