@@ -4,10 +4,6 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate!, only: [:show]
 
-
-
-
-
   # GET /cards
   def index
     @cards = Card.order(:id).page params[:page]
@@ -45,27 +41,26 @@ class CardsController < ApplicationController
     cards_table = CSV.table((params[:file]).path)
     cards_table.each do |row|
       p row
-      #TODO: refactor card creation?
       case row[:cardtype]
-        when 'text'
-          @content = TextContent.new(:text => row[:cardtext],
-                                     :created_by => current_user.id)
         when 'rule'
           @content = TitledCardContent.new(:title => row[:cardtitle],
                                            :text => row[:cardtext],
                                            :created_by => current_user.id)
+        else #default to text card if no card type specified
+          @content = TextContent.new(:text => row[:cardtext],
+                                     :created_by => current_user.id)
       end
 
       @content.save
       @card = @content.card
-      if !@card
+      unless @card
         respond_to do |format|
           format.html render :new
-          format.json { render json: {errors: 'Unable to create your card',  status: 422} }
+          format.json { render json: {errors: 'Unable to create your card', status: 422} }
         end
       end
     end
-    redirect_to cards_url, notice: "done"
+    redirect_to cards_url, notice: "Cards imported successfully"
   end
 
   # POST /cards
