@@ -16,7 +16,9 @@
     <h4>My Playlists</h4>
     <hr/>
     <ul id="user_playlists">
-
+      <% @playlist.each do |playlist| %>
+          <li>><%= playlist.name %></li>
+      <% end %>
     </ul>
   </div>
 </div>
