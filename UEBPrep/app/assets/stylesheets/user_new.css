@@ -1,0 +1,5 @@
+.field_with_errors .message
+{
+    color: #D00;
+    display: inline;
+}
