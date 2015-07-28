@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 
   # Checks to ensure that username is present, unique and that the length is within 3 and 20
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 1..100 }
+  validates :email, :presence => true, :uniqueness => true
+  validates :password, :presence => true
+  validates :password_confirmation, :presence => true
 
   extend FriendlyId
   friendly_id :username, use: :slugged
