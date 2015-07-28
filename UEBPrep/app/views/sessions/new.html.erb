@@ -1,27 +1,11 @@
 <% provide(:title, "UEBPrep - Login") %>
-<% content_for :navlinks do %>
-  <li class="active"><%= link_to "Sign Up", signup_path, 'arial-label'=> "sign up as new user" %></li>
-  <li class="active"><%= link_to "Login", login_path, 'arial-label'=> "login" %></li>
-<% end %>
+
 <div class="row">
   <div class="app-modalbox app-roundedbox small-10 medium-7 small-centered columns" role="main">
     <div class="app-txt-centered small-8 large-10 small-centered columns" role="complementary">
       <h4>Login</h4>
       <hr>
-      <div class="google" arial-label= "sign in with google">
-        <%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
-            <img class="app-btns app-roundedbox" src="assets/homepage/google.png" alt="google logo and text" data-interchange="">
-        <% end %>
-      </div>
-      <div class="facebook" arial-label= "sign in with facebook">
-        <!--%= link_to user_omniauth_authorize_path(:facebook) do %-->
-            <img class="app-btns app-roundedbox" src="assets/homepage/facebook_login_button.png" alt="facebook logo and text" data-interchange="">
-        <!--% end %-->
-      </div>
-      <div class="twitter" arial-label= "sign in with twitter">
-        <%= link_to user_omniauth_authorize_path(:twitter) do %>
-            <img class="app-btns app-roundedbox" src="assets/homepage/twitter_login_button.png" alt="twitter logo and text" data-interchange="">
-        <% end %>
+      <%= render 'users/social_media_logins' %>
       </div>
     </div>
     <br>

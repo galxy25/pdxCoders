@@ -8,7 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to profile_path
     else
       session["devise.google_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      redirect_to signup_path
     end
   end
 
@@ -20,7 +20,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to profile_path
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      redirect_to signup_path
     end
   end
 
@@ -34,7 +34,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to profile_path
     else
       session["devise.twitter_uid"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      redirect_to signup_path
     end
   end
 end
