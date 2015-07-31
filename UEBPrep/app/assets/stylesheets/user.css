@@ -44,3 +44,8 @@
     font-size: 200%;
     line-height: 2rem;
 }
+
+.user_playlist
+{
+    cursor: pointer;
+}
