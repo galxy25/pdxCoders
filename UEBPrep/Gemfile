@@ -24,6 +24,7 @@ source 'https://rubygems.org'
  gem 'foreigner'
  gem 'kaminari'
  gem 'social-share-button'
+ gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'rspec-rails'

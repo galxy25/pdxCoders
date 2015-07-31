@@ -6,12 +6,13 @@
   </div>
 </div>
 <div class="row" style="float:left">
-  <div class="app-block app-modalbox app-roundedbox small-3 small-uncentered columns">
+  <div class="app-block app-modalbox app-roundedbox small-4 small-uncentered columns">
     <h4 style="text-align: center">My Playlists</h4>
+    <p style="text-align: center">(Click to edit)</p>
     <hr/>
     <ul id="user_playlists">
       <% @playlists.each do |playlist| %>
-          <li style="list-style-type: none;" class="user_playlist"><%= playlist.name + " (" + playlist.cards.count.to_s + ")" %></li>
+          <li style="list-style-type: none;text-align: center" class="user_playlist"><%= playlist.name + " (" + playlist.cards.count.to_s + ")" %></li>
       <% end %>
     </ul>
   </div>
@@ -30,3 +31,4 @@
   </div>
   <%= render 'footer_links' %>
 </div>
+<div id="edit_playlist_dialog"></div>
