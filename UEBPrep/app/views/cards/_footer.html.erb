@@ -1,3 +1,11 @@
 <%= social_share_button_tag("A CARD") %>
 <%= link_to 'Examples', @card %>
-<%= link_to 'Save To Playlist', cards_path %>
+<button href="#" data-dropdown="add-to-playlist" aria-controls="add-to-playlist" aria-expanded="false" class="button dropdown">
+  Add card to playlist
+</button><br>
+<ul id="add-to-playlist" data-dropdown-content class="f-dropdown" aria-hidden="true">
+  <% current_user.playlists.each do |playlist| %>
+    <li><a href="#"><%= playlist.name %></a></li>
+  <% end %>
+  <li><a href="#">New playlist...</a></li>
+</ul>
