@@ -8,7 +8,7 @@ $(document).ready(function(){
             title: "Edit Playlist: " + $(this).text(),
             width: 750,
             buttons: {
-                Save: function() {alert("submit edit")},
+                Save: function() {alert("submit edit"); var idsInOrder = $("#sortable2").sortable("toArray"); console.log(idsInOrder);},
                 Cancel: function() {$('#edit_playlist_dialog').dialog("close"); $('#edit_playlist_dialog').empty();}
             }
         }).dialog("open").css('display', 'block');
