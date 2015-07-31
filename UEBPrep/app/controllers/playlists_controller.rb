@@ -12,7 +12,17 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/new
   def new
-    @playlist = Playlist.new
+    @playlist = Playlist.new(new_params)
+    @playlist.user = current_user
+
+    if @playlist.save!
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user) }
+        format.json {render json: {status: 204, :playlist => @playlist} }
+      end
+    else
+      render json: {errors: 'Unable to create a playlist'}
+    end
   end
 
   # GET /playlists/1/edit
@@ -54,5 +64,9 @@ class PlaylistsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def playlist_params
       params[:playlist]
+    end
+
+    def new_params
+      params.permit(:name)
     end
 end
