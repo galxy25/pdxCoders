@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_playlist, only: [:show, :edit, :update, :destroy, :cards]
 
   # GET /playlists
   def index
@@ -8,6 +8,18 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @playlist }
+    end
+  end
+
+  # GET /playlists/1/cards
+  def cards
+    respond_to do |format|
+      format.html
+      format.json { render json: @playlist.cards }
+    end
   end
 
   # GET /playlists/new

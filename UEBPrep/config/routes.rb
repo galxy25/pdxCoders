@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :playlists
+  get 'playlists/:id/cards' => 'playlists#cards'
 
   # API Routes
   namespace :api do
