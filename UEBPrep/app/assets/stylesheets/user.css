@@ -49,3 +49,14 @@
 {
     cursor: pointer;
 }
+
+#sortable li
+{
+    cursor: pointer;
+    list-style-type: none;
+}
+
+#sortable li.ui-sortable-helper
+{
+    cursor: move;
+}
