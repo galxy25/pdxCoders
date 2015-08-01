@@ -1,0 +1,5 @@
+
+
+<%= @playlist.cards.each do |card| %>
+  <%= render partial: card.content, locals: { content: card.content } %>
+<% end %>
