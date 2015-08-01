@@ -1,5 +1,6 @@
 class Playlist < ActiveRecord::Base
   validates :name, presence: true
+  validate :user_id, presence: true
 
   belongs_to :user
   has_many :cards_playlists
