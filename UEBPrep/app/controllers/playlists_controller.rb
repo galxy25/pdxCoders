@@ -7,7 +7,20 @@ class PlaylistsController < ApplicationController
   end
 
   # GET /playlists/1
-  def show
+  def show  
+    if (@playlist.user_id == current_user.id)
+      respond_to do |format|
+        format.html 
+        format.json { render json: {:playlist => @playlist} }
+      end
+    else
+      respond_to do |format|
+        flash[:alert] = 'You are not authorized to view that playlist.'
+        format.html { redirect_to user_path(current_user) }
+        format.json { render json: {status: 403} }
+      end
+    end
+
   end
 
   # GET /playlists/new
