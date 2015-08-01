@@ -71,7 +71,17 @@ class PlaylistsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_playlist
-      @playlist = Playlist.find(params[:id])
+      @playlists = Playlist.where(id: params[:id])
+
+      if @playlists.empty? 
+        respond_to do |format|
+          format.html { redirect_to user_path(current_user) }
+          format.json {render json: {status: 404, :error => 'Unable to find a playlist with id: #{params[:id]}'} }
+        end
+      else
+        @playlist = @playlists.first
+      end
+
     end
 
     # Only allow a trusted parameter "white list" through.

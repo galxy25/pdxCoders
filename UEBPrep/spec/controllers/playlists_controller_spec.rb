@@ -40,6 +40,12 @@ RSpec.describe PlaylistsController, type: :controller do
         expect(assigns(:playlist).user_id).to eq user.id
       end
 
+      it "returns 404 when asked for a non-existent playlist" do
+        get :show , :id => (Playlist.count + 1) , :format => :json
+        @results = JSON.parse(response.body)
+        expect(@results["status"]).to eq 404
+      end
+
       context "with a playlist that does not belong to the current user" do
         before :each do
           playlistTwo.user = userTwo
