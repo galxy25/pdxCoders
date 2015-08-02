@@ -13,7 +13,5 @@
       <h1><%= @playlist.name %></h1>
     </div>
   </div>
-  <div class="app-block app-modalbox app-roundedbox small-10 medium-7 small-centered columns" role="main">
-	  <%= render 'show_playlist' %>
-</div>
+  <%= render partial: @current_card.content, locals: { content: @current_card.content } %>
 </div>

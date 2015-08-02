@@ -9,9 +9,14 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1
   def show  
     if (@playlist.user_id == current_user.id)
-      respond_to do |format|
-        format.html 
-        format.json { render json: {:playlist => @playlist} }
+      if play_params[:display_card_id]
+        # Implement this path 
+      else
+        @current_card = @playlist.cards.first
+        respond_to do |format|
+          format.html 
+          format.json { render json: {:playlist => @playlist, :current_card => @current_card} }
+        end
       end
     else
       respond_to do |format|
@@ -87,6 +92,10 @@ class PlaylistsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def playlist_params
       params[:playlist]
+    end
+
+    def play_params
+      params.permit(:display_card_id)
     end
 
     def new_params

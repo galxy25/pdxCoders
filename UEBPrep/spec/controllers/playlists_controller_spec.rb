@@ -7,8 +7,12 @@ RSpec.describe PlaylistsController, type: :controller do
     let(:playlist_name) { 'Valid Name'}
     let(:playlist) {FactoryGirl.create(:playlist)}
     let(:playlistTwo) {FactoryGirl.create(:playlist)}
+    let!(:text_card) {FactoryGirl.create(:text_content, id: 1)}
+    let!(:titled_card_content) {FactoryGirl.create(:titled_card_content, id: 1)}
 
     before :each do
+      playlist.cards.push(text_card.card)
+      playlist.cards.push(titled_card_content.card)
       sign_in user
     end
 
@@ -33,11 +37,16 @@ RSpec.describe PlaylistsController, type: :controller do
         playlist.reload
 
         get :show , :id => playlist.id , :format => :json
+        @results = JSON.parse(response.body)
       end
 
       it "returns the asked for playlist" do
         expect(assigns(:playlist).id).to eq playlist.id
         expect(assigns(:playlist).user_id).to eq user.id
+      end
+
+      it "returns the first card of the playlist" do
+        expect(@results["current_card"]["id"]).to eq playlist.cards.first.id
       end
 
       it "returns 404 when asked for a non-existent playlist" do
