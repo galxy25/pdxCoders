@@ -7,7 +7,38 @@ class PlaylistsController < ApplicationController
   end
 
   # GET /playlists/1
-  def show
+  def show  
+    if (@playlist.user_id == current_user.id)
+      if params[:play_params] && play_params[:display_card_id]
+        @current_index = @playlist.cards.find_index { |card|  card.id == play_params["display_card_id"].to_i }
+
+        case play_params[:direction]
+          when "Back" 
+              @current_index = previous_card_index(@current_index, @playlist)
+          when "Forward"
+            @current_index = next_card_index(@current_index, @playlist)
+        end
+        @current_card = @playlist.cards[@current_index]
+  
+        respond_to do |format|
+          format.html 
+          format.json { render json: {:playlist => @playlist, :current_card => @current_card} }
+        end
+      else
+        @current_card = @playlist.cards.first
+        @current_index = 0
+        respond_to do |format|
+          format.html 
+          format.json { render json: {:playlist => @playlist, :current_card => @current_card} }
+        end
+      end
+    else
+      respond_to do |format|
+        flash[:alert] = 'You are not authorized to view that playlist.'
+        format.html { redirect_to user_path(current_user) }
+        format.json { render json: {status: 403} }
+      end
+    end
   end
 
   # GET /playlists/new
@@ -58,7 +89,17 @@ class PlaylistsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_playlist
-      @playlist = Playlist.find(params[:id])
+      @playlists = Playlist.where(id: params[:id])
+
+      if @playlists.empty? 
+        respond_to do |format|
+          format.html { redirect_to user_path(current_user) }
+          format.json {render json: {status: 404, :error => 'Unable to find a playlist with id: #{params[:id]}'} }
+        end
+      else
+        @playlist = @playlists.first
+      end
+
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -66,7 +107,27 @@ class PlaylistsController < ApplicationController
       params[:playlist]
     end
 
+    def play_params
+      params.require(:play_params).permit(:display_card_id, :direction)
+    end
+
     def new_params
       params.permit(:name)
+    end
+
+    def next_card_index(index, playlist)
+      if index == (playlist.cards.count - 1)
+        index = 0
+      else
+        index = index + 1
+      end
+    end
+
+    def previous_card_index(index, playlist)
+      if index == 0 
+        index = (playlist.cards.count - 1) 
+      else
+        index = index - 1 
+      end
     end
 end

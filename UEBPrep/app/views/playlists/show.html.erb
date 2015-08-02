@@ -1,8 +1,18 @@
-<p id="notice"><%= notice %></p>
-<%= label_tag "Name" %>
-<%= label_tag @playlist.name %>
-<%= @playlist.cards.each do |card| %>
-  <%= render partial: card.content, locals: { content: card.content } %>
+<% provide(:title, "UEBPrep - " + @playlist.name +  " Playlist") %>
+<% content_for :navlinks do %>
+  <li class="active"><%= link_to 'My Playlists', playlists_path %></li>
+  <li class="active"><%= link_to 'Edit ' + @playlist.name, edit_playlist_path(@playlist) %></li>
+  
+
+  <li class="active"><%= link_to 'Previous Card', playlist_path({:play_params => { :display_card_id => @current_card.id, :direction => 'Back'}}) %></li>
+  <li class="active"><%= link_to 'Next Card', playlist_path({:play_params => {:display_card_id => @current_card.id, :direction => 'Forward' }}) %></li>
+
 <% end %>
-<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
-<%= link_to 'Back', playlists_path %>
+<div class="row app-txt-centered user-card-height">
+  <div class="row">
+    <div class="small-11 small-centered columns">
+      <h1><%= @playlist.name %></h1>
+    </div>
+  </div>
+  <%= render partial: @current_card.content, locals: { content: @current_card.content } %>
+</div>
