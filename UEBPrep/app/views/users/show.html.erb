@@ -37,7 +37,9 @@
   </div>
   <%= render 'footer_links' %>
 </div>
-<div id="edit_playlist_dialog" style="display: none"><ul id="sortable">
+<div id="edit_playlist_dialog" style="display: none">
+  <label for="playlist_title">Playlist Name</label><input id="playlist_title" type="text" />
+  <ul id="sortable">
   <% @playlists.each do |playlist| %>
       <% playlist.cards.each do |card| %>
         <li><%= card.content.text %></li>
