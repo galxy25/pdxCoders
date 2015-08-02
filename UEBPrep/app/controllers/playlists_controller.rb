@@ -9,10 +9,24 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1
   def show  
     if (@playlist.user_id == current_user.id)
-      if play_params[:display_card_id]
-        # Implement this path 
+      if params[:play_params] && play_params[:display_card_id]
+        case play_params[:direction]
+          when "Back" 
+              # Set current card to previous card
+              #TODO: Check if we are at the first card edge case 
+          when "Forward"
+            @current_index = @playlist.cards.find_index { |card|  card.id == play_params["display_card_id"].to_i }
+            @current_index = next_card_index(@current_index, @playlist)
+        end
+        @current_card = @playlist.cards[@current_index]
+  
+        respond_to do |format|
+          format.html 
+          format.json { render json: {:playlist => @playlist, :current_card => @current_card} }
+        end
       else
         @current_card = @playlist.cards.first
+        @current_index = 0
         respond_to do |format|
           format.html 
           format.json { render json: {:playlist => @playlist, :current_card => @current_card} }
@@ -25,7 +39,6 @@ class PlaylistsController < ApplicationController
         format.json { render json: {status: 403} }
       end
     end
-
   end
 
   # GET /playlists/new
@@ -95,10 +108,19 @@ class PlaylistsController < ApplicationController
     end
 
     def play_params
-      params.permit(:display_card_id)
+      params.require(:play_params).permit(:display_card_id, :direction)
     end
 
     def new_params
       params.permit(:name)
     end
+
+    def next_card_index(index, playlist)
+      if index == (playlist.cards.count - 1)
+        index = 0
+      else
+        index = index + 1
+      end
+    end
+
 end

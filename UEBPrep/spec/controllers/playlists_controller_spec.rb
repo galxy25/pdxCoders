@@ -49,6 +49,13 @@ RSpec.describe PlaylistsController, type: :controller do
         expect(@results["current_card"]["id"]).to eq playlist.cards.first.id
       end
 
+      it "returns the next card when passed a current card id" do 
+        get :show, :id => playlist.id, :play_params => { display_card_id: playlist.cards.first.id, direction: "Forward" }, :format => :json
+        @results = JSON.parse(response.body)
+
+        expect(@results["current_card"]["id"]).to eq playlist.cards.second.id
+      end
+    
       it "returns 404 when asked for a non-existent playlist" do
         get :show , :id => (Playlist.count + 1) , :format => :json
         @results = JSON.parse(response.body)

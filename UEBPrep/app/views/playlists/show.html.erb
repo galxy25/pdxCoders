@@ -1,10 +1,11 @@
 <% provide(:title, "UEBPrep - " + @playlist.name +  " Playlist") %>
 <% content_for :navlinks do %>
-  <li class="active"><%= link_to 'Edit', edit_playlist_path(@playlist) %></li>
   <li class="active"><%= link_to 'My Playlists', playlists_path %></li>
+  <li class="active"><%= link_to 'Edit ' + @playlist.name, edit_playlist_path(@playlist) %></li>
+  
 
-  <li class="active"><%= link_to 'Next', edit_playlist_path(@playlist) %></li>
-  <li class="active"><%= link_to 'Back', playlists_path %></li>
+  <li class="active"><%= link_to 'Previous Card', playlist_path({:play_params => { :display_card_id => @current_card.id, :direction => 'Back'}}) %></li>
+  <li class="active"><%= link_to 'Next Card', playlist_path({:play_params => {:display_card_id => @current_card.id, :direction => 'Forward' }}) %></li>
 
 <% end %>
 <div class="row app-txt-centered user-card-height">
