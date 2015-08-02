@@ -10,12 +10,12 @@ class PlaylistsController < ApplicationController
   def show  
     if (@playlist.user_id == current_user.id)
       if params[:play_params] && play_params[:display_card_id]
+        @current_index = @playlist.cards.find_index { |card|  card.id == play_params["display_card_id"].to_i }
+
         case play_params[:direction]
           when "Back" 
-              # Set current card to previous card
-              #TODO: Check if we are at the first card edge case 
+              @current_index = previous_card_index(@current_index, @playlist)
           when "Forward"
-            @current_index = @playlist.cards.find_index { |card|  card.id == play_params["display_card_id"].to_i }
             @current_index = next_card_index(@current_index, @playlist)
         end
         @current_card = @playlist.cards[@current_index]
@@ -123,4 +123,11 @@ class PlaylistsController < ApplicationController
       end
     end
 
+    def previous_card_index(index, playlist)
+      if index == 0 
+        index = (playlist.cards.count - 1) 
+      else
+        index = index - 1 
+      end
+    end
 end
