@@ -14,9 +14,9 @@ class PlaylistsController < ApplicationController
 
         case play_params[:direction]
           when "Back" 
-              @current_index = previous_card_index(@current_index, @playlist)
+              @current_index = previous_card_index(@current_index, @playlist.cards.count)
           when "Forward"
-            @current_index = next_card_index(@current_index, @playlist)
+              @current_index = next_card_index(@current_index, @playlist.cards.count)
         end
         @current_card = @playlist.cards[@current_index]
   
@@ -115,17 +115,17 @@ class PlaylistsController < ApplicationController
       params.permit(:name)
     end
 
-    def next_card_index(index, playlist)
-      if index == (playlist.cards.count - 1)
+    def next_card_index(index, playlist_count)
+      if index == playlist_count - 1
         index = 0
       else
         index = index + 1
       end
     end
 
-    def previous_card_index(index, playlist)
+    def previous_card_index(index, playlist_count)
       if index == 0 
-        index = (playlist.cards.count - 1) 
+        index = playlist_count - 1
       else
         index = index - 1 
       end
