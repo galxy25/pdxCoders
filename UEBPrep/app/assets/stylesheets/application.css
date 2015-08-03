@@ -56,6 +56,11 @@ table a
     text-decoration: underline;
 }
 
+.app-modalbox img
+{
+    border: 1px solid;
+}
+
 .app-roundedbox
 {
     border-radius: 6px;
