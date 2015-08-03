@@ -18,7 +18,7 @@ class PlaylistsController < ApplicationController
   def cards
     respond_to do |format|
       format.html
-      format.json { render json: @playlist.cards }
+      format.json { render json: { :card => Rabl::Renderer.json(@playlist.cards, 'api/cards/show') , status: 200} }
     end
   end
 
