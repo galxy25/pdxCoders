@@ -1,5 +1,7 @@
 $(document).ready(function(){
     $("#user_playlists li").on("click", function(){
+    //$(".edit_handler").on("click", function(){
+        var playlistName = $(this).text();
         $('#edit_playlist_dialog').dialog({
             autoOpen: false,
             draggable: true,
@@ -12,6 +14,7 @@ $(document).ready(function(){
                     $('#edit_playlist_dialog').dialog("close");},
                 Cancel: function() {$('#edit_playlist_dialog').dialog("close");}
             }
+
         }).dialog("open").css('display', 'block');
 
         $('#sortable').sortable({
@@ -23,6 +26,10 @@ $(document).ready(function(){
         var splits = title.split('(');
 
         $('#playlist_title').val(splits[0].trim());
+
+
     });
+
+
 })
 
