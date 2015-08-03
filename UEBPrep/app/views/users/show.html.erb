@@ -18,7 +18,7 @@
     <ol id="user_playlists">
       <% @playlists.each do |playlist| %>
           <li style="list-style-type: none;">
-          <%= link_to "#{playlist.name}",  playlist_path, method: :get  %>
+          <%= link_to "#{playlist.name}", edit_playlist_path(playlist)  %>
           Card Count: <%= playlist.cards.count %>
           </li>
       <% end %>
