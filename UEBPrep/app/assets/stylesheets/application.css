@@ -43,6 +43,7 @@ body {overflow-x:hidden;}
 table a
 {
     color: #000;
+    text-decoration: underline;
 }
 
 .app-modalbox a
