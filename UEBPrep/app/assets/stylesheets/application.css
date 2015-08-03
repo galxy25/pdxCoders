@@ -40,6 +40,11 @@ body {overflow-x:hidden;}
 	padding:    4%;
 }
 
+table a
+{
+    color: #000;
+}
+
 .app-modalbox a
 {
     color: #000;
