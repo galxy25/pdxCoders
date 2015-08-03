@@ -42,7 +42,11 @@
   <ul id="sortable">
   <% @playlists.each do |playlist| %>
       <% playlist.cards.each do |card| %>
-        <li><%= card.content.text %></li>
+        <% if card.content_type_id == 1 %>
+          <li><%= card.content.text %></li>
+        <% else %>
+          <li><%= card.content.title %></li>
+        <% end %>
       <% end %>
   <% end %>
 </ul></div>
