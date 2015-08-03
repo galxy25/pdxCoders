@@ -15,13 +15,14 @@
     </div>
     <h4 style="text-align: center">My Playlists</h4>
     <hr/>
-    <ul id="user_playlists">
+    <ol id="user_playlists">
       <% @playlists.each do |playlist| %>
           <li style="list-style-type: none;">
-            <%= link_to "#{playlist.name} Card Count: #{playlist.cards.count} ",  playlist_path, method: :get  %>
+          <%= link_to "#{playlist.name}",  playlist_path, method: :get  %>
+          Card Count: <%= playlist.cards.count %>
           </li>
       <% end %>
-    </ul>
+    </ol>
   </div>
 </div>
 <div class="row">

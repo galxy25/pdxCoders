@@ -40,6 +40,12 @@ body {overflow-x:hidden;}
 	padding:    4%;
 }
 
+.app-modalbox a
+{
+    color: #000;
+    text-decoration: underline;
+}
+
 .app-roundedbox
 {
     border-radius: 6px;
