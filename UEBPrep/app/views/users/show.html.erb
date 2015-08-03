@@ -14,11 +14,10 @@
       <% end %>
     </div>
     <h4 style="text-align: center">My Playlists</h4>
-    <p style="text-align: center">(Click to edit)</p>
     <hr/>
-    <ul id="user_playlists">
+    <ul>
       <% @playlists.each do |playlist| %>
-          <li style="list-style-type: none;text-align: center" class="user_playlist"><%= playlist.name + " (" + playlist.cards.count.to_s + ")" %></li>
+          <li style="list-style-type: none;text-align: center"><%= playlist.name + " (" + playlist.cards.count.to_s + ")" %></li>
       <% end %>
     </ul>
   </div>
@@ -37,12 +36,4 @@
   </div>
   <%= render 'footer_links' %>
 </div>
-<div id="edit_playlist_dialog" style="display: none">
-  <label for="playlist_title">Playlist Name</label><input id="playlist_title" type="text" />
-  <ul id="sortable">
-  <% @playlists.each do |playlist| %>
-      <% playlist.cards.each do |card| %>
-        <li><%= card.content.text %></li>
-      <% end %>
-  <% end %>
-</ul></div>
+
