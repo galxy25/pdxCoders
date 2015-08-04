@@ -94,3 +94,10 @@ label[for=cardimagealt]
 .accordion {
     margin: 0;
 }
+
+.action {
+    width: 100%;
+    border-top: 2px solid rgba(160, 160, 160, 0.2);
+    padding: 1.3rem;
+    color: #000000;
+}
