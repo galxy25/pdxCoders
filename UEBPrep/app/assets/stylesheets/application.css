@@ -18,6 +18,16 @@
 
 body {overflow-x:hidden;}
 
+table a
+{
+    color: #000;
+    text-decoration: underline;
+}
+
+.main {
+    padding: 4%;
+}
+
 .app-block { margin: 3% 0; }
 
 .app-btns
@@ -38,6 +48,17 @@ body {overflow-x:hidden;}
 {
 	background: #eee;
 	padding:    4%;
+}
+
+.app-modalbox a
+{
+    color: #000;
+    text-decoration: underline;
+}
+
+.app-modalbox img
+{
+    border: 1px solid;
 }
 
 .app-roundedbox

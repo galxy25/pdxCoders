@@ -1,3 +1,10 @@
+#user_playlist_modal
+{
+    position: absolute;
+    bottom:   15px;
+    left:     15px;
+}
+
 .user-card.panel
 {
     margin:         3rem auto;
