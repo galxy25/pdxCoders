@@ -5,6 +5,7 @@ RSpec.describe CardsController, type: :controller do
 
     let!(:text_card) {FactoryGirl.create(:text_content, id: 1)}
     let!(:titled_card_content) {FactoryGirl.create(:titled_card_content, id: 1)}
+    let(:citation) {"My Citation"}
 
     context 'with a signed in user' do
 
@@ -35,6 +36,12 @@ RSpec.describe CardsController, type: :controller do
           post :create, { cardtext: 'hello world', cardtype: 'text', :format => :json}
           @results = JSON.parse(response.body)
           expect(TextContent.find(@results['content_id']).text).to eq "hello world"
+        end
+
+        it "should allow you to add a citation to a card" do
+          post :create, { cardtext: 'hello world', cardtype: 'text', citation: citation, :format => :json}
+          @results = JSON.parse(response.body)
+          expect(@results['citation']).to eq citation
         end
 
         it 'creates a new card titled card in the database' do
