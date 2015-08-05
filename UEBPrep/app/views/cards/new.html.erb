@@ -9,6 +9,8 @@
     <%= form_for :card, :html => { :multipart => true } do |f| %>
         <%= label_tag(:cardtype, "Card Type") %>
         <%= select_tag(:cardtype, options_for_select([['-Select-','0'],['Image','image'],['Rule','rule'],['Text','text']])) %>
+        <%= label_tag(:cardtitle, "Citation") %>
+        <%= text_field_tag(:citation) %>
         <%= label_tag(:cardtitle, "Title") %>
         <%= text_field_tag(:cardtitle) %>
         <%= label_tag(:cardtext, "Text") %>

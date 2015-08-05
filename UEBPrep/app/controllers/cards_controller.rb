@@ -65,25 +65,10 @@ class CardsController < ApplicationController
 
   # POST /cards
   def create
-    case card_params[:cardtype]
-      when 'text'
-        @content = TextContent.new(:text => card_params[:cardtext],
-                                   :created_by => current_user.id)
-      when 'rule'
-        @content = TitledCardContent.new(:title => card_params[:cardtitle],
-                                         :text => card_params[:cardtext],
-                                         :created_by => current_user.id)
-      when 'image'
-        @content = ImageCardContent.new(:title => card_params[:cardtitle],
-                                        :text => card_params[:cardtext],
-                                        :image => card_params[:uploadcardimage],
-                                        :created_by => current_user.id,
-                                        :alt => card_params[:cardimagealt])
-    end
-    @content.save
-    @card = @content.card
+    @card = create_content(card_params).card
+    @card.citation = card_params[:citation]
 
-    if @card
+    if @card.save!
       respond_to do |format|
         format.html { redirect_to @card, notice: 'Card was successfully created' }
         format.json { render json: @card, status: 200 }
@@ -126,12 +111,33 @@ class CardsController < ApplicationController
       @card = Card.find(params[:id])
     end
 
+    def create_content(card_params)
+      case card_params[:cardtype]
+        when 'text'
+          @content = TextContent.new(:text => card_params[:cardtext],
+                                     :created_by => current_user.id)
+        when 'rule'
+          @content = TitledCardContent.new(:title => card_params[:cardtitle],
+                                           :text => card_params[:cardtext],
+                                           :created_by => current_user.id)
+        when 'image'
+          @content = ImageCardContent.new(:title => card_params[:cardtitle],
+                                          :text => card_params[:cardtext],
+                                          :image => card_params[:uploadcardimage],
+                                          :created_by => current_user.id,
+                                          :alt => card_params[:cardimagealt])
+      end
+
+      @content.save
+      @content
+    end
+
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.permit(:cardtype, :cardtitle, :cardtext, :uploadcardimage, :cardimagealt )
+      params.permit(:cardtype, :cardtitle, :cardtext, :uploadcardimage, :cardimagealt , :citation )
     end
 
     def update_params
-      params.permit(:cardtype, :title , :text , :uploadcardimage, :alt )
+      params.permit(:cardtype, :title , :text , :uploadcardimage, :alt, :citation )
     end
 end
