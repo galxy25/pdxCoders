@@ -41,7 +41,6 @@ RSpec.describe CardsController, type: :controller do
         it "should allow you to add a citation to a card" do
           post :create, { cardtext: 'hello world', cardtype: 'text', citation: citation, :format => :json}
           @results = JSON.parse(response.body)
-          binding.pry
           expect(@results['citation']).to eq citation
         end
 
