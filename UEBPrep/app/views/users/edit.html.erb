@@ -12,7 +12,7 @@
     <hr/>
     <ul id="user_playlists">
       <% @playlists.each do |playlist| %>
-          <li style="list-style-type: none;text-align: center" class="user_playlist"><%= playlist.name + " (" + playlist.cards.count.to_s + ")" %></li>
+          <li style="list-style-type: none;text-align: center" class="user_playlist" playlist-id="<%= playlist.id %>"><%= playlist.name + " (" + playlist.cards.count.to_s + ")" %></li>
       <% end %>
     </ul>
   </div>
