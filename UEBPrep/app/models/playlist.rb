@@ -9,6 +9,9 @@ class Playlist < ActiveRecord::Base
   def add_card(card)
     cards.push(card)
     save
+    entry = CardsPlaylist.find_by_card_id(card.id)
+    entry.order = cards.length
+    entry.save
   end
 
   def remove_card(card)
