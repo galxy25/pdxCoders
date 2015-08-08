@@ -7,20 +7,21 @@ $(document).ready(function(){
 
         var route = '/playlists/' + playlist_id + '/cards.json';
 
-        $.get(route, function(data) {
-            alert("FART");
-            alert(data);
-            var thingy = $.parseJSON(data);
-            //var cards = $.parseJSON(data.card);
-
-            $.each(thingy, function(key, value) {
-                alert(value);
+        $.getJSON(route, function(data) {
+            var cards = $.parseJSON(data.card);
+            var list_items = [];
+            $.each(cards, function(key, val) {
+                var title;
+                if (typeof val.card.content.title == 'undefined') {
+                    title = val.card.content.text;
+                } else {
+                    title = val.card.content.title;
+                }
+                list_items.push( "<li id='" + val.card.id + " class='ui-sortable-handle'>" + title + "</li>");
             });
+            $('#edit_playlist_dialog ul').empty();
+            $('#edit_playlist_dialog ul').append(list_items);
         });
-        // Grab the id from whatever got clicked?
-        // Get the json from the route for that id
-        // Fill #edit_playlist_dialog with the info.
-        // Open the dialog
 
         $('#edit_playlist_dialog').dialog({
             autoOpen: false,
@@ -46,10 +47,5 @@ $(document).ready(function(){
         var splits = title.split('(');
 
         $('#playlist_title').val(splits[0].trim());
-
-
     });
-
-
-})
-
+});
