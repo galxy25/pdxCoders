@@ -9,6 +9,7 @@
       <h1>Cards</h1>
     </div>
   </div>
+  <div id="card-id" card-id="<%= @card.id %>"></div>
   <%= render partial: @card.content, locals: { content: @card.content } %>
   <%= render 'footer' %>
 </div>

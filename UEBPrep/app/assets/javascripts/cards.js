@@ -52,3 +52,18 @@ $(function() {
         reader.readAsDataURL(image);
     });
 });
+
+$(document).ready(function() {
+    var card_id = $("#card-id").attr('card-id');
+    $('.drop-item').click(function(event){
+        var playlist_id = $(this).attr('id');
+        var route = '/playlists/' + playlist_id + '/add_card/' + card_id;
+        $.ajax({
+            url: route,
+            type: 'PUT',
+            success: function(result) {
+                // ??
+            }
+        });
+    });
+});

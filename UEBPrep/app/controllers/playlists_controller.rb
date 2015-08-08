@@ -47,7 +47,8 @@ class PlaylistsController < ApplicationController
 
   # POST?? /playlists/1/add_card/1
   def add_card
-    @playlist.add_card(params[:card_id])
+    @playlist.add_card(Card.find(params[:card_id]))
+    render :nothing => true
   end
 
   private

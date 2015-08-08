@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :playlists
+  put 'playlists/:id/add_card/:card_id' => 'playlists#add_card'
 
   # API Routes
   namespace :api do
