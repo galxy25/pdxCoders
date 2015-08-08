@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_playlist, only: [:show, :edit, :update, :destroy, :add_card]
 
   # GET /playlists
   def index
@@ -43,6 +43,11 @@ class PlaylistsController < ApplicationController
   def destroy
     @playlist.destroy
     redirect_to playlists_url, notice: 'Playlist was successfully destroyed.'
+  end
+
+  # POST?? /playlists/1/add_card/1
+  def add_card
+    @playlist.add_card(params[:card_id])
   end
 
   private
