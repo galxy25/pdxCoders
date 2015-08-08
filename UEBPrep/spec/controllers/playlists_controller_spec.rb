@@ -35,10 +35,22 @@ RSpec.describe PlaylistsController, type: :controller do
       end
 
       describe 'with a valid playlist with two cards' do
+        before (:each) do
+          @cards = JSON.parse(@json_response['card'])
+        end
+
         it 'returns all cards' do
-          expect(@json_response.count).to be 2
-          expect(@json_response.first['id']).to eq @card1.id
-          expect(@json_response.second['id']).to eq @card2.id
+          expect(@cards.count).to be 2
+        end
+
+        it 'has the right cards' do
+          expect(@cards.first['card']['id']).to eq(@card1.id)
+          expect(@cards.second['card']['id']).to eq(@card2.id)
+        end
+
+        it 'returns cards with a valid order' do
+          expect(@cards.first['card']['order']).to be 1
+          expect(@cards.second['card']['order']).to be 2
         end
       end
     end
