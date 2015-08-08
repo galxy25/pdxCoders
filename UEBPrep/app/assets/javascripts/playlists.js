@@ -1,8 +1,6 @@
 $(document).ready(function(){
     //$(".edit_handler").on("click", function(){
     $("#user_playlists li").on("click", function(event){
-        var playlistName = $(this).text();
-
         var playlist_id = $(this).attr('playlist-id');
 
         var route = '/playlists/' + playlist_id + '/cards.json';
