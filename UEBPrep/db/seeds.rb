@@ -16,6 +16,11 @@ if Rails.env.test? || Rails.env.development?
 
   content_type3 = ContentType.find_by(name: 'ImageContent') || ContentType.create(name: 'ImageContent')
 
+  Card.all.each { |card|
+    card.citation = 'My Citation'
+    card.save!
+  }
+  
   playlist = Playlist.create(name: 'This is a playlist')
   playlist.user = john_doe
   playlist.cards.push(text_content.card)

@@ -1,0 +1,10 @@
+<% provide(:title, "UEBPrep - Cards") %>
+<% content_for :navlinks do %>
+  <li class="active"><%= link_to "Back", cards_path %></li>
+  <li class="active"><%= link_to "Edit", edit_card_path(card) %></li>
+<% end %>
+<div class="row app-txt-centered user-card-height">
+  <%= render partial: card.content, locals: { content: card.content } %>
+  <%= render partial: 'example_footer', locals: {card: card} %>
+</div>
+

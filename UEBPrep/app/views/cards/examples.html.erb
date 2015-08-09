@@ -1,0 +1,7 @@
+<h1 class="text-center">Similar Cards</h1>
+<div class="row centered small-8">
+  <% @cards.each do |card| %>
+  	<%= render partial: "single_example", locals: {card: card} %>
+  <% end %>
+</div>
+<%= render 'links' %>

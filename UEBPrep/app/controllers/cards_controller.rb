@@ -105,6 +105,16 @@ class CardsController < ApplicationController
     end
   end
 
+  def examples 
+    citation = Card.find(params[:id]).citation
+    @cards = Card.where(citation: citation)
+
+    respond_to do |format|
+        format.html 
+        format.json { render json: @cards, status: 200 }
+      end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_card
