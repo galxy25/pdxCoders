@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    users = User.where(email: params[:session][:email])
+    #users = User.where(email: params[:session][:email])
+    users = User.where(username: params[:session][:username])
     #If it's greater than one, we violated the unique email constraint
     #on the user model
     if users.count == 1
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
         render 'new'
       end
     else
-      flash[:alert] = "No user with that email and password was found"
+      flash[:alert] = "No user with that username and password was found"
       render 'new'
     end
   end
