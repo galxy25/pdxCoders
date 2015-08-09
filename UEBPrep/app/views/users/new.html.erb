@@ -17,7 +17,7 @@
     <div class="app-block small-8 medium-15 small-centered columns" role="form">
       <%= form_for @user, html: { multipart: true } do |f| %>
         <%= f.label :email %><%= f.email_field :email, 'arial-label'=> "enter email" %>
-        <%= f.label :username %><%= f.text_field :username, 'arial-label'=> "enter username" %>
+        <%= f.label :username %><%= f.text_field :username, 'arial-label'=> "enter usernames" %>
         <%= f.label :password %><%= f.password_field :password, 'arial-label'=> "enter password" %>
         <%= f.label :password_confirmation, "Confirmation" %><%= f.password_field :password_confirmation, 'arial-label'=> "confirm password" %>
         <%= f.label :avatar, "Add a profile picture" %><%= f.file_field :avatar, 'arial-label'=> "upload avatar" %>
