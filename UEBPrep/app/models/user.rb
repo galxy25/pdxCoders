@@ -62,6 +62,7 @@ class User < ActiveRecord::Base
 
         user = User.create(provider:auth.provider,
                            uid:auth.uid,
+                           username:auth.uid+"@twitter.com",
                            email:auth.uid+"@twitter.com",
                            password:Devise.friendly_token[0,20],
         )
