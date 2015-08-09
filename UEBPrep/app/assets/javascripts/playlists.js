@@ -15,7 +15,7 @@ $(document).ready(function(){
                 } else {
                     title = val.card.content.title;
                 }
-                list_items.push( "<li id='" + val.card.id + " class='ui-sortable-handle'>" + title + "</li>");
+                list_items.push( "<li id='" + val.card.id + "' class='ui-sortable-handle'>" + title + "</li>");
             });
             $('#edit_playlist_dialog ul').empty();
             $('#edit_playlist_dialog ul').append(list_items);
@@ -29,7 +29,10 @@ $(document).ready(function(){
             title: "Edit Playlist: " + $(this).text(),
             width: 750,
             buttons: {
-                Save: function() {alert("submit edit"); var idsInOrder = $("#sortable2").sortable("toArray"); console.log(idsInOrder);
+                Save: function() {
+                    alert("submit edit");
+                    var idsInOrder = $("#sortable").sortable("toArray");
+                    console.log(idsInOrder);
                     $('#edit_playlist_dialog').dialog("close");},
                 Cancel: function() {$('#edit_playlist_dialog').dialog("close");}
             }
