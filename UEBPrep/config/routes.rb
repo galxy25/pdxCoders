@@ -28,7 +28,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :playlists
+  resources :playlists do
+    member do
+      post :remove_card_playlist
+    end
+  end
 
   # API Routes
   namespace :api do
