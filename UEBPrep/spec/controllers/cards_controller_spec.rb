@@ -73,8 +73,29 @@ RSpec.describe CardsController, type: :controller do
             delete :destroy, :id => @card.id
             expect{Card.find(deleted_id)}.to raise_error ActiveRecord::RecordNotFound
         end
-
       end
+
+      context 'cards with citations' do
+        let(:citation) {'My Citation'}
+
+        describe '#examples' do
+          before :each do
+            Card.all.each { |card|
+            card.citation = citation
+            card.save!
+            }
+            @card = Card.find_by(citation: citation)
+          end
+          
+          it 'returns all cards with the same citation' do
+            post :examples,  :id => @card.id, :format => :json
+            @results = JSON.parse(response.body)
+            expect(@results.count).to eq Card.where(citation: citation).count 
+          end
+        end
+      end
+
+
 
     end
 
