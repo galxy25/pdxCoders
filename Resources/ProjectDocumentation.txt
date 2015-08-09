@@ -41,7 +41,10 @@ A user consists of a unique email address, valid password, and api_key(for api a
 			The titled card content type contains two unicode string fields. One is for the displayed title of the card. The other field is a text field representing the string content of the card. Creating a titled card content automatically creates a card entry associated to it.
 
   Playlists
-	Playlists present a way for users to store and organize cards to create a personalized, unique and focused learning experience. Users may create playlists from their profile page and add and remove cards from their playlists. From a card view, a user may add that card to an existing playlist.
+	Playlists present a way for users to store and organize cards to create a personalized, unique and focused learning experience. Users may create playlists from their profile page, add and remove cards from their playlists. 
+	To add a card to a playlist, from the card view, a user may add that card to an existing playlist.
+	To remove a card from a playlist, from the playlist view a user may removed the current card from the playlist.
+	From the edit playlist view, the user may arrange the order of the cards.
 	Unique playlists are represented in the database by a name and the user_id of the user who created the playlist. Cards are then linked to playlists in a join table such that playlists can have many cards, and cards can belong to many playlists. The cards_playlist table also allows for the cards to be given an order in the playlist.
 
   Lessons
