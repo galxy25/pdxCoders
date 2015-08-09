@@ -30,57 +30,77 @@ RSpec.describe PlaylistsController, type: :controller do
       end
     end
 
-    describe "#show" do
+    context 'playlists with users' do
       before :each do
-        playlist.user = user 
+        playlist.user = user
         playlist.save!
         playlist.reload
-
-        get :show , :id => playlist.id , :format => :json
-        @results = JSON.parse(response.body)
       end
 
-      it "returns the asked for playlist" do
-        expect(assigns(:playlist).id).to eq playlist.id
-        expect(assigns(:playlist).user_id).to eq user.id
-      end
-
-      it "returns the first card of the playlist" do
-        expect(@results["current_card"]["id"]).to eq playlist.cards.first.id
-      end
-
-      it "returns the next card passed an id of a card in the playlist and direciton of Forward" do 
-        get :show, :id => playlist.id, :play_params => { display_card_id: playlist.cards.first.id, direction: "Forward" }, :format => :json
-        @results = JSON.parse(response.body)
-        expect(@results["current_card"]["id"]).to eq playlist.cards.second.id
-      end
-
-      it "returns the previous card when passed an id of a card in the playlist and direciton of Back"  do 
-        get :show, :id => playlist.id, :play_params => { display_card_id: playlist.cards.second.id, direction: "Back" }, :format => :json
-        @results = JSON.parse(response.body)
-        expect(@results["current_card"]["id"]).to eq playlist.cards.first.id
-      end
-    
-      it "returns 404 when asked for a non-existent playlist" do
-        get :show , :id => (Playlist.count + 1) , :format => :json
-        @results = JSON.parse(response.body)
-        expect(@results["status"]).to eq 404
-      end
-
-      context "with a playlist that does not belong to the current user" do
+      describe '#remove_card_playlist' do
         before :each do
-          playlistTwo.user = userTwo
-          playlistTwo.save!
-          playlist.reload
-
-          get :show , :id => playlistTwo.id , :format => :json
+          @card = text_card.card
+          post :remove_card_playlist , :id => playlist.id , :to_remove => @card.id, :format => :json
           @results = JSON.parse(response.body)
         end
 
-        it "returns 403 when asked for a playlist not created by the current user" do
-          expect(@results["status"]).to eq 403
+        it 'removes the card from the specifified playlist' do
+          expect(playlist.cards).to_not include(@card)
         end
-     end
+
+        it 'does not delete the card' do
+          expect{(Card.find(@card.id))}.to_not raise_error
+        end
+
+      end
+      describe "#show" do
+        before :each do
+          get :show , :id => playlist.id , :format => :json
+          @results = JSON.parse(response.body)
+        end
+
+        it "returns the asked for playlist" do
+          expect(assigns(:playlist).id).to eq playlist.id
+          expect(assigns(:playlist).user_id).to eq user.id
+        end
+
+        it "returns the first card of the playlist" do
+          expect(@results["current_card"]["id"]).to eq playlist.cards.first.id
+        end
+
+        it "returns the next card passed an id of a card in the playlist and direciton of Forward" do
+          get :show, :id => playlist.id, :play_params => { display_card_id: playlist.cards.first.id, direction: "Forward" }, :format => :json
+          @results = JSON.parse(response.body)
+          expect(@results["current_card"]["id"]).to eq playlist.cards.second.id
+        end
+
+        it "returns the previous card when passed an id of a card in the playlist and direciton of Back"  do
+          get :show, :id => playlist.id, :play_params => { display_card_id: playlist.cards.second.id, direction: "Back" }, :format => :json
+          @results = JSON.parse(response.body)
+          expect(@results["current_card"]["id"]).to eq playlist.cards.first.id
+        end
+
+        it "returns 404 when asked for a non-existent playlist" do
+          get :show , :id => (Playlist.count + 1) , :format => :json
+          @results = JSON.parse(response.body)
+          expect(@results["status"]).to eq 404
+        end
+
+        context "with a playlist that does not belong to the current user" do
+          before :each do
+            playlistTwo.user = userTwo
+            playlistTwo.save!
+            playlist.reload
+
+            get :show , :id => playlistTwo.id , :format => :json
+            @results = JSON.parse(response.body)
+          end
+
+          it "returns 403 when asked for a playlist not created by the current user" do
+            expect(@results["status"]).to eq 403
+          end
+        end
+      end
     end
   end
 
