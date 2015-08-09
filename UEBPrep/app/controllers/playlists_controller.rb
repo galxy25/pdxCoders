@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_playlist, only: [:show, :edit, :update, :destroy, :remove_card_playlist]
 
   # GET /playlists
   def index
@@ -60,6 +60,16 @@ class PlaylistsController < ApplicationController
   def edit
   end
 
+  def remove_card_playlist
+    evicted_card = Card.find(remove_params[:to_remove].to_i)
+    @playlist.remove_card(evicted_card)
+    @playlist.save!
+    @playlist.reload
+    respond_to do |format|
+      format.html { redirect_to playlist_path(@playlist) }
+      format.json {render json: {status: 204} }
+    end
+  end
   # POST /playlists
   def create
     @playlist = Playlist.new(playlist_params)
@@ -89,7 +99,7 @@ class PlaylistsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_playlist
-      @playlists = Playlist.where(id: params[:id])
+      @playlists = Playlist.where(id: params[:id].to_i)
 
       if @playlists.empty? 
         respond_to do |format|
@@ -113,6 +123,10 @@ class PlaylistsController < ApplicationController
 
     def new_params
       params.permit(:name)
+    end
+
+    def remove_params
+      params.permit(:to_remove, :id)
     end
 
     def next_card_index(index, playlist_count)

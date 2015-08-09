@@ -18,6 +18,16 @@
 
 body {overflow-x:hidden;}
 
+table a
+{
+    color: #000;
+    text-decoration: underline;
+}
+
+.main {
+    padding: 4%;
+}
+
 .app-block { margin: 3% 0; }
 
 .app-btns
@@ -40,6 +50,12 @@ body {overflow-x:hidden;}
 	padding:    4%;
 }
 
+.app-modalbox a
+{
+    color: #000;
+    text-decoration: underline;
+}
+
 .app-roundedbox
 {
     border-radius: 6px;
@@ -50,3 +66,26 @@ body {overflow-x:hidden;}
 .app-txt-centered { text-align: center; }
 
 .image-upload > input { display: none; }
+
+.social-share-button-facebook {
+    width: 60px !important;
+    height: 18px !important;
+    background: transparent url("/assets/share-facebook.png") no-repeat scroll !important;
+    vertical-align: bottom;
+}
+
+.social-share-button-google_plus {
+    width: 60px !important;
+    height: 18px !important;
+    background: transparent url("/assets/share-google_plus.png") no-repeat scroll !important;
+    vertical-align: bottom;
+}
+
+.social-share-button-twitter {
+    width: 60px !important;
+    height: 18px !important;
+    background: transparent url("/assets/share-twitter.png") no-repeat scroll !important;
+    vertical-align: bottom;
+}
+
+

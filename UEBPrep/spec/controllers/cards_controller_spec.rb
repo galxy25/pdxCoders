@@ -5,6 +5,7 @@ RSpec.describe CardsController, type: :controller do
 
     let!(:text_card) {FactoryGirl.create(:text_content, id: 1)}
     let!(:titled_card_content) {FactoryGirl.create(:titled_card_content, id: 1)}
+    let(:citation) {"My Citation"}
 
     context 'with a signed in user' do
 
@@ -37,6 +38,12 @@ RSpec.describe CardsController, type: :controller do
           expect(TextContent.find(@results['content_id']).text).to eq "hello world"
         end
 
+        it "should allow you to add a citation to a card" do
+          post :create, { cardtext: 'hello world', cardtype: 'text', citation: citation, :format => :json}
+          @results = JSON.parse(response.body)
+          expect(@results['citation']).to eq citation
+        end
+
         it 'creates a new card titled card in the database' do
           expect{post :create,  {:cardtext => "hello world",
                                  :cardtitle => "new title",
@@ -66,8 +73,29 @@ RSpec.describe CardsController, type: :controller do
             delete :destroy, :id => @card.id
             expect{Card.find(deleted_id)}.to raise_error ActiveRecord::RecordNotFound
         end
-
       end
+
+      context 'cards with citations' do
+        let(:citation) {'My Citation'}
+
+        describe '#examples' do
+          before :each do
+            Card.all.each { |card|
+            card.citation = citation
+            card.save!
+            }
+            @card = Card.find_by(citation: citation)
+          end
+          
+          it 'returns all cards with the same citation' do
+            post :examples,  :id => @card.id, :format => :json
+            @results = JSON.parse(response.body)
+            expect(@results.count).to eq Card.where(citation: citation).count 
+          end
+        end
+      end
+
+
 
     end
 

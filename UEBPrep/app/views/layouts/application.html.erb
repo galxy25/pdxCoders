@@ -11,9 +11,11 @@
   </head>
   <body>
     <%= render 'layouts/navigation' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% flash.clear %>
-    <%= yield %>
+    <div class="main">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <% flash.clear %>
+        <%= yield %>
+    </div>
   </body>
 </html>
