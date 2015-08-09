@@ -1,5 +1,5 @@
 <div class="row user-card-height">
-  <div class="user-card panel app-block app-roundedbox small-12 small-centered columns">
+  <div class="user-card panel small-12 small-centered columns">
     <div class="sign">
       <h1><%= @card.nil? ? content.title : @card.content.title %></h1>
     </div>
@@ -10,6 +10,9 @@
       <div class="small-8 small-centered columns user-card-image">
         <%= @card.nil? ? content.text : @card.content.text %>
       </div>
+    </div>
+    <div class="action">
+      <%= social_share_button_tag("A CARD") %>
     </div>
   </div>
 </div>

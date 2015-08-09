@@ -5,6 +5,7 @@
 		</div>
 		<div class="user-card-content">
           <%= @card.nil? ? content.text : @card.content.text %>
-        </div>
-	</div>
+    </div>
+    <div class="action"><%= social_share_button_tag("A CARD") %></div>
+  </div>
 </div>
