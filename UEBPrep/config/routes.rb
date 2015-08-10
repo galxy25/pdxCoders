@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post   'cardcreator' => 'cards#create'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  post   'playlist/edit' => 'playlist#edit'
 
   resources :users,  only: [:index, :show, :create, :edit, :update]
 
@@ -33,6 +34,10 @@ Rails.application.routes.draw do
       post :remove_card_playlist
     end
   end
+
+  resources :playlists
+
+  get 'playlists/:id/cards' => 'playlists#cards'
 
   # API Routes
   namespace :api do

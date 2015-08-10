@@ -70,6 +70,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = !params[:id].nil? ? User.find(params[:id]) : current_user
+    @playlists = Playlist.where(user_id: + @user.id)
     respond_to do |format|
       format.html
       format.json { render json: @user }
