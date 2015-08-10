@@ -54,8 +54,13 @@ class PlaylistsController < ApplicationController
 
   # PATCH/PUT /playlists/1
   def update
-    if @playlist.update(params[:plist])
-      redirect_to @playlist, notice: 'Playlist was successfully updated.'
+    if @playlist.update(:name => params[:name])
+      params[:cards].each do |entry|
+        card_order = JSON.parse(entry)
+        card_playlist_entry = CardsPlaylist.find_by(:playlist_id => @playlist.id, :card_id => card_order['id'])
+        card_playlist_entry.update(:order => card_order['order'])
+      end
+      render :nothing => true
     else
       render :edit
     end

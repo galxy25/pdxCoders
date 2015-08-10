@@ -2,7 +2,7 @@ $(document).ready(function(){
     //$(".edit_handler").on("click", function(){
     $("#user_playlists li").on("click", function(event){
         var playlist_id = $(this).attr('playlist-id');
-
+        var playlist_li = $(this);
         var route = '/playlists/' + playlist_id + '/cards.json';
 
         $.getJSON(route, function(data) {
@@ -36,20 +36,25 @@ $(document).ready(function(){
                     var title = '{"name": "' + $("#playlist_title").val() + '"}';
                     var json_obj = JSON.parse(title);
                     //json.items.push({name: $('#playlist_title').val()});
+                    var cards = [];
                     $('.ui-sortable-handle').each(function(){
-                        var item = '{id: ' + $(this).attr("id") + ', order: ' + count + '}';
-                       json_obj[count] = item;
+                        var item = '{ "id": "' + $(this).attr("id") + '", "order": "' + count + '"}';
+                        cards.push(item);
+                        //json_obj[count] = item;
                         ++count;
                     });
+                    json_obj['cards'] = cards;
                     var json = JSON.stringify(json_obj);
                     console.log(json);
-                   // $.post('/playlist/edit',
-                    //    {
-                    //        name: $('#playlist_title').val()
-                    //    },
-                    //function(data,status){
-                     //   alert("success");
-                    //});
+                    $.ajax({
+                        type: "PUT",
+                        url: '/playlists/' + playlist_id,
+                        data:  json_obj,
+                        success: function(data,status) {
+                            playlist_li.text(json_obj['name'] + ' (' + count + ')');
+                            alert("success");
+                        }
+                    });
                     $('#edit_playlist_dialog').dialog("close");},
                 Cancel: function() {$('#edit_playlist_dialog').dialog("close");}
             }
