@@ -1,13 +1,8 @@
 <% provide(:title, "UEBPrep - " + @playlist.name +  " Playlist") %>
-<% content_for :navlinks do %>
+<% content_for :navlinks_right do %>
   <li class="active"><%= link_to 'My Playlists', playlists_path %></li>
-  <li class="active"><%= link_to 'Edit ' + @playlist.name, edit_playlist_path(@playlist) %></li>
-  <li class="active"><%= link_to 'Remove Card from playlist ' , remove_card_playlist_playlist_path({id: @playlist.id ,to_remove: @current_card.id }), method: :post %></li>
-
-  <li class="active"><%= link_to 'Previous Card', playlist_path({:play_params => { :display_card_id => @current_card.id, :direction => 'Back'}}) %></li>
-  <li class="active"><%= link_to 'Next Card', playlist_path({:play_params => {:display_card_id => @current_card.id, :direction => 'Forward' }}) %></li>
-
 <% end %>
+
 <div class="row app-txt-centered user-card-height">
   <div class="row">
     <div class="small-11 small-centered columns">
@@ -15,4 +10,14 @@
     </div>
   </div>
   <%= render partial: @current_card.content, locals: { content: @current_card.content } %>
+  <div>
+      <div class="playlist-control panel app-block small-12 small-centered columns">
+          <div class="row">
+            <li class="button playlist left"><%= link_to 'Back', playlist_path({:play_params => { :display_card_id => @current_card.id, :direction => 'Back'}}) %></li>
+            <li class="button playlist right"><%= link_to 'Next', playlist_path({:play_params => {:display_card_id => @current_card.id, :direction => 'Forward' }}) %></li>
+            <li class="button playlist app-txt-centered"><%= link_to 'Remove', remove_card_playlist_playlist_path({id: @playlist.id ,to_remove: @current_card.id }), method: :post %></li>
+            <li class="button playlist app-txt-centered"><%= link_to 'Edit', edit_playlist_path(@playlist) %></li>
+          </div>
+      </div>
+  </div>
 </div>
