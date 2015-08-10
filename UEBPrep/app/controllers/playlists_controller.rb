@@ -54,7 +54,7 @@ class PlaylistsController < ApplicationController
 
   # PATCH/PUT /playlists/1
   def update
-    if @playlist.update(playlist_params)
+    if @playlist.update(params[:plist])
       redirect_to @playlist, notice: 'Playlist was successfully updated.'
     else
       render :edit

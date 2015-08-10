@@ -30,9 +30,26 @@ $(document).ready(function(){
             width: 750,
             buttons: {
                 Save: function() {
-                    alert("submit edit");
                     var idsInOrder = $("#sortable").sortable("toArray");
                     console.log(idsInOrder);
+                    var count = 0;
+                    var title = '{"name": "' + $("#playlist_title").val() + '"}';
+                    var json_obj = JSON.parse(title);
+                    //json.items.push({name: $('#playlist_title').val()});
+                    $('.ui-sortable-handle').each(function(){
+                        var item = '{id: ' + $(this).attr("id") + ', order: ' + count + '}';
+                       json_obj[count] = item;
+                        ++count;
+                    });
+                    var json = JSON.stringify(json_obj);
+                    console.log(json);
+                   // $.post('/playlist/edit',
+                    //    {
+                    //        name: $('#playlist_title').val()
+                    //    },
+                    //function(data,status){
+                     //   alert("success");
+                    //});
                     $('#edit_playlist_dialog').dialog("close");},
                 Cancel: function() {$('#edit_playlist_dialog').dialog("close");}
             }

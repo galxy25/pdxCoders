@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post   'cardcreator' => 'cards#create'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  post   'playlist/edit' => 'playlist#edit'
 
   resources :users,  only: [:index, :show, :create, :edit, :update]
 
