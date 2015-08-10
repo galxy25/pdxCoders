@@ -3,7 +3,7 @@ class Playlist < ActiveRecord::Base
   validate :user_id, presence: true
 
   belongs_to :user
-  has_many :cards_playlists
+  has_many :cards_playlists, ->{ order 'cards_playlists.order' }
   has_many :cards, :through => :cards_playlists
 
   def add_card(card)
