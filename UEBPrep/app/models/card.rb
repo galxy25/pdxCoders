@@ -5,7 +5,8 @@ class Card < ActiveRecord::Base
   # validates_uniqueness_of :content_id, :scope => :content_type_id
   
   belongs_to :user
-  has_and_belongs_to_many :playlists
+  has_many :cards_playlists
+  has_many :playlists, :through => :cards_playlists
   before_save :content_exists
 
   attr_accessor :content

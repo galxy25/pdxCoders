@@ -52,3 +52,23 @@
     font-size: 200%;
     line-height: 2rem;
 }
+
+.user_playlist
+{
+    cursor: pointer;
+}
+
+#sortable li
+{
+    cursor: pointer;
+    list-style-type: none;
+}
+
+#sortable li.ui-sortable-helper
+{
+    cursor: move;
+}
+
+#new-playlist{
+    align-items: center;
+}

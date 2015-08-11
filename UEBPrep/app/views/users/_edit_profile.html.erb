@@ -10,33 +10,34 @@
   <% end %>
 
   <%= form_tag(method: "update_params", html: { multipart: true }) do %>
-
       <!--
-
         in progress... trying to do
-
         1) get current user's avatar (on pg load)
         2) use this as the file-input button (which opens the file browser to select a new avatar img)
         3) optionally allow user to use URL link to img also ?
         3) when user clicks submit, controller determines which one to use/update (if at all; aka changed)
-
       -->
-      <div class="image-upload">
-        <%= f.label :avatar %>
-        <label for="file-input">
-          <%= image_tag @user.avatar.url(:small) %>
-        </label>
-        <input id="file-input" type="file"/>
+    <div class="large-12 columns">
+      <div class="small-centered row">
+        <div class="image-upload">
+          <%= f.label :avatar %>
+          <label for="file-input">
+            <%= image_tag @user.avatar.url(:small) %>
+          </label>
+          <input id="file-input" type="file"/>
+        </div>
+        <%= f.file_field :avatar %>
+
+        <%= f.label :email %><%= f.text_field :email, :placeholder => "youremail@example.com" %>
+        <%= f.label :username %><%= f.text_field :username, :placeholder => "Username w/o special characters" %>
+        <%= f.label :location %><%= f.text_field :location, :placeholder => "City, State" %>
+        <%= f.label :bio %><%= f.text_area :bio, :placeholder => "Tell us about you: student, teacher, new to braille..." %>
       </div>
-      <%= f.file_field :avatar %>
 
-    <%= f.label :email %><%= f.text_field :email %>
-    <%= f.label :username %><%= f.text_field :username %>
-    <%= f.label :location %><%= f.text_field :location %>
-    <%= f.label :bio %><%= f.text_area :bio %>
-
-
-    <%= submit_tag "Update Profile", class: "button" %>
+      <div class="small-centered row text-center">
+        <%= submit_tag "Update Profile", class: "button small-6 small-centered columns" %>
+      </div>
+    </div>
   <% end %>
 
 <% end %>

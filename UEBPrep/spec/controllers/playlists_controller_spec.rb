@@ -11,8 +11,8 @@ RSpec.describe PlaylistsController, type: :controller do
     let!(:titled_card_content) {FactoryGirl.create(:titled_card_content, id: 1)}
 
     before :each do
-      playlist.cards.push(text_card.card)
-      playlist.cards.push(titled_card_content.card)
+      playlist.add_card(text_card.card)
+      playlist.add_card(titled_card_content.card)
       sign_in user
     end
 
@@ -102,6 +102,32 @@ RSpec.describe PlaylistsController, type: :controller do
         end
       end
     end
-  end
 
+    describe 'GET #cards' do
+      before (:each) do
+        get :cards, { :id => playlist.id, :format => :json }
+        @json_response = JSON.parse(response.body)
+      end
+
+      describe 'with a valid playlist with two cards' do
+        before (:each) do
+          @cards = JSON.parse(@json_response['card'])
+        end
+
+        it 'returns all cards' do
+          expect(@cards.count).to be 2
+        end
+
+        it 'has the right cards' do
+          expect(@cards.first['card']['id']).to eq(text_card.card.id)
+          expect(@cards.second['card']['id']).to eq(titled_card_content.card.id)
+        end
+
+        it 'returns cards with a valid order' do
+          expect(@cards.first['card']['order']).to eq(1)
+          expect(@cards.second['card']['order']).to eq(2)
+        end
+      end
+    end
+  end
 end

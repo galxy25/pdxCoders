@@ -1,41 +1,39 @@
 <% provide(:title, "UEBPrep - My Profile") %>
-<%= render 'footer_links' %>
-<div class="row app-txt-centered">
+
+<div class="large-10 large-centered columns">
   <div class="medium-3 medium-centered columns hide-for-small-only">
     <img src="/assets/homepage/iHeader.png" alt="UEB Prep Logo: reading, games, chat" data-interchange="">
   </div>
 </div>
 
-<div class="row">
-  <div class="app-block app-modalbox app-roundedbox small-10 medium-7 small-centered columns">
-    <div class="app-txt-centered small-8 large-10 small-centered columns">
-      <h4>My Profile</h4>
-      <%= image_tag @user.avatar.url(:small) %>
-      <hr>
-    </div>
-    <div class="app-block small-8 medium-15 small-centered columns">
-      <%= render 'show_profile' %>
-    </div>
-  </div>
-</div>
 
-<div id="user_playlist_modal" class="row">
-  <div class="app-block app-modalbox app-roundedbox small-3 small-uncentered columns">
-    <div>
-      <%= form_tag({:controller=>"playlists", :action=>"new"}, method: :get) do %>
-          <%= submit_tag 'Create Playlist with this name.', name: nil %>
-          <%= text_field_tag :name %>
-      <% end %>
+
+<div class="app-block app-modalbox app-roundedbox large-10 large-centered columns">
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="app-txt-centered large-centered columns">
+        <h4>My Profile</h4>
+        <%= image_tag @user.avatar.url(:small) %>
+        <hr>
+      </div>
+      <div class="app-block large-centered columns">
+        <%= render 'show_profile' %>
+      </div>
     </div>
-    <h4 style="text-align: center">My Playlists</h4>
-    <hr/>
-    <ol id="user_playlists">
-      <% @playlists.each do |playlist| %>
-          <li style="list-style-type: none;">
-          <%= link_to "#{playlist.name}", edit_playlist_path(playlist)  %>
-          Card Count: <%= playlist.cards.count %>
-          </li>
-      <% end %>
-    </ol>
+
+    <div class="large-6 columns">
+      <div id="new-playlist" class="large-centered row text-centered">
+        <div class="columns small-centered">
+          <h4 style="text-align: center">My Playlists</h4>
+          <p style="text-align: center">(Click to view)</p>
+          <hr>
+          <ol id="user_playlists">
+            <% @playlists.each do |playlist| %>
+              <li><%= link_to "#{playlist.name}" + "(" + "#{playlist.cards.count}" + ")", edit_playlist_path(playlist) %></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

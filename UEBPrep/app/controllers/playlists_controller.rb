@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: [:show, :edit, :update, :destroy, :remove_card_playlist]
+  before_action :set_playlist, only: [:show, :edit, :update, :destroy, :cards, :remove_card_playlist]
+
 
   # GET /playlists
   def index
@@ -7,7 +8,7 @@ class PlaylistsController < ApplicationController
   end
 
   # GET /playlists/1
-  def show  
+  def show
     if (@playlist.user_id == current_user.id)
       if params[:play_params] && play_params[:display_card_id]
         @current_index = @playlist.cards.find_index { |card|  card.id == play_params["display_card_id"].to_i }
@@ -41,6 +42,14 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  # GET /playlists/1/cards
+  def cards
+    respond_to do |format|
+      format.html
+      format.json { render json: { :card => Rabl::Renderer.json(@playlist.cards, 'playlists/card_with_order') , status: 200} }
+    end
+  end
+
   # GET /playlists/new
   def new
     @playlist = Playlist.new(new_params)
@@ -48,7 +57,7 @@ class PlaylistsController < ApplicationController
 
     if @playlist.save!
       respond_to do |format|
-        format.html { redirect_to user_path(current_user) }
+        format.html { redirect_to profile_path }
         format.json {render json: {status: 204, :playlist => @playlist} }
       end
     else
@@ -58,6 +67,8 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1/edit
   def edit
+    @playlists = Playlist.all
+
   end
 
   def remove_card_playlist
@@ -83,8 +94,13 @@ class PlaylistsController < ApplicationController
 
   # PATCH/PUT /playlists/1
   def update
-    if @playlist.update(playlist_params)
-      redirect_to @playlist, notice: 'Playlist was successfully updated.'
+    if @playlist.update(:name => params[:name])
+      params[:cards].each do |entry|
+        card_order = JSON.parse(entry)
+        card_playlist_entry = CardsPlaylist.find_by(:playlist_id => @playlist.id, :card_id => card_order['id'])
+        card_playlist_entry.update(:order => card_order['order'])
+      end
+      render :nothing => true
     else
       render :edit
     end

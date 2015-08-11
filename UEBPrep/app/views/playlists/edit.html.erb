@@ -4,3 +4,15 @@
 
 <%= link_to 'Show', @playlist %> |
 <%= link_to 'Back', playlists_path %>
+
+<div class="app-block app-modalbox app-roundedbox large-12 large-centered columns">
+  <div class="row">
+    <% @playlists.each do |playlist| %>
+      <% playlist.cards.each do |card| %>
+        <div class="column small-4">
+          <%= render partial: card.content, locals: { content: card.content } %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
