@@ -72,21 +72,29 @@ table a
     width: 60px !important;
     height: 18px !important;
     background: transparent url("/assets/share-facebook.png") no-repeat scroll !important;
-    vertical-align: bottom;
 }
 
 .social-share-button-google_plus {
     width: 60px !important;
     height: 18px !important;
     background: transparent url("/assets/share-google_plus.png") no-repeat scroll !important;
-    vertical-align: bottom;
 }
 
 .social-share-button-twitter {
     width: 60px !important;
     height: 18px !important;
     background: transparent url("/assets/share-twitter.png") no-repeat scroll !important;
-    vertical-align: bottom;
 }
 
+#share-list {
+        background-color: #000000;
+        width: 60px;
+        height: 19px;
+}
+
+#share-list .drop-item {
+    background-color: #000000;
+    width:  60px;
+    height: 19px;
+}
 
