@@ -57,7 +57,7 @@ class PlaylistsController < ApplicationController
 
     if @playlist.save!
       respond_to do |format|
-        format.html { redirect_to user_path(current_user) }
+        format.html { redirect_to profile_path }
         format.json {render json: {status: 204, :playlist => @playlist} }
       end
     else

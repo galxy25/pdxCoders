@@ -68,3 +68,7 @@
 {
     cursor: move;
 }
+
+#new-playlist{
+    align-items: center;
+}

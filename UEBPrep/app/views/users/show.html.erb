@@ -21,12 +21,6 @@
 
 <div id="user_playlist_modal" class="row">
   <div class="app-block app-modalbox app-roundedbox small-3 small-uncentered columns">
-    <div>
-      <%= form_tag({:controller=>"playlists", :action=>"new"}, method: :get) do %>
-          <%= submit_tag 'Create Playlist with this name.', name: nil %>
-          <%= text_field_tag :name %>
-      <% end %>
-    </div>
     <h4 style="text-align: center">My Playlists</h4>
     <hr/>
     <ol id="user_playlists">
