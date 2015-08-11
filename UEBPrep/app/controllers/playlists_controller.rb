@@ -67,6 +67,8 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1/edit
   def edit
+    @playlists = Playlist.all
+
   end
 
   def remove_card_playlist
