@@ -18,7 +18,7 @@
             <li class="button playlist app-txt-centered"><%= link_to 'Remove', remove_card_playlist_playlist_path({id: @playlist.id ,to_remove: @current_card.id }), method: :post %></li>
             <li class="button playlist app-txt-centered"><%= link_to 'Edit', edit_playlist_path(@playlist) %></li>
           </div>
-           <a href="#" data-dropdown="share-link" class="button tiny info center dropdown">Link</a>
+           <a href="#" data-dropdown="share-link" class="button tiny info left dropdown">Link</a>
             <ul id="share-link" data-dropdown-content class="f-dropdown">
                 <li class="drop-item">http://<%= request.host %>/playlists/<%= @playlist.id %></li>
             </ul>
