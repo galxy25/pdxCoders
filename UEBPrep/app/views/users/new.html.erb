@@ -1,44 +1,26 @@
 <% provide(:title, "UEBPrep - Sign up") %>
 
-<% content_for :navlinks do %>
-  <li class="active"><%= link_to "Sign Up", signup_path %></li>
-  <li class="active"><%= link_to "Login", login_path %></li>
-<% end %>
-
-<div class="row app-txt-centered">
+<div class="row app-txt-centered" role="banner">
   <div class="medium-3 medium-centered columns hide-for-small-only">
-    <img src="assets/homepage/iHeader.png" alt="image" data-interchange="">
+    <img src="assets/homepage/iHeader.png" alt="UEB Prep Logo: reading, games, chat" data-interchange="">
   </div>
 </div>
 <div class="row">
-  <div class="app-block app-modalbox app-roundedbox small-10 medium-7 small-centered columns">
-    <div class="app-txt-centered small-8 large-10 small-centered columns">
+  <div class="app-block app-modalbox app-roundedbox small-10 medium-7 small-centered columns" role="main">
+    <div class="app-txt-centered small-8 large-10 small-centered columns" role="complementary">
       <h4>Sign up</h4>
       <hr>
-      <div class="google">
-        <%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
-            <img class="app-btns app-roundedbox" src="assets/homepage/google.png" alt="image" data-interchange="">
-        <% end %>
-      </div>
-      <div class="facebook">
-        <%= link_to user_omniauth_authorize_path(:facebook) do %>
-        <img class="app-btns app-roundedbox" src="assets/homepage/facebook_login_button.png" alt="image" data-interchange="">
-        <% end %>
-      </div>
-      <div class="twitter">
-        <%= link_to user_omniauth_authorize_path(:twitter) do %>
-        <img class="app-btns app-roundedbox" src="assets/homepage/twitter_login_button.png" alt="image" data-interchange="">
-        <% end %>
+      <%= render 'users/social_media_logins' %>
       </div>
     </div>
     <br>
-    <div class="app-block small-8 medium-15 small-centered columns">
+    <div class="app-block small-8 medium-15 small-centered columns" role="form">
       <%= form_for @user, html: { multipart: true } do |f| %>
-        <%= f.label :email %><%= f.email_field :email %>
-        <%= f.label :username %><%= f.text_field :username %>
-        <%= f.label :password %><%= f.password_field :password %>
-        <%= f.label :password_confirmation, "Confirmation" %><%= f.password_field :password_confirmation %>
-        <%= f.label :avatar, "Add a profile picture" %><%= f.file_field :avatar%>
+        <%= f.label :email %><%= f.email_field :email, 'arial-label'=> "enter email" %>
+        <%= f.label :username %><%= f.text_field :username, 'arial-label'=> "enter usernames" %>
+        <%= f.label :password %><%= f.password_field :password, 'arial-label'=> "enter password" %>
+        <%= f.label :password_confirmation, "Confirmation" %><%= f.password_field :password_confirmation, 'arial-label'=> "confirm password" %>
+        <%= f.label :avatar, "Add a profile picture" %><%= f.file_field :avatar, 'arial-label'=> "upload avatar" %>
 
         <%= f.submit "Create account", class: "button" %>
       <% end %>

@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          :omniauth_providers => [:facebook, :google_oauth2, :twitter]
   acts_as_paranoid
+
+  has_many :playlists, dependent: :destroy
 
   # Checks to ensure that username is present, unique and that the length is within 3 and 20
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 1..100 }
@@ -33,8 +36,9 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
+
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      if !user.email
+      if !auth.info.email
         user.email = "noValidEmail@wrong.com"
         user.password = "vagrant"
         user.username = "noValidEmail"
@@ -58,7 +62,8 @@ class User < ActiveRecord::Base
 
         user = User.create(provider:auth.provider,
                            uid:auth.uid,
-                           email:auth.uid+"@twitter.com",
+                           username:auth.extra.raw_info.screen_name,
+                           email:auth.extra.raw_info.screen_name+"@twitter.com",
                            password:Devise.friendly_token[0,20],
         )
       end

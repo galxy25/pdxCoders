@@ -1,8 +1,18 @@
-<div class="row">
-	<div class="user-card panel app-block app-roundedbox small-8 medium-5 small-centered columns">
+<div class="row user-card-height">
+	<div class="user-card panel app-block app-roundedbox small-12 small-centered columns">
 		<div class="sign">
-			<h1><%= content.id %></h1>
+			<h1><%= "Text Card" %></h1>
 		</div>
-		<%= content.text %>
-	</div>
+		<div class="user-card-content">
+          <%= @card.nil? ? content.text : @card.content.text %>
+    </div>
+
+    <a href="#" data-dropdown="share-list" class="button tiny info left dropdown">Share</a>
+    <ul id="share-list" data-dropdown-content class="f-dropdown" aria-hidden="true">
+      <li class="drop-item"><a class="social-share-button-twitter" data-site="twitter" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="Share to Twitter"></a></li>
+      <li class="drop-item"><a class="social-share-button-facebook" data-site="facebook" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="Share to Facebook"></a></li>
+      <li class="drop-item"><a class="social-share-button-google_plus" data-site="google_plus" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="Share to Google+"></a></li>
+    </ul>
+
+  </div>
 </div>

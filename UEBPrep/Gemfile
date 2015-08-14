@@ -21,7 +21,10 @@ source 'https://rubygems.org'
  gem 'omniauth-facebook'
  gem 'foundation-rails'
  gem 'paperclip', '~> 4.3'
+ gem 'foreigner'
  gem 'kaminari'
+ gem 'social-share-button'
+ gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'rspec-rails'

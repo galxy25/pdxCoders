@@ -1,9 +1,16 @@
-<li>User Id: <%= @user.id %></li>
-<li>User API Key: <%= @user.api_key %></li>
-<li>User Email: <%= @user.email %></li>
-<li>Username: <%= @user.username %></li>
-<li>Location: <%= @user.location %></li>
-<li>Member Since: <%= @user.created_at %></li>
-<li>Bio: <%= @user.bio %></li>
-<li><%= image_tag @user.avatar.url %></li>
-<li><%= image_tag @user.avatar.url(:small) %></li>
+<dl>
+    <dt>User Email:</dt>
+    <dd> <%= @user.email %></dd>
+    <dt>Username:</dt>
+    <dd><%= @user.username %></dd>
+    <dt>Location: </dt>
+    <dd><%= @user.location %></dd>
+    <dt>Member Since: </dt>
+    <dd><%= @user.created_at %></dd>
+    <dt>Bio: </dt>
+    <dd><%= @user.bio %></dd>
+    <dt>User Id: </dt>
+    <dd><%= @user.id %></dd>
+    <dt>User API Key: </dt>
+    <dd><%= @user.api_key %></dd>
+</dl>

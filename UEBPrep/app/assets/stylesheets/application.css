@@ -12,11 +12,22 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  *= require foundation_and_overrides
-
+ *= require social-share-button
  */
 
 body {overflow-x:hidden;}
+
+table a
+{
+    color: #000;
+    text-decoration: underline;
+}
+
+.main {
+    padding: 4%;
+}
 
 .app-block { margin: 3% 0; }
 
@@ -40,6 +51,12 @@ body {overflow-x:hidden;}
 	padding:    4%;
 }
 
+.app-modalbox a
+{
+    color: #000;
+    text-decoration: underline;
+}
+
 .app-roundedbox
 {
     border-radius: 6px;
@@ -51,4 +68,33 @@ body {overflow-x:hidden;}
 
 .image-upload > input { display: none; }
 
-.label
+.social-share-button-facebook {
+    width: 60px !important;
+    height: 18px !important;
+    background: transparent url("/assets/share-facebook.png") no-repeat scroll !important;
+}
+
+.social-share-button-google_plus {
+    width: 60px !important;
+    height: 18px !important;
+    background: transparent url("/assets/share-google_plus.png") no-repeat scroll !important;
+}
+
+.social-share-button-twitter {
+    width: 60px !important;
+    height: 18px !important;
+    background: transparent url("/assets/share-twitter.png") no-repeat scroll !important;
+}
+
+#share-list {
+        background-color: #000000;
+        width: 60px;
+        height: 19px;
+}
+
+#share-list .drop-item {
+    background-color: #000000;
+    width:  60px;
+    height: 19px;
+}
+

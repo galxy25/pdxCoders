@@ -10,32 +10,12 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <nav class="top-bar foundation-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to "UEBPrep", root_path %></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
-      <section class="top-bar-section">
-        <ul class="left"><%= content_for?(:navlinks) ? yield(:navlinks) : "" %></ul>
-        <ul class="right">
-          <li class="active">
-            <%= link_to src="https://www.facebook.com/uebprep?fref=ts" do %>
-                <img class="app-btns" src="/assets/facebookLogo.png" alt="image" data-interchange="">
-            <% end %>
-          </li>
-          <li class="active">
-            <%= link_to src="https://twitter.com/uebprep" do %>
-                <img class="app-btns" src="/assets/twitterLogo-white.png" alt="image" data-interchange="">
-            <% end %>
-          </li>
-        </ul>
-      </section>
-    </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% flash.clear %>
-    <%= yield %>
+    <%= render 'layouts/navigation' %>
+    <div class="main">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <% flash.clear %>
+        <%= yield %>
+    </div>
   </body>
 </html>

@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require foundation
+//= require social-share-button
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

@@ -14,10 +14,30 @@ Rails.application.routes.draw do
   post   'cardcreator' => 'cards#create'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  post   'playlist/edit' => 'playlist#edit'
 
   resources :users,  only: [:index, :show, :create, :edit, :update]
 
-  resources :cards
+  resources :cards do
+    collection do 
+      post :import 
+      post :examples 
+    end
+
+    member do
+      post :examples 
+    end
+  end
+
+  resources :playlists do
+    member do
+      post :remove_card_playlist
+    end
+  end
+
+  resources :playlists
+
+  get 'playlists/:id/cards' => 'playlists#cards'
 
   # API Routes
   namespace :api do

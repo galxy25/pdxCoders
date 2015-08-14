@@ -8,7 +8,7 @@ class ImageCardContent < ActiveRecord::Base
   attr_reader :card
 
   def to_partial_path
-    'image_card_content'
+    'cards/image_card_content'
   end
 
   private
