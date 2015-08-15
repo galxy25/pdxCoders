@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   private
 
   def user_activity
-    current_user.try :touch
+    current_user.try :touch unless session.blank?
   end
 
 end
