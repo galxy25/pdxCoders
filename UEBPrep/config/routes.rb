@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'homepage#index'
   get 'homepage/index'
+  get '/stats' => 'homepage#stats'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
   get 'sessions/new'

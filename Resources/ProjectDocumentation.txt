@@ -1,4 +1,4 @@
-﻿UEB Prep Project Documentation
+UEB Prep Project Documentation
 
 Documentation Standards
 
@@ -24,6 +24,7 @@ The login page consists of a form for user email and password, if they provide m
 
 The card creation page is for authorized accounts to create new cards for lessons. It allows them to select the card type and enter pertinent information and stores it along with the user id.
 
+To view a record of stats in regards to usage, visit www.brailleuno.ece.pdx.edu/stats. It will display the number of users who have signed in in the last 10 minutes as online, those who have signed in in the past week as active, and a rolling 30 day total of monthly unique users who have logged in at least once. 
 
 Developer Documentation
   Users 
