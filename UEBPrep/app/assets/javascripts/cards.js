@@ -57,6 +57,9 @@ $(document).ready(function() {
     var card_id = $("#card-id").attr('card-id');
     $('.drop-item').click(function(event){
         var playlist_id = $(this).attr('id');
+        if (playlist_id == 'card-view-new-playlist') {
+            return;
+        }
         var route = '/playlists/' + playlist_id + '/add_card/' + card_id;
         $.ajax({
             url: route,
