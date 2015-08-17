@@ -1,3 +1,7 @@
+<%= content_for?(:navlinks_right) ? yield(:navlinks_right) : "" %>
+
+<li><%= link_to "Cards",  cards_path, method: "get" %></li>
+
 <li class="active">
   <%= link_to src="https://www.facebook.com/uebprep?fref=ts", :target => "_blank" do %>
     <img class="app-btns" src="/assets/facebookLogo.png" alt="image" data-interchange="">

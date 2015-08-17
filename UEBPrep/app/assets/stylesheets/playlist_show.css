@@ -1,0 +1,14 @@
+.playlist-control.panel
+{
+    background:     none;
+    width:          77%;
+    border:         none;
+}
+
+.button.playlist
+{
+    width: 14%;
+    font-size: 100%;
+    text-align: center;
+    box-sizing: content-box;
+}

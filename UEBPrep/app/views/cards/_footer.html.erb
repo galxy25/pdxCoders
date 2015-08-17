@@ -1,5 +1,5 @@
-<%= social_share_button_tag("A CARD") %>
-<%= link_to 'Examples', @card %>
+<<<<<<< HEAD
+<%= link_to 'Examples', examples_card_path(@card), method: :post %>
 <a href="#" data-dropdown="add-to-playlist" class="button dropdown">Add card to playlist</a>
 <ul id="add-to-playlist" data-dropdown-content class="f-dropdown" aria-hidden="true">
   <% current_user.playlists.each do |playlist| %>
@@ -14,4 +14,3 @@
   <%= submit_tag('Create', class: 'button') %>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
-

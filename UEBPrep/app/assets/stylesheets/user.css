@@ -1,7 +1,14 @@
+#user_playlist_modal
+{
+    position: absolute;
+    bottom:   15px;
+    left:     15px;
+}
+
 .user-card.panel
 {
-    margin:         3rem auto;
-    padding-bottom: 5%;
+    margin:         1rem auto;
+    padding-bottom: 0%;
     border:         2px solid #444;
     background:     #eee;
     width: 75%;
@@ -16,6 +23,7 @@
     position:   relative;
     top:        -2.5rem;
     margin:     auto;
+    width: 100%
 }
 
 .user-card.panel .sign h1
@@ -43,4 +51,24 @@
 {
     font-size: 200%;
     line-height: 2rem;
+}
+
+.user_playlist
+{
+    cursor: pointer;
+}
+
+#sortable li
+{
+    cursor: pointer;
+    list-style-type: none;
+}
+
+#sortable li.ui-sortable-helper
+{
+    cursor: move;
+}
+
+#new-playlist{
+    align-items: center;
 }

@@ -27,6 +27,23 @@ class User < ActiveRecord::Base
   # Validate filename
   # validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
 
+  scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
+
+  scope :active, lambda{ where("updated_at > ?", 1.week.ago) }
+
+  scope :monthly_uniques, lambda{ where("updated_at > ?", 1.month.ago) }
+
+  def online?
+    updated_at > 10.minutes.ago
+  end
+
+  def last_month?
+    updated_at > 1.month.ago
+  end
+
+  def last_week?
+    updated_at > 1.week.ago
+  end
 
   def generate_api_key
     loop do
@@ -62,7 +79,8 @@ class User < ActiveRecord::Base
 
         user = User.create(provider:auth.provider,
                            uid:auth.uid,
-                           email:auth.uid+"@twitter.com",
+                           username:auth.extra.raw_info.screen_name,
+                           email:auth.extra.raw_info.screen_name+"@twitter.com",
                            password:Devise.friendly_token[0,20],
         )
       end
