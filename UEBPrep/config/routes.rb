@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   resources :users,  only: [:index, :show, :create, :edit, :update]
+  get 'users/:id/playlists' => 'users#playlists'
 
   resources :cards do
     collection { post :import }

@@ -76,6 +76,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def playlists
+    @user = current_user
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.json { render json: { :playlists => Rabl::Renderer.json(@user.playlists, 'playlists/playlist') , status: 200} }
+    end
+  end
+
   private
 
   def user_params
