@@ -67,3 +67,23 @@ $(document).ready(function() {
         });
     });
 });
+
+$(document).ready(function() {
+    $("#newPlaylistModal input[type=submit]").click(function() {
+        var input_name = $("#newPlaylistModal input[type=text]").val();
+        $.post('/playlists', { playlist: { name: input_name  }, ajax: true });
+        $.getJSON('/users/1/playlists.json', function(data) {
+            var playlists = $.parseJSON(data.playlists);
+            var list_items = [];
+            $.each(playlists, function(key, val) {
+                alert(val + ' | ' + val.playlist.id + ' | ' + val.playlist.name);
+                list_items.push( "<li id='" + val.playlist.id + "' class='drop-item'><a href='#'>" + val.playlist.name + "</a></li>");
+            });
+            list_items.push("<li id='card-view-new-playlist' class='drop-item'><a href='#' data-reveal-id='newPlaylistModal'>New Playlist...</a></li>");
+            $('#add-to-playlist').empty();
+            $('#add-to-playlist').append(list_items);
+            $(document).foundation();
+        });
+        $("#newPlaylistModal .close-reveal-modal").trigger("click");
+    });
+});
