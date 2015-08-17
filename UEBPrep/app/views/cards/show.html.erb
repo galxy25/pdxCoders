@@ -10,12 +10,6 @@
     </div>
   </div>
   <%= render partial: @card.content, locals: { content: @card.content } %>
-  <a href="#" data-dropdown="share-list" class="button tiny info left dropdown">Share</a>
-  <ul id="share-list" data-dropdown-content class="f-dropdown" aria-hidden="true">
-    <li class="drop-item"><a class="social-share-button-twitter" data-site="twitter" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="Share to Twitter"></a></li>
-    <li class="drop-item"><a class="social-share-button-facebook" data-site="facebook" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="Share to Facebook"></a></li>
-    <li class="drop-item"><a class="social-share-button-google_plus" data-site="google_plus" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="Share to Google+"></a></li>
-  </ul>
   <%= render 'footer' %>
 </div>
 <%unless @current_user.nil? %>

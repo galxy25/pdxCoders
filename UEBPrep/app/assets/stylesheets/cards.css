@@ -100,3 +100,17 @@ label[for=cardimagealt]
     color: #000000;
     height: 2rem;
 }
+
+#multi-cards {
+    font-size: .5em;
+    font-size: .4vmin;
+    font-size: .8vmax;
+}
+
+#multi-cards #share-card-button {
+    display: none;
+}
+
+#multi-cards #link-card-button {
+    display: none;
+}
