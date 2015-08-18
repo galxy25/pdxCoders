@@ -138,8 +138,10 @@ dl#import-cards dd{
 
 }
 
-#card-creator-title {
+dl#card-creator-title {
     color: white;
     font-weight: bold;
-    font-size: 10vm;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 2px 2px #000000;
 }
