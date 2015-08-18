@@ -1,6 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: [:show, :edit, :update, :destroy, :cards, :remove_card_playlist]
-
+  before_action :set_playlist, only: [:show, :edit, :update, :destroy, :add_card, :cards, :remove_card_playlist]
 
   # GET /playlists
   def index
@@ -81,12 +80,18 @@ class PlaylistsController < ApplicationController
       format.json {render json: {status: 204} }
     end
   end
+
   # POST /playlists
   def create
+    #binding.pry
     @playlist = Playlist.new(playlist_params)
-
+    @playlist.user_id = current_user.id
     if @playlist.save
-      redirect_to @playlist, notice: 'Playlist was successfully created.'
+      if params[:ajax]
+        render nothing: true
+      else
+        redirect_to @playlist, notice: 'Playlist was successfully created.'
+      end
     else
       render :new
     end
@@ -112,6 +117,12 @@ class PlaylistsController < ApplicationController
     redirect_to playlists_url, notice: 'Playlist was successfully destroyed.'
   end
 
+  # POST?? /playlists/1/add_card/1
+  def add_card
+    @playlist.add_card(Card.find(params[:card_id]))
+    render :nothing => true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_playlist
@@ -130,7 +141,7 @@ class PlaylistsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def playlist_params
-      params[:playlist]
+      params.require(:playlist).permit(:name, :ajax)
     end
 
     def play_params
