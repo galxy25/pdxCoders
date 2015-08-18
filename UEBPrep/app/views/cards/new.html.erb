@@ -25,7 +25,7 @@
           <%= text_field_tag(:cardimagealt) %>
           <%= label_tag(:uploadcardimage, "Cannot upload an image for this card type") %>
           <%= file_field_tag('uploadcardimage',disabled: true, accept: 'image/png,image/gif,image/jpeg')%>
-          <%= submit_tag("Create this card", :class=> "cardsubmit") %>
+          <%= submit_tag("Create this card", :id=> "cardsubmit") %>
         <% end %>
       </div>
     </div>

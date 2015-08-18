@@ -85,7 +85,7 @@ label[for=cardimagealt]
     display: none;
 }
 
-.cardsubmit
+#cardsubmit
 {
     background:      #29b0b7;
     padding:         1% 3.5%;
@@ -132,4 +132,8 @@ label[for=cardimagealt]
 
 dl#import-cards dd{
     margin-bottom: .1rem !important;
+}
+
+.delete-button {
+
 }

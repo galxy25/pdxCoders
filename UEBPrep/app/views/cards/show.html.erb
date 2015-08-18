@@ -12,6 +12,3 @@
   <%= render partial: @card.content, locals: { content: @card.content } %>
   <%= render 'footer' %>
 </div>
-<%unless @current_user.nil? %>
-    <%= button_to "Delete Card", {:controller => "cards", :action => 'destroy', :id => @card.id}, :confirm => "Are you sure you want to delete this card?", :method => :delete %>
-<%end %>
