@@ -137,3 +137,9 @@ dl#import-cards dd{
 .delete-button {
 
 }
+
+#card-creator-title {
+    color: white;
+    font-weight: bold;
+    font-size: 10vm;
+}

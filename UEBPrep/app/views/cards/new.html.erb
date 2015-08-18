@@ -3,11 +3,15 @@
   <li class="active"><%= link_to "Back", cards_path %></li>
 <% end %>
 
+<div class="small-10 small-centered columns hide-for-small-only text-centered">
+    <dl id="card-creator-title">Card Creator</dl>
+</div>
+
 <div class="app-block app-modalbox app-roundedbox large-10 large-centered columns">
   <div class="row">
     <div class="large-6 columns">
       <div class="small-10 small-centered columns">
-        <h4>Card Creator</h4>
+        <h4>Single Card</h4>
         <hr>
         <dl id="card-creator-author"><dt id="card-creator-author">Card Author: </dt><dd id="card-creator-author"><%= " " + @user.username %></dd></dl>
         <%= form_for :card, :html => { :multipart => true } do |f| %>
@@ -31,7 +35,7 @@
     </div>
 
     <div class="large-6 columns">
-      <h4>Import Cards</h4>
+      <h4>Multiple Cards</h4>
       <hr>
       <dl id="import-cards">
         <dt>Prepare your CSV file</dt>
