@@ -1,7 +1,8 @@
 <h1 class="text-center">Listing cards</h1>
 <div class="row centered small-8">
-  <%= render partial: "card_list", locals: { cards: @cards } %>
+  <div id="multi-cards">
+    <%= render partial: "card_list", locals: { cards: @cards } %>
+  </div>
 </div>
 
 <%= paginate @cards %>
-<%= render 'links' %>

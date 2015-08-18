@@ -2,26 +2,57 @@
 <% content_for :navlinks do %>
   <li class="active"><%= link_to "Back", cards_path %></li>
 <% end %>
-<div class="row">
-  <div class="small-10 small-centered columns">
-  <h1>Card Creator</h1>
-  <h2>Card Author: <%= @user.username %></h2>
-    <%= form_for :card, :html => { :multipart => true } do |f| %>
-        <%= label_tag(:cardtype, "Card Type") %>
-        <%= select_tag(:cardtype, options_for_select([['-Select-','0'],['Image','image'],['Rule','rule'],['Text','text']])) %>
-        <%= label_tag(:citation, "Citation") %>
-        <%= text_field_tag(:citation, "",size: '4x4') %>
-        <%= label_tag(:cardtitle, "Title") %>
-        <%= text_field_tag(:cardtitle) %>
-        <%= label_tag(:cardtext, "Text") %>
-        <%= text_area_tag(:cardtext,"", size: "8x8") %>
-        <%= label_tag(:cardimage, "Image") %>
-        <%= image_tag("your_image_here.png", :alt => "Your Image Here", :id => "cardimage") %>
-        <%= label_tag(:cardimagealt, "Alt") %>
-        <%= text_field_tag(:cardimagealt) %>
-        <%= label_tag(:uploadcardimage, "Cannot upload an image for this card type") %>
-        <%= file_field_tag('uploadcardimage',disabled: true, accept: 'image/png,image/gif,image/jpeg')%>
-        <%= submit_tag("Create this card", :id=> "cardsubmit") %>
-    <% end %>
+
+<div class="large-10 large-centered text-centered columns">
+  <div class="small-6 small-centered columns text-centered hide-for-small-only">
+    <dl id="card-creator-title">Card Creator</dl>
   </div>
 </div>
+
+<div class="app-block app-modalbox app-roundedbox large-10 large-centered columns">
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="small-10 small-centered columns">
+        <h4>Single Card</h4>
+        <hr>
+        <dl id="card-creator-author"><dt id="card-creator-author">Card Author: </dt><dd id="card-creator-author"><%= " " + @user.username %></dd></dl>
+        <%= form_for :card, :html => { :multipart => true } do |f| %>
+          <%= label_tag(:cardtype, "Card Type:") %>
+          <%= select_tag(:cardtype, options_for_select([['-Select-','0'],['Image','image'],['Rule','rule'],['Text','text']])) %>
+          <%= label_tag(:citation, "Citation:") %>
+          <%= text_field_tag(:citation, "",size: '4x4') %>
+          <%= label_tag(:cardtitle, "Title:") %>
+          <%= text_field_tag(:cardtitle) %>
+          <%= label_tag(:cardtext, "Text:") %>
+          <%= text_area_tag(:cardtext,"", size: "8x8") %>
+          <%= label_tag(:cardimage, "Image:") %>
+          <%= image_tag("your_image_here.png", :alt => "Your Image Here", :id => "cardimage") %>
+          <%= label_tag(:cardimagealt, "Alt:") %>
+          <%= text_field_tag(:cardimagealt) %>
+          <%= label_tag(:uploadcardimage, "Cannot upload an image for this card type") %>
+          <%= file_field_tag('uploadcardimage',disabled: true, accept: 'image/png,image/gif,image/jpeg')%>
+          <%= submit_tag("Create this card", :id=> "cardsubmit") %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="large-6 columns">
+      <h4>Multiple Cards</h4>
+      <hr>
+      <dl id="import-cards">
+        <dt>Prepare your CSV file</dt>
+        <dd>1. Open Notepad.</dd>
+        <dd>2. On the first line, enter your fields separated by commas.</dd>
+        <dd>3. Add a record for each item. Separate each record with a single line break.</dd>
+        <dd>4. Save the file with a .csv file extension.</dd>
+      </dl>
+      <hr>
+      <%= form_tag import_cards_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag("Import", :class=> "csvsubmit") %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+

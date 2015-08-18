@@ -9,19 +9,21 @@
       <h1><%= @playlist.name %></h1>
     </div>
   </div>
-  <%= render partial: @current_card.content, locals: { content: @current_card.content } %>
-  <div>
-      <div class="playlist-control panel app-block small-12 small-centered columns">
-          <div class="row">
-            <li class="button playlist left"><%= link_to 'Back', playlist_path({:play_params => { :display_card_id => @current_card.id, :direction => 'Back'}}) %></li>
-            <li class="button playlist right"><%= link_to 'Next', playlist_path({:play_params => {:display_card_id => @current_card.id, :direction => 'Forward' }}) %></li>
-            <li class="button playlist app-txt-centered"><%= link_to 'Remove', remove_card_playlist_playlist_path({id: @playlist.id ,to_remove: @current_card.id }), method: :post %></li>
-            <li class="button playlist app-txt-centered"><%= link_to 'Edit', edit_playlist_path(@playlist) %></li>
-          </div>
-           <a href="#" data-dropdown="share-link" class="button tiny info left dropdown">Link</a>
-            <ul id="share-link" data-dropdown-content class="f-dropdown">
-                <li class="drop-item">http://<%= request.host %>/playlists/<%= @playlist.id %></li>
-            </ul>
+  <div id="render-card">
+    <%= render partial: @current_card.content, locals: { content: @current_card.content } %>
+  </div>
+  <div class="playlist-control panel app-block small-12 small-centered columns">
+      <div class="row">
+        <li class="button playlist left"><%= link_to 'Back', playlist_path({:play_params => { :display_card_id => @current_card.id, :direction => 'Back'}}) %></li>
+        <li class="button playlist right"><%= link_to 'Next', playlist_path({:play_params => {:display_card_id => @current_card.id, :direction => 'Forward' }}) %></li>
+        <li class="button playlist app-txt-centered"><%= link_to 'Remove', remove_card_playlist_playlist_path({id: @playlist.id ,to_remove: @current_card.id }), method: :post %></li>
+        <li class="button playlist app-txt-centered"><%= link_to 'Edit', edit_playlist_path(@playlist) %></li>
+      </div>
+      <div id="link-card-button">
+        <a href="#" data-dropdown="share-link" class="button tiny info left dropdown">Link</a>
+        <ul id="share-link" data-dropdown-content class="f-dropdown">
+          <li class="drop-item">http://<%= request.host %>/playlists/<%= @playlist.id %></li>
+        </ul>
       </div>
   </div>
 </div>
