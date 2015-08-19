@@ -56,11 +56,14 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.username = auth.extra.raw_info.screen_name #for Twitter
       if !user.username
+        #could append a random number string here instead for uniqueness
         user.username = auth.info.name.gsub(/\s+/, "") + auth.uid[0..3]
       end
       user.password = Devise.friendly_token[0,20]
       if !auth.info.email
         user.email = user.username+"@"+auth.provider+".com"
+        # or alternately:
+        #user.email = user.username+"@example.com"
       else
         user.email = auth.info.email
       end
