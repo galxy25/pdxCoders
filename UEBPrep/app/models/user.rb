@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.username = auth.extra.raw_info.screen_name
+      user.username = auth.extra.raw_info.screen_name #for Twitter
       if !user.username
         user.username = auth.info.name.gsub(/\s+/, "") + auth.uid[0..3]
       end
@@ -68,24 +68,4 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    if user
-      return user
-    else
-      registered_user = User.where(:email => auth.uid + "@twitter.com").first
-      if registered_user
-        return registered_user
-      else
-
-        user = User.create(provider:auth.provider,
-                           uid:auth.uid,
-                           username:auth.extra.raw_info.screen_name,
-                           email:auth.extra.raw_info.screen_name+"@twitter.com",
-                           password:Devise.friendly_token[0,20],
-        )
-      end
-
-    end
-  end
 end
