@@ -64,7 +64,8 @@ class User < ActiveRecord::Base
       else
         user.email = auth.info.email
       end
-      #should be able to access auth.info.image here for user avatar
+      #search online omniauth+provider for auth hash info
+      #user image provided in auth hash and can be used for user avatar with appropriate integration
     end
   end
 

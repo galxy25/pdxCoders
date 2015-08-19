@@ -248,7 +248,8 @@ Devise.setup do |config|
   # file called: config/application.yml
   require 'omniauth-facebook'
   config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'],
-                  :scope => 'email, public_profile'
+                  :scope => 'email, public_profile',
+                  :info_fields => 'email, name, locale'
 
   require 'omniauth-twitter'
   config.omniauth :twitter, ENV['TW_APP_ID'], ENV['TW_APP_SECRET']
