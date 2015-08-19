@@ -1,8 +1,0 @@
-<%= link_to 'New Card', new_card_path %>
-<%= link_to 'Show', @card %>
-<%= link_to 'Card Creation Home', cards_path %>
-<h2>Import Cards</h2>
-<%= form_tag import_cards_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
-<% end %>

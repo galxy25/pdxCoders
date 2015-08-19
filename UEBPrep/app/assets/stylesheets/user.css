@@ -8,11 +8,11 @@
 .user-card.panel
 {
     margin:         1rem auto;
-    padding-bottom: 0%;
+    margin-bottom:  10%;
     border:         2px solid #444;
     background:     #eee;
     width: 75%;
-    height: 60%;
+    height: 80%;
 }
 
 .user-card.panel .sign
@@ -43,7 +43,7 @@
 {
     text-align: left;
     font-size: 200%;
-    white-space: pre-wrap;
+    white-space: normal;
     line-height: 2rem;
 }
 
