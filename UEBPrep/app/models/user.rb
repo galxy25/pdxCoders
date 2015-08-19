@@ -27,6 +27,23 @@ class User < ActiveRecord::Base
   # Validate filename
   # validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
 
+  scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
+
+  scope :active, lambda{ where("updated_at > ?", 1.week.ago) }
+
+  scope :monthly_uniques, lambda{ where("updated_at > ?", 1.month.ago) }
+
+  def online?
+    updated_at > 10.minutes.ago
+  end
+
+  def last_month?
+    updated_at > 1.month.ago
+  end
+
+  def last_week?
+    updated_at > 1.week.ago
+  end
 
   def generate_api_key
     loop do
@@ -36,38 +53,23 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.username = auth.extra.raw_info.screen_name #for Twitter
+      if !user.username
+        #could append a random number string here instead for uniqueness
+        user.username = auth.info.name.gsub(/\s+/, "") + auth.uid[0..3]
+      end
+      user.password = Devise.friendly_token[0,20]
       if !auth.info.email
-        user.email = "noValidEmail@wrong.com"
-        user.password = "vagrant"
-        user.username = "noValidEmail"
+        user.email = user.username+"@"+auth.provider+".com"
+        # or alternately:
+        #user.email = user.username+"@example.com"
       else
         user.email = auth.info.email
-        user.password = Devise.friendly_token[0,20]
-        user.username = auth.info.email.split('@')[0] # This not the best way to: drop the '@etc.com'
       end
+      #search online omniauth+provider for auth hash info
+      #user image provided in auth hash and can be used for user avatar with appropriate integration
     end
   end
 
-  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    if user
-      return user
-    else
-      registered_user = User.where(:email => auth.uid + "@twitter.com").first
-      if registered_user
-        return registered_user
-      else
-
-        user = User.create(provider:auth.provider,
-                           uid:auth.uid,
-                           username:auth.extra.raw_info.screen_name,
-                           email:auth.extra.raw_info.screen_name+"@twitter.com",
-                           password:Devise.friendly_token[0,20],
-        )
-      end
-
-    end
-  end
 end

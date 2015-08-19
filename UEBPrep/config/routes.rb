@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'homepage#index'
   get 'homepage/index'
+  get '/stats' => 'homepage#stats'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
   get 'sessions/new'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   post   'playlist/edit' => 'playlist#edit'
 
   resources :users,  only: [:index, :show, :create, :edit, :update]
+  get 'users/:id/playlists' => 'users#playlists'
 
   resources :cards do
     collection do 
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
   end
 
   resources :playlists
+  put 'playlists/:id/add_card/:card_id' => 'playlists#add_card'
 
   get 'playlists/:id/cards' => 'playlists#cards'
 

@@ -1,21 +1,27 @@
 label[for=cardtype]
 {
-    font-size:       1.5em;
-    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+label[for=citation]
+{
+    font-weight: bold;
+    font-size: 1rem;
 }
 
 #cardtype
 {
-    width:         15%;
-    padding:       .5%;
-    border-radius: 6px;
-    font-size:       1.5em;
+    width:          115px;
+    padding:        .5%;
+    border-radius:  6px;
+    font-size:      1.5em;
 }
 
 label[for=cardtitle]
 {
-    font-size:       1.5em;
-    color: white;
+    font-weight: bold;
+    font-size: 1rem;
     display: none;
 }
 
@@ -29,8 +35,8 @@ label[for=cardtitle]
 
 label[for=cardtext]
 {
-    font-size:       1.5em;
-    color: white;
+    font-weight: bold;
+    font-size: 1rem;
     display: none;
 }
 
@@ -45,21 +51,20 @@ label[for=cardtext]
 
 label[for=cardimage]
 {
-    font-size:       1.5em;
-    color: white;
+    font-weight: bold;
+    font-size: 1rem;
     display: none;
 }
 
 label[for=uploadcardimage]
 {
-    font-size:       1.5em;
-    color: white;
+    font-size: 1rem;
 }
 
 label[for=cardimagealt]
 {
-    font-size:       1.5em;
-    color: white;
+    font-weight: bold;
+    font-size: 1rem;
     display: none;
 }
 
@@ -91,6 +96,16 @@ label[for=cardimagealt]
     display: none;
 }
 
+.csvsubmit
+{
+    background:      #29b0b7;
+    padding:         1% 3.5%;
+    border-radius:   6px;
+    color:           #fff;
+    font-size:       1.5em;
+    cursor:          pointer;
+}
+
 .accordion {
     margin: 0;
 }
@@ -99,4 +114,34 @@ label[for=cardimagealt]
     width: 100%;
     color: #000000;
     height: 2rem;
+}
+
+#multi-cards {
+    font-size: .5em;
+    font-size: .4vmin;
+    font-size: .8vmax;
+}
+
+#multi-cards #share-card-button {
+    display: none;
+}
+
+#multi-cards #delete-card-button {
+    display: none;
+}
+
+dl#import-cards dd{
+    margin-bottom: .1rem !important;
+}
+
+.delete-button {
+
+}
+
+dl#card-creator-title {
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 2px 2px #000000;
 }

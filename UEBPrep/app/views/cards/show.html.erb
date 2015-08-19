@@ -9,10 +9,12 @@
       <h1>Cards</h1>
     </div>
   </div>
+  <div id="card-id" card-id="<%= @card.id %>"></div>
   <%= render partial: @card.content, locals: { content: @card.content } %>
+  <div id="delete-card-button">
+    <%unless @current_user.nil? %>
+      <%= button_to "Delete Card", {:controller => "cards", :action => 'destroy', :id => @card.id}, :confirm => "Are you sure you want to delete this card?", :method => :delete, :class=> "button tiny info center" %>
+    <%end %>
+  </div>
   <%= render 'footer' %>
 </div>
-<%unless @current_user.nil? %>
-    <%= render 'links' %>
-    <%= button_to "Delete Card", {:controller => "cards", :action => 'destroy', :id => @card.id}, :confirm => "Are you sure you want to delete this card?", :method => :delete %>
-<%end %>

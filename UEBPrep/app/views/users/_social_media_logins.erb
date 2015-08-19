@@ -4,9 +4,9 @@
   <% end %>
 </div>
 <div class="facebook" arial-label= "sign in with facebook">
-  <!--%= link_to user_omniauth_authorize_path(:facebook) do %-->
+  <%= link_to user_omniauth_authorize_path(:facebook) do %>
   <img class="app-btns app-roundedbox" src="assets/homepage/facebook_login_button.png" alt="facebook logo and text" data-interchange="">
-  <!--% end %-->
+  <% end %>
 </div>
 <div class="twitter" arial-label= "sign in with twitter">
   <%= link_to user_omniauth_authorize_path(:twitter) do %>
