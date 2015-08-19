@@ -246,7 +246,10 @@ Devise.setup do |config|
 
   # Declare the provider as facebook and sends in the APP_ID and APP_SECRET from a
   # file called: config/application.yml
-  config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET']
+  require 'omniauth-facebook'
+  config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'],
+                  :scope => 'email, public_profile',
+                  :info_fields => 'email, name, locale'
 
   require 'omniauth-twitter'
   config.omniauth :twitter, ENV['TW_APP_ID'], ENV['TW_APP_SECRET']
