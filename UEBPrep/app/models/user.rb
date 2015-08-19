@@ -54,13 +54,17 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.username = auth.info.name.gsub(/\s+/, "") + auth.uid[0..3]
+      user.username = auth.extra.raw_info.screen_name
+      if !user.username
+        user.username = auth.info.name.gsub(/\s+/, "") + auth.uid[0..3]
+      end
       user.password = Devise.friendly_token[0,20]
       if !auth.info.email
         user.email = user.username+"@"+auth.provider+".com"
       else
         user.email = auth.info.email
       end
+      #should be able to access auth.info.image here for user avatar
       binding.pry
     end
   end
