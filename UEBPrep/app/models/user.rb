@@ -65,7 +65,6 @@ class User < ActiveRecord::Base
         user.email = auth.info.email
       end
       #should be able to access auth.info.image here for user avatar
-      binding.pry
     end
   end
 
