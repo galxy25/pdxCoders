@@ -45,5 +45,6 @@ group :development do
 end
 
 group :production do
-
+  # FOr heroku deployment
+  gem 'rails_12factor'
 end
