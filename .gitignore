@@ -14,7 +14,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
+/.vagrant
+/tmp
+/log
+/vendor
+/public/system
+*.idea
+*.keep
 # Ignore application configuration
 /config/application.yml
 
