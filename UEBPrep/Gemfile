@@ -48,4 +48,5 @@ end
 group :production do
   # FOr heroku deployment
   gem 'rails_12factor'
+  gem 'uglifier'
 end
