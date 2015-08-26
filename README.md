@@ -68,6 +68,10 @@ After you finish work on your branch, create a pull request, leave commits, and 
 
 Merges to production/master will be handled by the team lead. 
 
+#Deploying new code
+  CAT has uploaded our public keys onto the hosting server, to trigger the build scripts for both the staging and production environments, run
+    $> ssh -i path/to/private_key uebprep@brailleuno.ece.pdx.edu 
+
 #License
 
 The MIT License (MIT)
